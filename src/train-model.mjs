@@ -7,7 +7,7 @@ const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const inputPath = resolve(projectRoot, process.argv.find((arg) => arg.endsWith(".json")) ?? "model/training.json");
 const rules = JSON.parse(await readFile(resolve(projectRoot, "config/rules.json"), "utf8"));
 const training = JSON.parse(await readFile(inputPath, "utf8"));
-const featureNames = ["crossCommunity", "channelRank", "commentsAndEngagement", "reactions", "views", "freshness"];
+const featureNames = ["impact", "viewPerformance", "commentsAndEngagement", "freshness"];
 const dates = new Set(training.rows.map((row) => row.date));
 if (dates.size < rules.scoring.initialPeriodDays) {
   console.error(`학습 중단: ${dates.size}일 데이터만 있습니다. 최소 ${rules.scoring.initialPeriodDays}일이 필요합니다.`);

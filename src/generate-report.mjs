@@ -85,6 +85,12 @@ for (const item of items) {
   groups.set(item.topic, group);
 }
 
+const requiredWeightKeys = ["impact", "viewPerformance", "commentsAndEngagement", "freshness"];
+const learnedWeights = learnedModel?.weights;
+const weights = learnedWeights && requiredWeightKeys.every((key) => typeof learnedWeights[key] === "number")
+  ? learnedWeights
+  : rules.scoring.weights;
+
 const topics = [...groups.entries()].map(([topic, items]) => {
   const newestAgeHours = Math.min(...items.map((item) => (checkedAt - new Date(item.publishedAt)) / 3_600_000));
   const communities = [...new Set(items.map((item) => item.community))];
@@ -95,18 +101,14 @@ const topics = [...groups.entries()].map(([topic, items]) => {
   const impactScore = communitySpreadScore * 0.65 + groupSpreadScore * 0.35;
   const featureRows = items.map((item) => {
     const metrics = metricByItem.get(item);
-    const candidateCount = Math.max(2, Number(item.candidateCount || 10));
-    const rank = Math.min(candidateCount, Math.max(1, Number(item.rank || 1)));
-    const channelRankScore = (1 - (rank - 1) / (candidateCount - 1)) * 100;
     const ageHours = Math.max(0, (checkedAt - new Date(item.publishedAt)) / 3_600_000);
     const freshnessScore = Math.max(0, Math.min(100, 100 * Math.exp((-Math.log(2) * ageHours) / 12)));
     const hoursElapsed = Math.max(0.5, ageHours);
     const viewsPerHour = Number(item.views || 0) / hoursElapsed;
     const viewVelocityScore = percentile(viewsPerHour, hourlyViewValues);
-    return { ...metrics, channelRankScore, freshnessScore, hoursElapsed, viewsPerHour, viewVelocityScore };
+    return { ...metrics, freshnessScore, hoursElapsed, viewsPerHour, viewVelocityScore };
   });
   const maxOf = (key) => Math.max(...featureRows.map((row) => row[key]));
-  const channelRankScore = maxOf("channelRankScore");
   const commentScore = maxOf("commentScore");
   const engagementScore = maxOf("engagementScore");
   const commentsAndEngagementScore = (commentScore + engagementScore) / 2;
@@ -115,12 +117,10 @@ const topics = [...groups.entries()].map(([topic, items]) => {
   const viewVelocityScore = maxOf("viewVelocityScore");
   const viewPerformanceScore = viewVelocityScore * 0.65 + viewScore * 0.35;
   const freshnessScore = maxOf("freshnessScore");
-  const weights = rules.scoring.weights;
   const trendScore =
     (impactScore * weights.impact +
     viewPerformanceScore * weights.viewPerformance +
     commentsAndEngagementScore * weights.commentsAndEngagement +
-    channelRankScore * weights.channelRank +
     freshnessScore * weights.freshness);
   const decision = trendScore >= rules.classification.mustProduceScore ? "반드시 제작" : trendScore >= rules.classification.priorityScore ? "제작 우선" : trendScore >= rules.classification.observeScore ? "추가 관찰" : "제외";
   const predictionWeights = rules.prediction.weights;
@@ -128,8 +128,7 @@ const topics = [...groups.entries()].map(([topic, items]) => {
     viewVelocityScore * predictionWeights.viewVelocity +
     commentsAndEngagementScore * predictionWeights.engagement +
     freshnessScore * predictionWeights.freshness +
-    impactScore * predictionWeights.impact +
-    channelRankScore * predictionWeights.channelRank
+    impactScore * predictionWeights.impact
   );
   return {
     topic,
@@ -144,12 +143,12 @@ const topics = [...groups.entries()].map(([topic, items]) => {
     predictionScore,
     decision,
     viewsPerHour: Math.max(...featureRows.map((row) => row.viewsPerHour)),
-    scores: { impactScore, channelRankScore, commentsAndEngagementScore, reactionScore, viewScore, viewVelocityScore, viewPerformanceScore, freshnessScore }
+    scores: { impactScore, commentsAndEngagementScore, reactionScore, viewScore, viewVelocityScore, viewPerformanceScore, freshnessScore }
   };
 });
 
 const major = topics
-  .filter((topic) => topic.communities.length >= 3 || (topic.communityGroups.length >= 2 && topic.scores.impactScore >= 60))
+  .filter((topic) => topic.communities.length >= rules.classification.majorMinCommunities || (topic.communityGroups.length >= 2 && topic.scores.impactScore >= 60))
   .sort((a, b) => b.trendScore - a.trendScore)
   .slice(0, rules.classification.maxTopicsPerSection);
 
@@ -163,7 +162,7 @@ const formatTopic = (entry) => {
   const names = entry.communities.map((id) => communityMap.get(id)?.name ?? id).join(" · ");
   const verification = entry.needsVerification ? " · 사실 확인 필요" : "";
   const urls = entry.items.map((item) => `[${communityMap.get(item.community)?.name ?? item.community}](${item.url})`).join(" · ");
-  return `- **${entry.topic}** — ${entry.trendScore.toFixed(1)}점 · ${entry.decision} · ${names} · 조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · 시간당 ${Math.round(entry.viewsPerHour).toLocaleString("ko-KR")}회 · 댓글 ${entry.totalComments.toLocaleString("ko-KR")}개${verification}\n  - 커뮤니티 세부점수: 파급력 ${entry.scores.impactScore.toFixed(0)} · 조회성과 ${entry.scores.viewPerformanceScore.toFixed(0)} · 순위 ${entry.scores.channelRankScore.toFixed(0)} · 댓글/반응 ${entry.scores.commentsAndEngagementScore.toFixed(0)} · 최신성 ${entry.scores.freshnessScore.toFixed(0)}\n  - 원문: ${urls}`;
+  return `- **${entry.topic}** — ${entry.trendScore.toFixed(1)}점 · ${entry.decision} · ${names} · 조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · 시간당 ${Math.round(entry.viewsPerHour).toLocaleString("ko-KR")}회 · 댓글 ${entry.totalComments.toLocaleString("ko-KR")}개${verification}\n  - 커뮤니티 세부점수: 파급력 ${entry.scores.impactScore.toFixed(0)} · 조회성과 ${entry.scores.viewPerformanceScore.toFixed(0)} · 댓글/반응 ${entry.scores.commentsAndEngagementScore.toFixed(0)} · 최신성 ${entry.scores.freshnessScore.toFixed(0)}\n  - 원문: ${urls}`;
 };
 
 const videoCandidates = topics
@@ -208,6 +207,7 @@ const report = [
   `확인 시각: ${daily.checkedAt}`,
   `검색·SNS 확인 시각: ${daily.channelCheckedAt ?? "미수집"}`,
   `데이터 완성도: ${dataQualityScore.toFixed(1)}% (조회·댓글·공감·순위·후보수·게시시각 기준)`,
+  `트렌드 점수 가중치: ${weights === learnedWeights ? `학습됨 (${learnedModel.trainedAt})` : "초기 고정값"}`,
   "",
   "## 뜨는 주제",
   "",
@@ -279,7 +279,7 @@ const html = `<!doctype html>
 <style>
 :root{color-scheme:light dark;--bg:#f5f7fb;--panel:#fff;--text:#172033;--muted:#697386;--line:#e5e9f2;--hot:#ed4b43;--main:#5c5ce2;--soft:#eef0ff;--warn:#9a5b00;--new:#1677ff;--rising:#f97316;--major:#7c3aed;--declining:#64748b;--google:#4285f4;--youtube:#ff0033;--x:#111827}@media(prefers-color-scheme:dark){:root{--bg:#11141b;--panel:#1a1f2a;--text:#eef2ff;--muted:#9aa5ba;--line:#303848;--soft:#292c47;--warn:#ffc266;--x:#e5e7eb}}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif}main{max-width:1080px;margin:auto;padding:32px 20px 64px}header{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:24px}h1,h2,h3,p{margin-top:0}h1{margin-bottom:8px}.muted,.topic-card p{color:var(--muted)}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}.stat,.topic-card,.video,.community-row{background:var(--panel);border:1px solid var(--line);border-radius:14px}.stat{padding:18px}.stat strong{display:block;font-size:28px;margin-top:6px}.legend{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 30px}.status,.source{display:inline-flex;align-items:center;font-size:12px;font-weight:700;padding:5px 9px;border-radius:999px;color:#fff;white-space:nowrap}.status-new{background:var(--new)}.status-rising{background:var(--rising)}.status-major{background:var(--major)}.status-declining{background:var(--declining)}.source-google{background:var(--google)}.source-youtube{background:var(--youtube)}.source-x{background:var(--x)}.source-default{background:var(--declining)}.section{margin-top:34px}.section-title{display:flex;align-items:center;gap:8px}.dot{width:10px;height:10px;border-radius:50%;background:var(--main)}.dot.hot{background:var(--hot)}.topics{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.topic-card{padding:18px;border-left-width:4px}.channel-google{border-left-color:var(--google)}.channel-youtube{border-left-color:var(--youtube)}.channel-x{border-left-color:var(--x)}.topic-head{display:flex;justify-content:space-between;gap:12px}.topic-head h3{margin-bottom:8px}.badges{display:flex;gap:6px;align-items:flex-start}.badge{font-size:12px;background:var(--soft);padding:5px 8px;border-radius:999px;white-space:nowrap}.badge.warning{color:var(--warn)}.confidence{font-size:12px}.links{display:flex;gap:8px;flex-wrap:wrap}.links a,.community-row a{color:var(--main);text-decoration:none}.videos{display:grid;gap:10px}.video{padding:16px;display:grid;grid-template-columns:42px 1fr auto;gap:12px;align-items:center}.rank{font-size:24px;color:var(--main);font-weight:700}.community-list{display:grid;gap:8px}.community-row{padding:13px 15px;display:grid;grid-template-columns:130px 1fr auto;gap:12px}.empty{color:var(--muted)}@media(max-width:680px){header{display:block}.stats,.topics{grid-template-columns:1fr}.topic-head{display:block}.badges{margin-bottom:10px}.video{grid-template-columns:34px 1fr}.video>a{grid-column:2}.community-row{grid-template-columns:1fr}.community-row span{font-size:13px;color:var(--muted)}}
 </style></head><body><main>
-<header><div><h1>키워드 현황</h1><p class="muted">${escapeHtml(daily.date)} · 커뮤니티 ${escapeHtml(daily.checkedAt)} · 검색/SNS ${escapeHtml(daily.channelCheckedAt ?? "미수집")}</p></div><p class="muted">수집 ${seenCommunities.size}/${rules.communities.length}개 커뮤니티 · 내부 표본 ${items.length}건</p></header>
+<header><div><h1>키워드 현황</h1><p class="muted">${escapeHtml(daily.date)} · 커뮤니티 ${escapeHtml(daily.checkedAt)} · 검색/SNS ${escapeHtml(daily.channelCheckedAt ?? "미수집")}</p></div><p class="muted">수집 ${seenCommunities.size}/${rules.communities.length}개 커뮤니티 · 내부 표본 ${items.length}건 · 가중치 ${weights === learnedWeights ? "학습됨" : "초기 고정값"}</p></header>
 <section class="stats"><div class="stat"><span>뜨는 주제</span><strong>${rising.length}</strong></div><div class="stat"><span>주요 주제</span><strong>${major.length}</strong></div><div class="stat"><span>데이터 완성도</span><strong>${dataQualityScore.toFixed(0)}%</strong></div></section>
 <div class="legend"><span class="status status-new">신규</span><span class="status status-rising">뜨는</span><span class="status status-major">주요</span><span class="status status-declining">하락</span><span class="source source-google">Google 검색</span><span class="source source-x">X</span><span class="source source-youtube">YouTube</span></div>
 <section class="section"><h2 class="section-title"><span class="dot hot"></span>뜨는 주제</h2><div class="topics">${topicCards(rising,"해당 없음","뜨는")}</div></section>

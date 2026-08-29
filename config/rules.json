@@ -54,10 +54,9 @@
   "scoring": {
     "initialPeriodDays": 30,
     "weights": {
-      "impact": 0.35,
-      "viewPerformance": 0.25,
-      "commentsAndEngagement": 0.15,
-      "channelRank": 0.20,
+      "impact": 0.45,
+      "viewPerformance": 0.30,
+      "commentsAndEngagement": 0.20,
       "freshness": 0.05
     },
     "postInitialModel": {
@@ -74,11 +73,10 @@
   },
   "prediction": {
     "weights": {
-      "viewVelocity": 0.35,
-      "engagement": 0.25,
+      "viewVelocity": 0.40,
+      "engagement": 0.30,
       "freshness": 0.15,
-      "impact": 0.15,
-      "channelRank": 0.10
+      "impact": 0.15
     },
     "successTargets": {
       "youtubeViews24hVsChannelMedian": 1.5,
