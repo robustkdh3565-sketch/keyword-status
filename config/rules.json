@@ -40,17 +40,21 @@
     "majorMinCommunities": 2,
     "maxTopicsPerSection": 5,
     "mustProduceScore": 80,
-    "priorityScore": 65,
-    "observeScore": 50
+    "priorityScore": 70,
+    "observeScore": 50,
+    "videoMinimumScore": 60,
+    "videoMinimumImpactScore": 60,
+    "videoMinimumTotalViews": 100000,
+    "videoMinimumViewsWithin6Hours": 50000
   },
   "scoring": {
     "initialPeriodDays": 30,
     "weights": {
-      "crossCommunity": 0.30,
-      "channelRank": 0.20,
-      "commentsAndEngagement": 0.30,
-      "reactions": 0.10,
-      "views": 0.05,
+      "impact": 0.35,
+      "viewPerformance": 0.25,
+      "commentsAndEngagement": 0.15,
+      "channelRank": 0.10,
+      "searchDemand": 0.10,
       "freshness": 0.05
     },
     "postInitialModel": {
@@ -59,6 +63,11 @@
       "targets": ["futureCommunityCount24h", "survivedNextDay"],
       "ridgeAlpha": 1
     }
+  },
+  "snapshots": {
+    "reportTime": "11:00",
+    "internalTimes": ["11:00", "15:00", "19:00"],
+    "publishOnlyAtReportTime": true
   },
   "normalization": {
     "similarityThreshold": 0.56,

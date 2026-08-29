@@ -68,6 +68,10 @@ const viewValues = itemMetrics.map((entry) => entry.views);
 const commentValues = itemMetrics.map((entry) => entry.comments);
 const reactionValues = itemMetrics.map((entry) => entry.reactions);
 const engagementValues = itemMetrics.map((entry) => entry.engagement);
+const hourlyViewValues = items.map((item) => {
+  const ageHours = Math.max(0.5, (checkedAt - new Date(item.publishedAt)) / 3_600_000);
+  return Number(item.views || 0) / ageHours;
+});
 const metricByItem = new Map(itemMetrics.map((entry) => [entry.item, {
   viewScore: percentile(entry.views, viewValues),
   commentScore: percentile(entry.comments, commentValues),
@@ -86,9 +90,9 @@ const topics = [...groups.entries()].map(([topic, items]) => {
   const communities = [...new Set(items.map((item) => item.community))];
   const communityCount = communities.length;
   const communityGroups = [...new Set(communities.map((id) => rules.communityGroups[id] ?? id))];
-  const communitySpreadScore = communityCount >= 5 ? 100 : communityCount === 4 ? 85 : communityCount === 3 ? 70 : communityCount === 2 ? 50 : 20;
+  const communitySpreadScore = communityCount >= 5 ? 100 : communityCount === 4 ? 90 : communityCount === 3 ? 75 : communityCount === 2 ? 55 : 20;
   const groupSpreadScore = communityGroups.length >= 4 ? 100 : communityGroups.length === 3 ? 80 : communityGroups.length === 2 ? 60 : 20;
-  const crossCommunityScore = communitySpreadScore * 0.6 + groupSpreadScore * 0.4;
+  const impactScore = communitySpreadScore * 0.65 + groupSpreadScore * 0.35;
   const featureRows = items.map((item) => {
     const metrics = metricByItem.get(item);
     const candidateCount = Math.max(2, Number(item.candidateCount || 10));
@@ -96,7 +100,10 @@ const topics = [...groups.entries()].map(([topic, items]) => {
     const channelRankScore = (1 - (rank - 1) / (candidateCount - 1)) * 100;
     const ageHours = Math.max(0, (checkedAt - new Date(item.publishedAt)) / 3_600_000);
     const freshnessScore = Math.max(0, Math.min(100, 100 * Math.exp((-Math.log(2) * ageHours) / 12)));
-    return { ...metrics, channelRankScore, freshnessScore };
+    const hoursElapsed = Math.max(0.5, ageHours);
+    const viewsPerHour = Number(item.views || 0) / hoursElapsed;
+    const viewVelocityScore = percentile(viewsPerHour, hourlyViewValues);
+    return { ...metrics, channelRankScore, freshnessScore, hoursElapsed, viewsPerHour, viewVelocityScore };
   });
   const maxOf = (key) => Math.max(...featureRows.map((row) => row[key]));
   const channelRankScore = maxOf("channelRankScore");
@@ -105,23 +112,21 @@ const topics = [...groups.entries()].map(([topic, items]) => {
   const commentsAndEngagementScore = (commentScore + engagementScore) / 2;
   const reactionScore = maxOf("reactionScore");
   const viewScore = maxOf("viewScore");
+  const viewVelocityScore = maxOf("viewVelocityScore");
+  const viewPerformanceScore = viewVelocityScore * 0.65 + viewScore * 0.35;
   const freshnessScore = maxOf("freshnessScore");
-  const configuredWeights = rules.scoring.weights;
-  const weights = learnedModel?.weights ? {
-    crossCommunity: learnedModel.weights.crossCommunity,
-    channelRank: learnedModel.weights.channelRank,
-    commentsAndEngagement: learnedModel.weights.commentsAndEngagement,
-    reactions: learnedModel.weights.reactions,
-    views: learnedModel.weights.views,
-    freshness: learnedModel.weights.freshness
-  } : configuredWeights;
+  const research = daily.research?.[topic];
+  const searchDeltas = [research?.naverTrend?.delta24h, research?.googleTrend?.delta24h].filter((value) => Number.isFinite(Number(value)));
+  const searchDemandScore = searchDeltas.length ? Math.max(0, Math.min(100, 50 + Math.max(...searchDeltas.map(Number)))) : null;
+  const weights = rules.scoring.weights;
+  const availableWeight = weights.impact + weights.viewPerformance + weights.commentsAndEngagement + weights.channelRank + weights.freshness + (searchDemandScore === null ? 0 : weights.searchDemand);
   const trendScore =
-    crossCommunityScore * weights.crossCommunity +
-    channelRankScore * weights.channelRank +
+    (impactScore * weights.impact +
+    viewPerformanceScore * weights.viewPerformance +
     commentsAndEngagementScore * weights.commentsAndEngagement +
-    reactionScore * weights.reactions +
-    viewScore * weights.views +
-    freshnessScore * weights.freshness;
+    channelRankScore * weights.channelRank +
+    (searchDemandScore === null ? 0 : searchDemandScore * weights.searchDemand) +
+    freshnessScore * weights.freshness) / availableWeight;
   const decision = trendScore >= rules.classification.mustProduceScore ? "반드시 제작" : trendScore >= rules.classification.priorityScore ? "제작 우선" : trendScore >= rules.classification.observeScore ? "추가 관찰" : "제외";
   return {
     topic,
@@ -134,18 +139,19 @@ const topics = [...groups.entries()].map(([topic, items]) => {
     needsVerification: items.some((item) => item.needsVerification),
     trendScore,
     decision,
-    scores: { crossCommunityScore, channelRankScore, commentsAndEngagementScore, reactionScore, viewScore, freshnessScore }
+    viewsPerHour: Math.max(...featureRows.map((row) => row.viewsPerHour)),
+    scores: { impactScore, channelRankScore, commentsAndEngagementScore, reactionScore, viewScore, viewVelocityScore, viewPerformanceScore, searchDemandScore, freshnessScore }
   };
 });
 
 const major = topics
-  .filter((topic) => topic.communities.length >= rules.classification.majorMinCommunities)
+  .filter((topic) => topic.communities.length >= 3 || (topic.communityGroups.length >= 2 && topic.scores.impactScore >= 60))
   .sort((a, b) => b.trendScore - a.trendScore)
   .slice(0, rules.classification.maxTopicsPerSection);
 
 const majorNames = new Set(major.map((topic) => topic.topic));
 const rising = topics
-  .filter((topic) => !majorNames.has(topic.topic) && topic.newestAgeHours <= rules.classification.risingMaxAgeHours)
+  .filter((topic) => !majorNames.has(topic.topic) && topic.newestAgeHours <= rules.classification.risingMaxAgeHours && (topic.communities.length >= 2 || topic.scores.viewPerformanceScore >= 90))
   .sort((a, b) => b.trendScore - a.trendScore)
   .slice(0, rules.classification.maxTopicsPerSection);
 
@@ -153,10 +159,12 @@ const formatTopic = (entry) => {
   const names = entry.communities.map((id) => communityMap.get(id)?.name ?? id).join(" · ");
   const verification = entry.needsVerification ? " · 사실 확인 필요" : "";
   const urls = entry.items.map((item) => `[${communityMap.get(item.community)?.name ?? item.community}](${item.url})`).join(" · ");
-  return `- **${entry.topic}** — ${entry.trendScore.toFixed(1)}점 · ${entry.decision} · ${names} · 조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · 댓글 ${entry.totalComments.toLocaleString("ko-KR")}개${verification}\n  - 세부점수: 확산 ${entry.scores.crossCommunityScore.toFixed(0)} · 순위 ${entry.scores.channelRankScore.toFixed(0)} · 댓글/반응률 ${entry.scores.commentsAndEngagementScore.toFixed(0)} · 공감 ${entry.scores.reactionScore.toFixed(0)} · 조회 ${entry.scores.viewScore.toFixed(0)} · 최신성 ${entry.scores.freshnessScore.toFixed(0)}\n  - 원문: ${urls}`;
+  return `- **${entry.topic}** — ${entry.trendScore.toFixed(1)}점 · ${entry.decision} · ${names} · 조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · 시간당 ${Math.round(entry.viewsPerHour).toLocaleString("ko-KR")}회 · 댓글 ${entry.totalComments.toLocaleString("ko-KR")}개${verification}\n  - 세부점수: 파급력 ${entry.scores.impactScore.toFixed(0)} · 조회성과 ${entry.scores.viewPerformanceScore.toFixed(0)} · 순위 ${entry.scores.channelRankScore.toFixed(0)} · 댓글/반응 ${entry.scores.commentsAndEngagementScore.toFixed(0)} · 검색수요 ${entry.scores.searchDemandScore === null ? "미수집" : entry.scores.searchDemandScore.toFixed(0)} · 최신성 ${entry.scores.freshnessScore.toFixed(0)}\n  - 원문: ${urls}`;
 };
 
-const videoCandidates = [...major, ...rising]
+const videoCandidates = topics
+  .filter((entry) => entry.trendScore >= rules.classification.videoMinimumScore || entry.totalViews >= rules.classification.videoMinimumTotalViews || (entry.newestAgeHours <= 6 && entry.totalViews >= rules.classification.videoMinimumViewsWithin6Hours))
+  .filter((entry) => entry.scores.impactScore >= rules.classification.videoMinimumImpactScore || entry.totalViews >= rules.classification.videoMinimumTotalViews || (entry.newestAgeHours <= 6 && entry.totalViews >= rules.classification.videoMinimumViewsWithin6Hours))
   .sort((a, b) => b.trendScore - a.trendScore)
   .slice(0, 5);
 
@@ -214,7 +222,7 @@ const topicCards = (entries, emptyText) => entries.length ? entries.map((entry) 
   <article class="topic-card">
     <div class="topic-head"><h3>${escapeHtml(entry.topic)} · ${entry.trendScore.toFixed(1)}점</h3>${entry.needsVerification ? '<span class="badge warning">확인 필요</span>' : '<span class="badge">검증 가능</span>'}</div>
     <p>${escapeHtml(entry.decision)} · ${entry.communities.map((id) => escapeHtml(communityMap.get(id)?.name ?? id)).join(" · ")} · 조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · 댓글 ${entry.totalComments.toLocaleString("ko-KR")}개</p>
-    <p>확산 ${entry.scores.crossCommunityScore.toFixed(0)} · 순위 ${entry.scores.channelRankScore.toFixed(0)} · 댓글/반응 ${entry.scores.commentsAndEngagementScore.toFixed(0)} · 공감 ${entry.scores.reactionScore.toFixed(0)} · 조회 ${entry.scores.viewScore.toFixed(0)} · 최신성 ${entry.scores.freshnessScore.toFixed(0)}</p>
+    <p>조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · 시간당 ${Math.round(entry.viewsPerHour).toLocaleString("ko-KR")}회 · 파급력 ${entry.scores.impactScore.toFixed(0)} · 조회성과 ${entry.scores.viewPerformanceScore.toFixed(0)} · 댓글/반응 ${entry.scores.commentsAndEngagementScore.toFixed(0)} · 검색수요 ${entry.scores.searchDemandScore === null ? "미수집" : entry.scores.searchDemandScore.toFixed(0)} · 최신성 ${entry.scores.freshnessScore.toFixed(0)}</p>
     <div class="links">${entry.items.map((item) => `<a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">${escapeHtml(communityMap.get(item.community)?.name ?? item.community)} 원문</a>`).join("")}</div>
   </article>`).join("") : `<p class="empty">${escapeHtml(emptyText)}</p>`;
 
