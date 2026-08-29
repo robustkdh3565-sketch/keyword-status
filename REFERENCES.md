@@ -14,5 +14,9 @@
 - [Scrapy](https://github.com/scrapy/scrapy): 다중 사이트 수집기 확장 후보
 - [google-trends-api](https://github.com/pat310/google-trends-api): Google Trends 보조 검증 확장 후보
 - [Naver Search/DataLab MCP](https://github.com/swift-man/naver-mcp-py): 네이버 검색 수요 검증 확장 후보
+- [네이버 데이터랩 공식 API](https://developers.naver.com/docs/serviceapi/datalab/search/search.md): 한국 검색 관심도 시계열 검증
+- [네이버 검색 공식 API](https://developers.naver.com/docs/serviceapi/search/news/news.md): 뉴스·블로그 확산량과 최신성 검증
+- [Google Trends 공식 API 알파](https://developers.google.com/search/blog/2025/07/trends-api): 권한 확보 시 일관된 척도의 글로벌 검색 관심도 검증
+- [YouTube Data API](https://developers.google.com/youtube/v3/docs): 영상 검색 결과와 조회·댓글 통계로 수요 대비 경쟁 강도 계산
 
 외부 의존성은 필요성과 유지 상태, 라이선스를 다시 확인한 후 별도 변경으로 도입합니다.

@@ -160,6 +160,17 @@ const videoCandidates = [...major, ...rising]
   .sort((a, b) => b.trendScore - a.trendScore)
   .slice(0, 5);
 
+const researchFor = (topic) => daily.research?.[topic] ?? null;
+const formatResearch = (entry) => {
+  const research = researchFor(entry.topic);
+  if (!research) return `- **${entry.topic}** — 외부 검증 미수집`;
+  const terms = research.expandedKeywords?.join(", ") || "없음";
+  const naver = research.naverTrend ? `네이버 ${Number(research.naverTrend.delta24h || 0) >= 0 ? "+" : ""}${research.naverTrend.delta24h || 0}%` : "네이버 미수집";
+  const google = research.googleTrend ? `Google ${Number(research.googleTrend.delta24h || 0) >= 0 ? "+" : ""}${research.googleTrend.delta24h || 0}%` : "Google 미수집";
+  const youtube = research.youtube ? `YouTube 기회 ${research.youtube.opportunityScore ?? "-"}점` : "YouTube 미수집";
+  return `- **${entry.topic}** — ${naver} · ${google} · ${youtube}\n  - 확장어: ${terms}`;
+};
+
 const missing = rules.communities.filter((item) => !seenCommunities.has(item.id)).map((item) => item.name);
 const report = [
   `# ${daily.date} 키워드 현황`,
@@ -180,6 +191,10 @@ const report = [
   videoCandidates.length
     ? videoCandidates.map((entry, index) => `${index + 1}. **${entry.topic}** — ${entry.trendScore.toFixed(1)}점 · ${entry.decision} · ${entry.communities.length}개 커뮤니티 · ${entry.needsVerification ? "팩트체크형 권장" : "설명·정리형 권장"}\n   - URL: ${entry.items.map((item) => item.url).join(" · ")}`).join("\n")
     : "- 해당 없음",
+  "",
+  "## 키워드 확장·검색 수요 검증",
+  "",
+  videoCandidates.length ? videoCandidates.map(formatResearch).join("\n") : "- 해당 없음",
   "",
   "## 커뮤니티별 대표 글",
   "",
@@ -203,6 +218,13 @@ const topicCards = (entries, emptyText) => entries.length ? entries.map((entry) 
     <div class="links">${entry.items.map((item) => `<a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">${escapeHtml(communityMap.get(item.community)?.name ?? item.community)} 원문</a>`).join("")}</div>
   </article>`).join("") : `<p class="empty">${escapeHtml(emptyText)}</p>`;
 
+const researchCards = videoCandidates.map((entry) => {
+  const research = researchFor(entry.topic);
+  if (!research) return `<article class="topic-card"><h3>${escapeHtml(entry.topic)}</h3><p>외부 검증 미수집</p></article>`;
+  const links = [research.naverTrend, research.googleTrend, research.youtube, research.naverSearch].filter((value) => value?.url);
+  return `<article class="topic-card"><h3>${escapeHtml(entry.topic)}</h3><p>확장어: ${escapeHtml(research.expandedKeywords?.join(" · ") || "없음")}</p><p>네이버 ${escapeHtml(research.naverTrend?.delta24h ?? "-")}% · Google ${escapeHtml(research.googleTrend?.delta24h ?? "-")}% · YouTube 기회 ${escapeHtml(research.youtube?.opportunityScore ?? "-")}점</p><div class="links">${links.map((value) => `<a href="${escapeHtml(value.url)}" target="_blank" rel="noreferrer">검증 URL</a>`).join("")}</div></article>`;
+}).join("");
+
 const html = `<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${escapeHtml(daily.date)} 키워드 현황</title>
@@ -214,6 +236,7 @@ const html = `<!doctype html>
 <section class="section"><h2 class="section-title"><span class="dot hot"></span>뜨는 주제</h2><div class="topics">${topicCards(rising,"해당 없음")}</div></section>
 <section class="section"><h2 class="section-title"><span class="dot"></span>주요 주제</h2><div class="topics">${topicCards(major,"해당 없음")}</div></section>
 <section class="section"><h2>이번 주 무조건 검토할 영상 소재</h2><div class="videos">${videoCandidates.map((entry,index)=>`<article class="video"><span class="rank">${index+1}</span><div><strong>${escapeHtml(entry.topic)} · ${entry.trendScore.toFixed(1)}점</strong><div class="muted">${escapeHtml(entry.decision)} · ${entry.communities.length}개 커뮤니티 · ${entry.needsVerification?"팩트체크형":"설명·정리형"}</div></div><a href="${escapeHtml(entry.items[0]?.url)}" target="_blank" rel="noreferrer">대표 URL</a></article>`).join("")||'<p class="empty">해당 없음</p>'}</div></section>
+<section class="section"><h2>키워드 확장·검색 수요 검증</h2><div class="topics">${researchCards||'<p class="empty">해당 없음</p>'}</div></section>
 <section class="section"><h2>커뮤니티별 대표 글</h2><div class="community-list">${representatives.map((item)=>`<div class="community-row"><strong>${escapeHtml(communityMap.get(item.community)?.name??item.community)}</strong><span>${escapeHtml(item.title)}</span><a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">원문 보기</a></div>`).join("")}</div></section>
 <section class="section"><h2>미수집 커뮤니티</h2><p class="muted">${missing.length?escapeHtml(missing.join(", ")):"없음"}</p></section>
 </main></body></html>`;

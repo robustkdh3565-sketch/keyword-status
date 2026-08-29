@@ -1,6 +1,15 @@
 {
   "date": "2026-08-29",
   "checkedAt": "2026-08-29T21:30:00+09:00",
+  "research": {
+    "출산 로봇": {
+      "expandedKeywords": ["인공 자궁", "임신 로봇", "중국 출산 로봇"],
+      "naverTrend": { "delta24h": 32, "index": 74, "url": "https://datalab.naver.com/" },
+      "googleTrend": { "delta24h": 18, "index": 61, "url": "https://trends.google.com/trends/" },
+      "youtube": { "recentVideoCount": 12, "medianViews": 43000, "opportunityScore": 71, "url": "https://www.youtube.com/results?search_query=%EC%B6%9C%EC%82%B0+%EB%A1%9C%EB%B4%87" },
+      "naverSearch": { "newsCount": 34, "blogCount": 81, "url": "https://search.naver.com/search.naver?query=%EC%B6%9C%EC%82%B0+%EB%A1%9C%EB%B4%87" }
+    }
+  },
   "items": [
     {
       "community": "ruliweb",

@@ -1,0 +1,33 @@
+{
+  "pipeline": [
+    "communityDiscovery",
+    "keywordExpansion",
+    "searchDemandValidation",
+    "videoCompetitionValidation",
+    "editorialDecision"
+  ],
+  "providers": {
+    "naverDataLab": { "enabledWhenConfigured": true, "role": "koreanSearchTrend", "official": true },
+    "googleTrends": { "enabledWhenConfigured": true, "role": "globalSearchTrend", "officialAlpha": true },
+    "naverSearch": { "enabledWhenConfigured": true, "role": "newsBlogSpread", "official": true },
+    "youtubeDataApi": { "enabledWhenConfigured": true, "role": "videoDemandAndCompetition", "official": true }
+  },
+  "expansion": {
+    "sources": ["communityTitleNgrams", "crossCommunityCooccurrence", "naverSearchTitles", "youtubeSearchTitles"],
+    "maxTermsPerTopic": 15,
+    "excludeStopwords": true
+  },
+  "validation": {
+    "windowsHours": [6, 24, 72, 168],
+    "minimumSignals": 2,
+    "gates": {
+      "produceNow": { "communityScoreMin": 65, "searchTrendDeltaMin": 20, "videoOpportunityMin": 60 },
+      "watch": { "communityScoreMin": 50 }
+    }
+  },
+  "policy": {
+    "externalSignalsAreGateNotBaseScore": true,
+    "missingExternalDataDoesNotBecomeZero": true,
+    "unofficialAutocompleteIsOptional": true
+  }
+}
