@@ -231,10 +231,6 @@ const report = [
   "",
   socialRankings.length ? socialRankings.map(formatChannelRanking).join("\n") : "- 미수집",
   "",
-  "### 운영 제외 채널",
-  "",
-  daily.channels?.disabled?.length ? daily.channels.disabled.map((entry) => `- ${entry.source}: ${entry.reason}`).join("\n") : "- 없음",
-  "",
   "## 채널 교차 키워드",
   "",
   crossChannelTopics.length ? crossChannelTopics.map((entry) => `- **${entry.keyword}** — ${entry.channels.join(" · ")}`).join("\n") : "- 현재 중복 없음 또는 외부 채널 미수집",
@@ -291,7 +287,6 @@ const html = `<!doctype html>
 <section class="section"><h2>이번 주 무조건 검토할 영상 소재</h2><div class="videos">${videoCandidates.map((entry,index)=>`<article class="video"><span class="rank">${index+1}</span><div><strong>${escapeHtml(entry.topic)} · ${entry.trendScore.toFixed(1)}점</strong><div class="muted">${escapeHtml(entry.decision)} · ${entry.communities.length}개 커뮤니티 · 조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · ${entry.needsVerification?"팩트체크형":"설명·정리형"}</div></div><a href="${escapeHtml(entry.items[0]?.url)}" target="_blank" rel="noreferrer">대표 URL</a></article>`).join("")||'<p class="empty">해당 없음</p>'}</div></section>
 <section class="section"><h2>검색 트렌드 순위</h2><div class="topics">${channelCards(searchRankings)||'<p class="empty">미수집</p>'}</div></section>
 <section class="section"><h2>SNS 트렌드 순위</h2><div class="topics">${channelCards(socialRankings)||'<p class="empty">미수집</p>'}</div></section>
-<section class="section"><h2>운영 제외 채널</h2><div class="topics">${daily.channels?.disabled?.map((entry)=>`<article class="topic-card"><h3>${escapeHtml(entry.source)}</h3><p>${escapeHtml(entry.reason)}</p></article>`).join("")||'<p class="empty">없음</p>'}</div></section>
 <section class="section"><h2>채널 교차 키워드</h2><div class="topics">${crossChannelTopics.map((entry)=>`<article class="topic-card"><h3>${escapeHtml(entry.keyword)}</h3><p>${escapeHtml(entry.channels.join(" · "))}</p></article>`).join("")||'<p class="empty">현재 중복 없음 또는 외부 채널 미수집</p>'}</div></section>
 <section class="section"><h2>뜰 것 같은 영상</h2><p class="muted">최근 12시간 후보 중 조회속도·반응률·최신성·파급력을 결합한 예측입니다.</p><div class="videos">${predictionCards||'<p class="empty">현재 기준 충족 후보 없음</p>'}</div></section>
 <section class="section"><h2>커뮤니티별 대표 글</h2><div class="community-list">${representatives.map((item)=>`<div class="community-row"><strong>${escapeHtml(communityMap.get(item.community)?.name??item.community)}</strong><span>${escapeHtml(item.title)} · 조회 ${item.views === undefined ? "미수집" : `${Number(item.views).toLocaleString("ko-KR")}회`}</span><a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">원문 보기</a></div>`).join("")}</div></section>

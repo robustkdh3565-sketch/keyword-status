@@ -38,11 +38,6 @@
       {"rank":3,"keyword":"잉글랜드 이상호","source":"YouTube 한국","metric":"인기 3위 · 조회 707,000 · 시간당 39,000","url":"https://youtube.com/watch?v=XsYf1QRr8D0"},
       {"rank":4,"keyword":"송하예 행복한 나를 2026","source":"YouTube 한국","metric":"인기 4위 · 조회 192,000 · 시간당 4,900","url":"https://youtube.com/watch?v=Gk8F8waA0tM"},
       {"rank":5,"keyword":"가능한 사랑 공식 예고편","source":"YouTube 한국","metric":"인기 5위 · 조회 793,000 · 시간당 16,000","url":"https://youtube.com/watch?v=W1kDOqqWNiw"}
-    ],
-    "disabled": [
-      {"source":"네이버","reason":"사용자 요청으로 운영 제외"},
-      {"source":"TikTok","reason":"사용자 요청으로 운영 제외"},
-      {"source":"Instagram","reason":"사용자 요청으로 운영 제외"}
     ]
   },
   "items": [
