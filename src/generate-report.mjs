@@ -1,4 +1,4 @@
-import { readFile, writeFile, mkdir } from "node:fs/promises";
+import { readFile, writeFile, mkdir, readdir } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -143,4 +143,16 @@ const html = `<!doctype html>
 
 const htmlPath = resolve(projectRoot, `reports/${daily.date}.html`);
 await writeFile(htmlPath, html, "utf8");
-console.log(`${outputPath}\n${htmlPath}`);
+
+const reportsDir = resolve(projectRoot, "reports");
+const reportFiles = (await readdir(reportsDir))
+  .filter((name) => /^\d{4}-\d{2}-\d{2}\.html$/.test(name))
+  .sort((a, b) => b.localeCompare(a));
+const indexHtml = `<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>키워드 현황 누적 리포트</title><style>
+:root{color-scheme:light dark;--bg:#f5f7fb;--panel:#fff;--text:#172033;--muted:#697386;--line:#e5e9f2;--accent:#5c5ce2}@media(prefers-color-scheme:dark){:root{--bg:#11141b;--panel:#1a1f2a;--text:#eef2ff;--muted:#9aa5ba;--line:#303848}}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif}main{max-width:900px;margin:auto;padding:32px 20px 64px}h1{margin-bottom:8px}.muted{color:var(--muted)}.reports{display:grid;gap:10px;margin-top:28px}.report{display:grid;grid-template-columns:120px 1fr auto;gap:16px;align-items:center;padding:18px;background:var(--panel);border:1px solid var(--line);border-radius:14px}.report:first-child{border-color:var(--accent)}.latest{font-size:12px;color:var(--accent)}a{color:var(--accent);text-decoration:none}@media(max-width:560px){.report{grid-template-columns:1fr}.latest{grid-row:1}}
+</style></head><body><main><h1>키워드 현황 누적 리포트</h1><p class="muted">최신 리포트가 항상 최상단에 표시됩니다.</p><div class="reports">${reportFiles.map((file,index)=>{const date=file.replace(".html","");return `<article class="report"><strong>${escapeHtml(date)}</strong><span>${index===0?'<span class="latest">최신 리포트</span>':'일일 키워드 현황'}</span><a href="./${escapeHtml(file)}">리포트 열기</a></article>`}).join("")}</div></main></body></html>`;
+const indexPath = resolve(reportsDir, "index.html");
+await writeFile(indexPath, indexHtml, "utf8");
+console.log(`${outputPath}\n${htmlPath}\n${indexPath}`);

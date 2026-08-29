@@ -28,6 +28,7 @@ npm run report -- data/2026-08-29.json
 
 결과는 `reports/YYYY-MM-DD.md`와 `reports/YYYY-MM-DD.html`에 저장됩니다.
 HTML 보고서에는 뜨는 주제, 주요 주제, 원문 URL, 이번 주 영상 소재 후보와 커뮤니티별 대표 글이 대시보드 형태로 표시됩니다.
+날짜별 보고서는 계속 보존되며 `reports/index.html`에 최신 날짜순으로 누적됩니다. 가장 최근 보고서가 항상 최상단에 표시됩니다.
 
 입력 검증만 하려면 다음 명령을 사용합니다.
 
