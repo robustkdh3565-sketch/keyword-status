@@ -115,29 +115,22 @@ const topics = [...groups.entries()].map(([topic, items]) => {
   const viewVelocityScore = maxOf("viewVelocityScore");
   const viewPerformanceScore = viewVelocityScore * 0.65 + viewScore * 0.35;
   const freshnessScore = maxOf("freshnessScore");
-  const research = daily.research?.[topic];
-  const searchDeltas = [research?.naverTrend?.delta24h, research?.googleTrend?.delta24h].filter((value) => Number.isFinite(Number(value)));
-  const searchDemandScore = searchDeltas.length ? Math.max(0, Math.min(100, 50 + Math.max(...searchDeltas.map(Number)))) : null;
   const weights = rules.scoring.weights;
-  const availableWeight = weights.impact + weights.viewPerformance + weights.commentsAndEngagement + weights.channelRank + weights.freshness + (searchDemandScore === null ? 0 : weights.searchDemand);
   const trendScore =
     (impactScore * weights.impact +
     viewPerformanceScore * weights.viewPerformance +
     commentsAndEngagementScore * weights.commentsAndEngagement +
     channelRankScore * weights.channelRank +
-    (searchDemandScore === null ? 0 : searchDemandScore * weights.searchDemand) +
-    freshnessScore * weights.freshness) / availableWeight;
+    freshnessScore * weights.freshness);
   const decision = trendScore >= rules.classification.mustProduceScore ? "반드시 제작" : trendScore >= rules.classification.priorityScore ? "제작 우선" : trendScore >= rules.classification.observeScore ? "추가 관찰" : "제외";
   const predictionWeights = rules.prediction.weights;
-  const predictionAvailableWeight = predictionWeights.viewVelocity + predictionWeights.engagement + predictionWeights.freshness + predictionWeights.impact + predictionWeights.channelRank + (searchDemandScore === null ? 0 : predictionWeights.searchDemand);
   const predictionScore = (
     viewVelocityScore * predictionWeights.viewVelocity +
     commentsAndEngagementScore * predictionWeights.engagement +
     freshnessScore * predictionWeights.freshness +
     impactScore * predictionWeights.impact +
-    channelRankScore * predictionWeights.channelRank +
-    (searchDemandScore === null ? 0 : searchDemandScore * predictionWeights.searchDemand)
-  ) / predictionAvailableWeight;
+    channelRankScore * predictionWeights.channelRank
+  );
   return {
     topic,
     items,
@@ -151,7 +144,7 @@ const topics = [...groups.entries()].map(([topic, items]) => {
     predictionScore,
     decision,
     viewsPerHour: Math.max(...featureRows.map((row) => row.viewsPerHour)),
-    scores: { impactScore, channelRankScore, commentsAndEngagementScore, reactionScore, viewScore, viewVelocityScore, viewPerformanceScore, searchDemandScore, freshnessScore }
+    scores: { impactScore, channelRankScore, commentsAndEngagementScore, reactionScore, viewScore, viewVelocityScore, viewPerformanceScore, freshnessScore }
   };
 });
 
@@ -170,7 +163,7 @@ const formatTopic = (entry) => {
   const names = entry.communities.map((id) => communityMap.get(id)?.name ?? id).join(" · ");
   const verification = entry.needsVerification ? " · 사실 확인 필요" : "";
   const urls = entry.items.map((item) => `[${communityMap.get(item.community)?.name ?? item.community}](${item.url})`).join(" · ");
-  return `- **${entry.topic}** — ${entry.trendScore.toFixed(1)}점 · ${entry.decision} · ${names} · 조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · 시간당 ${Math.round(entry.viewsPerHour).toLocaleString("ko-KR")}회 · 댓글 ${entry.totalComments.toLocaleString("ko-KR")}개${verification}\n  - 세부점수: 파급력 ${entry.scores.impactScore.toFixed(0)} · 조회성과 ${entry.scores.viewPerformanceScore.toFixed(0)} · 순위 ${entry.scores.channelRankScore.toFixed(0)} · 댓글/반응 ${entry.scores.commentsAndEngagementScore.toFixed(0)} · 검색수요 ${entry.scores.searchDemandScore === null ? "미수집" : entry.scores.searchDemandScore.toFixed(0)} · 최신성 ${entry.scores.freshnessScore.toFixed(0)}\n  - 원문: ${urls}`;
+  return `- **${entry.topic}** — ${entry.trendScore.toFixed(1)}점 · ${entry.decision} · ${names} · 조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · 시간당 ${Math.round(entry.viewsPerHour).toLocaleString("ko-KR")}회 · 댓글 ${entry.totalComments.toLocaleString("ko-KR")}개${verification}\n  - 커뮤니티 세부점수: 파급력 ${entry.scores.impactScore.toFixed(0)} · 조회성과 ${entry.scores.viewPerformanceScore.toFixed(0)} · 순위 ${entry.scores.channelRankScore.toFixed(0)} · 댓글/반응 ${entry.scores.commentsAndEngagementScore.toFixed(0)} · 최신성 ${entry.scores.freshnessScore.toFixed(0)}\n  - 원문: ${urls}`;
 };
 
 const videoCandidates = topics
@@ -185,6 +178,17 @@ const predictedVideos = topics
   .filter((entry) => entry.predictionScore >= rules.classification.predictionMinimumScore)
   .sort((a, b) => b.predictionScore - a.predictionScore)
   .slice(0, rules.classification.predictionMaxTopics);
+
+const searchRankings = daily.channels?.search ?? [];
+const socialRankings = daily.channels?.social ?? [];
+const formatChannelRanking = (item, index) => `- **${item.rank ?? index + 1}위 · ${item.keyword}** — ${item.score === undefined ? "점수 미수집" : `${Number(item.score).toFixed(1)}점`} · ${item.source ?? "출처 미수집"}${item.metric ? ` · ${item.metric}` : ""}${item.url ? `\n  - URL: ${item.url}` : ""}`;
+const communityTopics = new Set(topics.map((entry) => entry.topic));
+const searchTopics = new Set(searchRankings.map((entry) => entry.keyword));
+const socialTopics = new Set(socialRankings.map((entry) => entry.keyword));
+const crossChannelTopics = [...new Set([...communityTopics, ...searchTopics, ...socialTopics])].map((keyword) => ({
+  keyword,
+  channels: [communityTopics.has(keyword) && "커뮤니티", searchTopics.has(keyword) && "검색", socialTopics.has(keyword) && "SNS"].filter(Boolean)
+})).filter((entry) => entry.channels.length >= 2);
 
 const researchFor = (topic) => daily.research?.[topic] ?? null;
 const formatResearch = (entry) => {
@@ -218,9 +222,17 @@ const report = [
     ? videoCandidates.map((entry, index) => `${index + 1}. **${entry.topic}** — ${entry.trendScore.toFixed(1)}점 · ${entry.decision} · ${entry.communities.length}개 커뮤니티 · 조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · ${entry.needsVerification ? "팩트체크형 권장" : "설명·정리형 권장"}\n   - URL: ${entry.items.map((item) => item.url).join(" · ")}`).join("\n")
     : "- 해당 없음",
   "",
-  "## 키워드 확장·검색 수요 검증",
+  "## 검색 트렌드 순위",
   "",
-  videoCandidates.length ? videoCandidates.map(formatResearch).join("\n") : "- 해당 없음",
+  searchRankings.length ? searchRankings.map(formatChannelRanking).join("\n") : "- 미수집",
+  "",
+  "## SNS 트렌드 순위",
+  "",
+  socialRankings.length ? socialRankings.map(formatChannelRanking).join("\n") : "- 미수집",
+  "",
+  "## 채널 교차 키워드",
+  "",
+  crossChannelTopics.length ? crossChannelTopics.map((entry) => `- **${entry.keyword}** — ${entry.channels.join(" · ")}`).join("\n") : "- 현재 중복 없음 또는 외부 채널 미수집",
   "",
   "## 뜰 것 같은 영상",
   "",
@@ -246,7 +258,7 @@ const topicCards = (entries, emptyText) => entries.length ? entries.map((entry) 
   <article class="topic-card">
     <div class="topic-head"><h3>${escapeHtml(entry.topic)} · ${entry.trendScore.toFixed(1)}점</h3>${entry.needsVerification ? '<span class="badge warning">확인 필요</span>' : '<span class="badge">검증 가능</span>'}</div>
     <p>${escapeHtml(entry.decision)} · ${entry.communities.map((id) => escapeHtml(communityMap.get(id)?.name ?? id)).join(" · ")} · 조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · 댓글 ${entry.totalComments.toLocaleString("ko-KR")}개</p>
-    <p>조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · 시간당 ${Math.round(entry.viewsPerHour).toLocaleString("ko-KR")}회 · 파급력 ${entry.scores.impactScore.toFixed(0)} · 조회성과 ${entry.scores.viewPerformanceScore.toFixed(0)} · 댓글/반응 ${entry.scores.commentsAndEngagementScore.toFixed(0)} · 검색수요 ${entry.scores.searchDemandScore === null ? "미수집" : entry.scores.searchDemandScore.toFixed(0)} · 최신성 ${entry.scores.freshnessScore.toFixed(0)}</p>
+    <p>조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · 시간당 ${Math.round(entry.viewsPerHour).toLocaleString("ko-KR")}회 · 파급력 ${entry.scores.impactScore.toFixed(0)} · 조회성과 ${entry.scores.viewPerformanceScore.toFixed(0)} · 댓글/반응 ${entry.scores.commentsAndEngagementScore.toFixed(0)} · 최신성 ${entry.scores.freshnessScore.toFixed(0)}</p>
     <div class="links">${entry.items.map((item) => `<a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">${escapeHtml(communityMap.get(item.community)?.name ?? item.community)} 원문</a>`).join("")}</div>
   </article>`).join("") : `<p class="empty">${escapeHtml(emptyText)}</p>`;
 
@@ -257,6 +269,7 @@ const researchCards = videoCandidates.map((entry) => {
   return `<article class="topic-card"><h3>${escapeHtml(entry.topic)}</h3><p>확장어: ${escapeHtml(research.expandedKeywords?.join(" · ") || "없음")}</p><p>네이버 ${escapeHtml(research.naverTrend?.delta24h ?? "-")}% · Google ${escapeHtml(research.googleTrend?.delta24h ?? "-")}% · YouTube 기회 ${escapeHtml(research.youtube?.opportunityScore ?? "-")}점</p><div class="links">${links.map((value) => `<a href="${escapeHtml(value.url)}" target="_blank" rel="noreferrer">검증 URL</a>`).join("")}</div></article>`;
 }).join("");
 const predictionCards = predictedVideos.map((entry,index)=>`<article class="video"><span class="rank">${index+1}</span><div><strong>${escapeHtml(entry.topic)} · 예측 ${entry.predictionScore.toFixed(1)}점</strong><div class="muted">현재 조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · 시간당 ${Math.round(entry.viewsPerHour).toLocaleString("ko-KR")}회 · 조회속도 ${entry.scores.viewVelocityScore.toFixed(0)} · 반응 ${entry.scores.commentsAndEngagementScore.toFixed(0)}${entry.needsVerification?" · 사실 확인 필요":""}</div></div><a href="${escapeHtml(entry.items[0]?.url)}" target="_blank" rel="noreferrer">대표 URL</a></article>`).join("");
+const channelCards = (entries) => entries.map((item,index)=>`<article class="topic-card"><h3>${escapeHtml(item.rank ?? index+1)}위 · ${escapeHtml(item.keyword)}</h3><p>${item.score === undefined ? "점수 미수집" : `${Number(item.score).toFixed(1)}점`} · ${escapeHtml(item.source ?? "출처 미수집")}${item.metric ? ` · ${escapeHtml(item.metric)}` : ""}</p>${item.url ? `<div class="links"><a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">원문</a></div>` : ""}</article>`).join("");
 
 const html = `<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -269,7 +282,9 @@ const html = `<!doctype html>
 <section class="section"><h2 class="section-title"><span class="dot hot"></span>뜨는 주제</h2><div class="topics">${topicCards(rising,"해당 없음")}</div></section>
 <section class="section"><h2 class="section-title"><span class="dot"></span>주요 주제</h2><div class="topics">${topicCards(major,"해당 없음")}</div></section>
 <section class="section"><h2>이번 주 무조건 검토할 영상 소재</h2><div class="videos">${videoCandidates.map((entry,index)=>`<article class="video"><span class="rank">${index+1}</span><div><strong>${escapeHtml(entry.topic)} · ${entry.trendScore.toFixed(1)}점</strong><div class="muted">${escapeHtml(entry.decision)} · ${entry.communities.length}개 커뮤니티 · 조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · ${entry.needsVerification?"팩트체크형":"설명·정리형"}</div></div><a href="${escapeHtml(entry.items[0]?.url)}" target="_blank" rel="noreferrer">대표 URL</a></article>`).join("")||'<p class="empty">해당 없음</p>'}</div></section>
-<section class="section"><h2>키워드 확장·검색 수요 검증</h2><div class="topics">${researchCards||'<p class="empty">해당 없음</p>'}</div></section>
+<section class="section"><h2>검색 트렌드 순위</h2><div class="topics">${channelCards(searchRankings)||'<p class="empty">미수집</p>'}</div></section>
+<section class="section"><h2>SNS 트렌드 순위</h2><div class="topics">${channelCards(socialRankings)||'<p class="empty">미수집</p>'}</div></section>
+<section class="section"><h2>채널 교차 키워드</h2><div class="topics">${crossChannelTopics.map((entry)=>`<article class="topic-card"><h3>${escapeHtml(entry.keyword)}</h3><p>${escapeHtml(entry.channels.join(" · "))}</p></article>`).join("")||'<p class="empty">현재 중복 없음 또는 외부 채널 미수집</p>'}</div></section>
 <section class="section"><h2>뜰 것 같은 영상</h2><p class="muted">최근 12시간 후보 중 조회속도·반응률·최신성·파급력을 결합한 예측입니다.</p><div class="videos">${predictionCards||'<p class="empty">현재 기준 충족 후보 없음</p>'}</div></section>
 <section class="section"><h2>커뮤니티별 대표 글</h2><div class="community-list">${representatives.map((item)=>`<div class="community-row"><strong>${escapeHtml(communityMap.get(item.community)?.name??item.community)}</strong><span>${escapeHtml(item.title)} · 조회 ${item.views === undefined ? "미수집" : `${Number(item.views).toLocaleString("ko-KR")}회`}</span><a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">원문 보기</a></div>`).join("")}</div></section>
 <section class="section"><h2>미수집 커뮤니티</h2><p class="muted">${missing.length?escapeHtml(missing.join(", ")):"없음"}</p></section>

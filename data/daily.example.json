@@ -10,6 +10,14 @@
       "naverSearch": { "newsCount": 34, "blogCount": 81, "url": "https://search.naver.com/search.naver?query=%EC%B6%9C%EC%82%B0+%EB%A1%9C%EB%B4%87" }
     }
   },
+  "channels": {
+    "search": [
+      { "rank": 1, "keyword": "출산 로봇", "score": 82, "source": "네이버 데이터랩", "metric": "24시간 검색 관심도 +32%", "url": "https://datalab.naver.com/" }
+    ],
+    "social": [
+      { "rank": 1, "keyword": "출산 로봇", "score": 71, "source": "YouTube", "metric": "최근 영상 12개 · 조회속도 상위", "url": "https://www.youtube.com/results?search_query=%EC%B6%9C%EC%82%B0+%EB%A1%9C%EB%B4%87" }
+    ]
+  },
   "items": [
     {
       "community": "ruliweb",

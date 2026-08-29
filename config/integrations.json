@@ -1,11 +1,5 @@
 {
-  "pipeline": [
-    "communityDiscovery",
-    "keywordExpansion",
-    "searchDemandValidation",
-    "videoCompetitionValidation",
-    "editorialDecision"
-  ],
+  "pipeline": ["communityRanking", "searchRanking", "socialRanking", "crossChannelOverlap"],
   "providers": {
     "naverDataLab": { "enabledWhenConfigured": true, "role": "koreanSearchTrend", "official": true },
     "googleTrends": { "enabledWhenConfigured": true, "role": "globalSearchTrend", "officialAlpha": true },
@@ -17,7 +11,7 @@
     "maxTermsPerTopic": 15,
     "excludeStopwords": true
   },
-  "validation": {
+  "channelRanking": {
     "windowsHours": [6, 24, 72, 168],
     "minimumSignals": 2,
     "gates": {
@@ -26,7 +20,8 @@
     }
   },
   "policy": {
-    "externalSignalsAreGateNotBaseScore": true,
+    "channelsHaveIndependentScores": true,
+    "crossChannelScoresAreNeverBlended": true,
     "missingExternalDataDoesNotBecomeZero": true,
     "unofficialAutocompleteIsOptional": true
   }

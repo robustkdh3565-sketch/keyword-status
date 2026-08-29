@@ -57,8 +57,7 @@
       "impact": 0.35,
       "viewPerformance": 0.25,
       "commentsAndEngagement": 0.15,
-      "channelRank": 0.10,
-      "searchDemand": 0.10,
+      "channelRank": 0.20,
       "freshness": 0.05
     },
     "postInitialModel": {
@@ -76,11 +75,10 @@
   "prediction": {
     "weights": {
       "viewVelocity": 0.35,
-      "engagement": 0.20,
+      "engagement": 0.25,
       "freshness": 0.15,
       "impact": 0.15,
-      "channelRank": 0.10,
-      "searchDemand": 0.05
+      "channelRank": 0.10
     },
     "successTargets": {
       "youtubeViews24hVsChannelMedian": 1.5,
