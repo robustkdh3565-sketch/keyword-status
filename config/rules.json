@@ -5,6 +5,14 @@
     "moamoa": "https://moamoa.kr/",
     "todayBest": "https://todaybeststory.com/grouped-best"
   },
+  "communityGroups": {
+    "bobae": "society", "inven": "game", "ddanzi": "politics", "ppomppu": "life",
+    "82cook": "life", "clien": "tech-politics", "mlbpark": "sports-entertainment",
+    "ruliweb": "game-humor", "todayhumor": "humor", "humoruniv": "humor",
+    "natepann": "life-entertainment", "instiz": "entertainment", "dogdrip": "humor",
+    "theqoo": "entertainment", "dcinside": "general", "fmkorea": "general",
+    "arca": "game", "gasengi": "international", "etoland": "general", "ygosu": "general"
+  },
   "communities": [
     { "id": "bobae", "name": "보배드림", "sources": ["moamoa", "todayBest"], "hours": 24, "sort": "popular" },
     { "id": "inven", "name": "인벤", "sources": ["moamoa", "todayBest"], "hours": 6, "sort": "popular" },
@@ -51,5 +59,9 @@
       "targets": ["futureCommunityCount24h", "survivedNextDay"],
       "ridgeAlpha": 1
     }
+  },
+  "normalization": {
+    "similarityThreshold": 0.56,
+    "stopwords": ["근황", "실시간", "충격", "현재", "오늘", "논란", "이유", "장면", "사진", "영상", "jpg", "jpeg", "png", "gif", "mp4", "ㅋㅋ", "ㄷㄷ", "후기", "속보"]
   }
 }

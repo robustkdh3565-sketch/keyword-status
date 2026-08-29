@@ -1,6 +1,7 @@
 import { readFile, writeFile, mkdir, readdir } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { clusterItems } from "./lib/topic-normalizer.mjs";
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const inputArg = process.argv.find((arg) => arg.endsWith(".json"));
@@ -12,6 +13,7 @@ if (!inputArg) {
 }
 
 const rules = JSON.parse(await readFile(resolve(projectRoot, "config/rules.json"), "utf8"));
+const learnedModel = await readFile(resolve(projectRoot, "model/weights.json"), "utf8").then(JSON.parse).catch(() => null);
 const inputPath = resolve(projectRoot, inputArg);
 const daily = JSON.parse(await readFile(inputPath, "utf8"));
 const communityMap = new Map(rules.communities.map((item) => [item.id, item]));
@@ -24,9 +26,8 @@ if (!daily.date || !daily.checkedAt || !Array.isArray(daily.items)) {
 const seenCommunities = new Set();
 for (const [index, item] of (daily.items ?? []).entries()) {
   if (!communityMap.has(item.community)) errors.push(`${index + 1}번 항목의 community가 올바르지 않습니다.`);
-  if (seenCommunities.has(item.community)) errors.push(`${item.community}는 하루에 한 항목만 입력할 수 있습니다.`);
   seenCommunities.add(item.community);
-  for (const key of ["topic", "title", "url", "publishedAt"]) {
+  for (const key of ["title", "url", "publishedAt"]) {
     if (!item[key]) errors.push(`${index + 1}번 항목에 ${key}가 없습니다.`);
   }
 }
@@ -42,6 +43,13 @@ if (checkOnly) {
 }
 
 const checkedAt = new Date(daily.checkedAt);
+const items = clusterItems(daily.items, rules.normalization);
+const qualityFields = ["views", "comments", "reactions", "rank", "candidateCount", "publishedAt"];
+const qualityPresent = items.reduce((sum, item) => sum + qualityFields.filter((field) => item[field] !== undefined && item[field] !== null).length, 0);
+const dataQualityScore = items.length ? (qualityPresent / (items.length * qualityFields.length)) * 100 : 0;
+const representatives = [...items]
+  .sort((a, b) => Number(a.rank || 1) - Number(b.rank || 1))
+  .filter((item, index, all) => all.findIndex((candidate) => candidate.community === item.community) === index);
 const percentile = (value, values) => {
   if (!values.length) return 0;
   if (values.length === 1) return 100;
@@ -49,7 +57,7 @@ const percentile = (value, values) => {
   const equal = values.filter((candidate) => candidate === value).length;
   return ((below + Math.max(0, equal - 1) / 2) / (values.length - 1)) * 100;
 };
-const itemMetrics = (daily.items ?? []).map((item) => ({
+const itemMetrics = items.map((item) => ({
   item,
   views: Number(item.views || 0),
   comments: Number(item.comments || 0),
@@ -67,7 +75,7 @@ const metricByItem = new Map(itemMetrics.map((entry) => [entry.item, {
   engagementScore: percentile(entry.engagement, engagementValues)
 }]));
 const groups = new Map();
-for (const item of daily.items) {
+for (const item of items) {
   const group = groups.get(item.topic) ?? [];
   group.push(item);
   groups.set(item.topic, group);
@@ -77,7 +85,10 @@ const topics = [...groups.entries()].map(([topic, items]) => {
   const newestAgeHours = Math.min(...items.map((item) => (checkedAt - new Date(item.publishedAt)) / 3_600_000));
   const communities = [...new Set(items.map((item) => item.community))];
   const communityCount = communities.length;
-  const crossCommunityScore = communityCount >= 5 ? 100 : communityCount === 4 ? 85 : communityCount === 3 ? 70 : communityCount === 2 ? 50 : 20;
+  const communityGroups = [...new Set(communities.map((id) => rules.communityGroups[id] ?? id))];
+  const communitySpreadScore = communityCount >= 5 ? 100 : communityCount === 4 ? 85 : communityCount === 3 ? 70 : communityCount === 2 ? 50 : 20;
+  const groupSpreadScore = communityGroups.length >= 4 ? 100 : communityGroups.length === 3 ? 80 : communityGroups.length === 2 ? 60 : 20;
+  const crossCommunityScore = communitySpreadScore * 0.6 + groupSpreadScore * 0.4;
   const featureRows = items.map((item) => {
     const metrics = metricByItem.get(item);
     const candidateCount = Math.max(2, Number(item.candidateCount || 10));
@@ -95,7 +106,15 @@ const topics = [...groups.entries()].map(([topic, items]) => {
   const reactionScore = maxOf("reactionScore");
   const viewScore = maxOf("viewScore");
   const freshnessScore = maxOf("freshnessScore");
-  const weights = rules.scoring.weights;
+  const configuredWeights = rules.scoring.weights;
+  const weights = learnedModel?.weights ? {
+    crossCommunity: learnedModel.weights.crossCommunity,
+    channelRank: learnedModel.weights.channelRank,
+    commentsAndEngagement: learnedModel.weights.commentsAndEngagement,
+    reactions: learnedModel.weights.reactions,
+    views: learnedModel.weights.views,
+    freshness: learnedModel.weights.freshness
+  } : configuredWeights;
   const trendScore =
     crossCommunityScore * weights.crossCommunity +
     channelRankScore * weights.channelRank +
@@ -108,6 +127,7 @@ const topics = [...groups.entries()].map(([topic, items]) => {
     topic,
     items,
     communities,
+    communityGroups,
     newestAgeHours,
     totalComments: items.reduce((sum, item) => sum + Number(item.comments || 0), 0),
     totalViews: items.reduce((sum, item) => sum + Number(item.views || 0), 0),
@@ -145,6 +165,7 @@ const report = [
   `# ${daily.date} 키워드 현황`,
   "",
   `확인 시각: ${daily.checkedAt}`,
+  `데이터 완성도: ${dataQualityScore.toFixed(1)}% (조회·댓글·공감·순위·후보수·게시시각 기준)`,
   "",
   "## 뜨는 주제",
   "",
@@ -162,7 +183,7 @@ const report = [
   "",
   "## 커뮤니티별 대표 글",
   "",
-  ...daily.items.map((item) => `- **${communityMap.get(item.community).name}** — [${item.title}](${item.url})`),
+  ...representatives.map((item) => `- **${communityMap.get(item.community).name}** — [${item.title}](${item.url})`),
   "",
   "## 미수집 커뮤니티",
   "",
@@ -188,12 +209,12 @@ const html = `<!doctype html>
 <style>
 :root{color-scheme:light dark;--bg:#f5f7fb;--panel:#fff;--text:#172033;--muted:#697386;--line:#e5e9f2;--hot:#ed4b43;--main:#5c5ce2;--soft:#eef0ff;--warn:#9a5b00}@media(prefers-color-scheme:dark){:root{--bg:#11141b;--panel:#1a1f2a;--text:#eef2ff;--muted:#9aa5ba;--line:#303848;--soft:#292c47;--warn:#ffc266}}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif}main{max-width:1080px;margin:auto;padding:32px 20px 64px}header{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:24px}h1,h2,h3,p{margin-top:0}h1{margin-bottom:8px}.muted,.topic-card p{color:var(--muted)}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0 30px}.stat,.topic-card,.video,.community-row{background:var(--panel);border:1px solid var(--line);border-radius:14px}.stat{padding:18px}.stat strong{display:block;font-size:28px;margin-top:6px}.section{margin-top:34px}.section-title{display:flex;align-items:center;gap:8px}.dot{width:10px;height:10px;border-radius:50%;background:var(--main)}.dot.hot{background:var(--hot)}.topics{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.topic-card{padding:18px}.topic-head{display:flex;justify-content:space-between;gap:12px}.topic-head h3{margin-bottom:8px}.badge{font-size:12px;background:var(--soft);padding:5px 8px;border-radius:999px;white-space:nowrap}.badge.warning{color:var(--warn)}.links{display:flex;gap:8px;flex-wrap:wrap}.links a,.community-row a{color:var(--main);text-decoration:none}.videos{display:grid;gap:10px}.video{padding:16px;display:grid;grid-template-columns:42px 1fr auto;gap:12px;align-items:center}.rank{font-size:24px;color:var(--main);font-weight:700}.community-list{display:grid;gap:8px}.community-row{padding:13px 15px;display:grid;grid-template-columns:130px 1fr auto;gap:12px}.empty{color:var(--muted)}@media(max-width:680px){header{display:block}.stats,.topics{grid-template-columns:1fr}.video{grid-template-columns:34px 1fr}.video>a{grid-column:2}.community-row{grid-template-columns:1fr}.community-row span{font-size:13px;color:var(--muted)}}
 </style></head><body><main>
-<header><div><h1>키워드 현황</h1><p class="muted">${escapeHtml(daily.date)} · 매일 오전 11시</p></div><p class="muted">수집 ${daily.items.length}/${rules.communities.length}개 커뮤니티</p></header>
-<section class="stats"><div class="stat"><span>뜨는 주제</span><strong>${rising.length}</strong></div><div class="stat"><span>주요 주제</span><strong>${major.length}</strong></div><div class="stat"><span>영상 후보</span><strong>${videoCandidates.length}</strong></div></section>
+<header><div><h1>키워드 현황</h1><p class="muted">${escapeHtml(daily.date)} · 매일 오전 11시</p></div><p class="muted">수집 ${seenCommunities.size}/${rules.communities.length}개 커뮤니티 · 내부 표본 ${items.length}건</p></header>
+<section class="stats"><div class="stat"><span>뜨는 주제</span><strong>${rising.length}</strong></div><div class="stat"><span>주요 주제</span><strong>${major.length}</strong></div><div class="stat"><span>데이터 완성도</span><strong>${dataQualityScore.toFixed(0)}%</strong></div></section>
 <section class="section"><h2 class="section-title"><span class="dot hot"></span>뜨는 주제</h2><div class="topics">${topicCards(rising,"해당 없음")}</div></section>
 <section class="section"><h2 class="section-title"><span class="dot"></span>주요 주제</h2><div class="topics">${topicCards(major,"해당 없음")}</div></section>
 <section class="section"><h2>이번 주 무조건 검토할 영상 소재</h2><div class="videos">${videoCandidates.map((entry,index)=>`<article class="video"><span class="rank">${index+1}</span><div><strong>${escapeHtml(entry.topic)} · ${entry.trendScore.toFixed(1)}점</strong><div class="muted">${escapeHtml(entry.decision)} · ${entry.communities.length}개 커뮤니티 · ${entry.needsVerification?"팩트체크형":"설명·정리형"}</div></div><a href="${escapeHtml(entry.items[0]?.url)}" target="_blank" rel="noreferrer">대표 URL</a></article>`).join("")||'<p class="empty">해당 없음</p>'}</div></section>
-<section class="section"><h2>커뮤니티별 대표 글</h2><div class="community-list">${daily.items.map((item)=>`<div class="community-row"><strong>${escapeHtml(communityMap.get(item.community)?.name??item.community)}</strong><span>${escapeHtml(item.title)}</span><a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">원문 보기</a></div>`).join("")}</div></section>
+<section class="section"><h2>커뮤니티별 대표 글</h2><div class="community-list">${representatives.map((item)=>`<div class="community-row"><strong>${escapeHtml(communityMap.get(item.community)?.name??item.community)}</strong><span>${escapeHtml(item.title)}</span><a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">원문 보기</a></div>`).join("")}</div></section>
 <section class="section"><h2>미수집 커뮤니티</h2><p class="muted">${missing.length?escapeHtml(missing.join(", ")):"없음"}</p></section>
 </main></body></html>`;
 
