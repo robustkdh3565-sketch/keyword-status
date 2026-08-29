@@ -128,6 +128,16 @@ const topics = [...groups.entries()].map(([topic, items]) => {
     (searchDemandScore === null ? 0 : searchDemandScore * weights.searchDemand) +
     freshnessScore * weights.freshness) / availableWeight;
   const decision = trendScore >= rules.classification.mustProduceScore ? "반드시 제작" : trendScore >= rules.classification.priorityScore ? "제작 우선" : trendScore >= rules.classification.observeScore ? "추가 관찰" : "제외";
+  const predictionWeights = rules.prediction.weights;
+  const predictionAvailableWeight = predictionWeights.viewVelocity + predictionWeights.engagement + predictionWeights.freshness + predictionWeights.impact + predictionWeights.channelRank + (searchDemandScore === null ? 0 : predictionWeights.searchDemand);
+  const predictionScore = (
+    viewVelocityScore * predictionWeights.viewVelocity +
+    commentsAndEngagementScore * predictionWeights.engagement +
+    freshnessScore * predictionWeights.freshness +
+    impactScore * predictionWeights.impact +
+    channelRankScore * predictionWeights.channelRank +
+    (searchDemandScore === null ? 0 : searchDemandScore * predictionWeights.searchDemand)
+  ) / predictionAvailableWeight;
   return {
     topic,
     items,
@@ -138,6 +148,7 @@ const topics = [...groups.entries()].map(([topic, items]) => {
     totalViews: items.reduce((sum, item) => sum + Number(item.views || 0), 0),
     needsVerification: items.some((item) => item.needsVerification),
     trendScore,
+    predictionScore,
     decision,
     viewsPerHour: Math.max(...featureRows.map((row) => row.viewsPerHour)),
     scores: { impactScore, channelRankScore, commentsAndEngagementScore, reactionScore, viewScore, viewVelocityScore, viewPerformanceScore, searchDemandScore, freshnessScore }
@@ -167,6 +178,13 @@ const videoCandidates = topics
   .filter((entry) => entry.scores.impactScore >= rules.classification.videoMinimumImpactScore || entry.totalViews >= rules.classification.videoMinimumTotalViews || (entry.newestAgeHours <= 6 && entry.totalViews >= rules.classification.videoMinimumViewsWithin6Hours))
   .sort((a, b) => b.trendScore - a.trendScore)
   .slice(0, 5);
+
+const predictedVideos = topics
+  .filter((entry) => entry.newestAgeHours <= rules.classification.predictionMaxAgeHours)
+  .filter((entry) => entry.scores.viewPerformanceScore >= rules.classification.predictionMinimumViewPerformance)
+  .filter((entry) => entry.predictionScore >= rules.classification.predictionMinimumScore)
+  .sort((a, b) => b.predictionScore - a.predictionScore)
+  .slice(0, rules.classification.predictionMaxTopics);
 
 const researchFor = (topic) => daily.research?.[topic] ?? null;
 const formatResearch = (entry) => {
@@ -204,6 +222,12 @@ const report = [
   "",
   videoCandidates.length ? videoCandidates.map(formatResearch).join("\n") : "- 해당 없음",
   "",
+  "## 뜰 것 같은 영상",
+  "",
+  predictedVideos.length
+    ? predictedVideos.map((entry, index) => `${index + 1}. **${entry.topic}** — 예측 ${entry.predictionScore.toFixed(1)}점 · 현재 조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · 시간당 ${Math.round(entry.viewsPerHour).toLocaleString("ko-KR")}회\n   - 근거: 조회속도 ${entry.scores.viewVelocityScore.toFixed(0)} · 반응 ${entry.scores.commentsAndEngagementScore.toFixed(0)} · 최신성 ${entry.scores.freshnessScore.toFixed(0)} · 파급력 ${entry.scores.impactScore.toFixed(0)}${entry.needsVerification ? " · 사실 확인 필요" : ""}\n   - URL: ${entry.items[0]?.url}`).join("\n")
+    : "- 현재 기준 충족 후보 없음",
+  "",
   "## 커뮤니티별 대표 글",
   "",
   ...representatives.map((item) => `- **${communityMap.get(item.community).name}** — [${item.title}](${item.url}) · 조회 ${item.views === undefined ? "미수집" : `${Number(item.views).toLocaleString("ko-KR")}회`}`),
@@ -232,6 +256,7 @@ const researchCards = videoCandidates.map((entry) => {
   const links = [research.naverTrend, research.googleTrend, research.youtube, research.naverSearch].filter((value) => value?.url);
   return `<article class="topic-card"><h3>${escapeHtml(entry.topic)}</h3><p>확장어: ${escapeHtml(research.expandedKeywords?.join(" · ") || "없음")}</p><p>네이버 ${escapeHtml(research.naverTrend?.delta24h ?? "-")}% · Google ${escapeHtml(research.googleTrend?.delta24h ?? "-")}% · YouTube 기회 ${escapeHtml(research.youtube?.opportunityScore ?? "-")}점</p><div class="links">${links.map((value) => `<a href="${escapeHtml(value.url)}" target="_blank" rel="noreferrer">검증 URL</a>`).join("")}</div></article>`;
 }).join("");
+const predictionCards = predictedVideos.map((entry,index)=>`<article class="video"><span class="rank">${index+1}</span><div><strong>${escapeHtml(entry.topic)} · 예측 ${entry.predictionScore.toFixed(1)}점</strong><div class="muted">현재 조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · 시간당 ${Math.round(entry.viewsPerHour).toLocaleString("ko-KR")}회 · 조회속도 ${entry.scores.viewVelocityScore.toFixed(0)} · 반응 ${entry.scores.commentsAndEngagementScore.toFixed(0)}${entry.needsVerification?" · 사실 확인 필요":""}</div></div><a href="${escapeHtml(entry.items[0]?.url)}" target="_blank" rel="noreferrer">대표 URL</a></article>`).join("");
 
 const html = `<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -245,6 +270,7 @@ const html = `<!doctype html>
 <section class="section"><h2 class="section-title"><span class="dot"></span>주요 주제</h2><div class="topics">${topicCards(major,"해당 없음")}</div></section>
 <section class="section"><h2>이번 주 무조건 검토할 영상 소재</h2><div class="videos">${videoCandidates.map((entry,index)=>`<article class="video"><span class="rank">${index+1}</span><div><strong>${escapeHtml(entry.topic)} · ${entry.trendScore.toFixed(1)}점</strong><div class="muted">${escapeHtml(entry.decision)} · ${entry.communities.length}개 커뮤니티 · 조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · ${entry.needsVerification?"팩트체크형":"설명·정리형"}</div></div><a href="${escapeHtml(entry.items[0]?.url)}" target="_blank" rel="noreferrer">대표 URL</a></article>`).join("")||'<p class="empty">해당 없음</p>'}</div></section>
 <section class="section"><h2>키워드 확장·검색 수요 검증</h2><div class="topics">${researchCards||'<p class="empty">해당 없음</p>'}</div></section>
+<section class="section"><h2>뜰 것 같은 영상</h2><p class="muted">최근 12시간 후보 중 조회속도·반응률·최신성·파급력을 결합한 예측입니다.</p><div class="videos">${predictionCards||'<p class="empty">현재 기준 충족 후보 없음</p>'}</div></section>
 <section class="section"><h2>커뮤니티별 대표 글</h2><div class="community-list">${representatives.map((item)=>`<div class="community-row"><strong>${escapeHtml(communityMap.get(item.community)?.name??item.community)}</strong><span>${escapeHtml(item.title)} · 조회 ${item.views === undefined ? "미수집" : `${Number(item.views).toLocaleString("ko-KR")}회`}</span><a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">원문 보기</a></div>`).join("")}</div></section>
 <section class="section"><h2>미수집 커뮤니티</h2><p class="muted">${missing.length?escapeHtml(missing.join(", ")):"없음"}</p></section>
 </main></body></html>`;
