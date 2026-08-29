@@ -1,6 +1,7 @@
 {
   "date": "2026-08-29",
   "checkedAt": "2026-08-29T16:54:56+09:00",
+  "channelCheckedAt": "2026-08-29T20:27:03+09:00",
   "research": {
     "박위 학폭 루머": {
       "expandedKeywords": ["박위 학폭 의혹", "박위 동창 반박", "박위 KTX 사고", "위라클 논란"],
@@ -12,6 +13,37 @@
       "naverSearch": { "newsCount": null, "blogCount": null, "url": "https://search.naver.com/search.naver?query=%EC%A0%9C%EC%A3%BC%EB%8F%84+%EA%B4%80%EA%B4%91%EA%B0%9D+%EA%B0%90%EC%86%8C" },
       "youtube": { "recentVideoCount": null, "medianViews": null, "opportunityScore": null, "url": "https://www.youtube.com/results?search_query=%EC%A0%9C%EC%A3%BC%EB%8F%84+%EA%B4%80%EA%B4%91%EA%B0%9D+%EA%B0%90%EC%86%8C" }
     }
+  },
+  "channels": {
+    "search": [
+      {"rank":1,"keyword":"집중호우","source":"Google Trends 한국","metric":"급상승 검색 200,000+","url":"https://trends.google.com/trending?geo=KR"},
+      {"rank":2,"keyword":"울산 대 김천상무","source":"Google Trends 한국","metric":"급상승 검색 2,000+","url":"https://trends.google.com/trending?geo=KR"},
+      {"rank":3,"keyword":"부천 대 안양","source":"Google Trends 한국","metric":"급상승 검색 1,000+","url":"https://trends.google.com/trending?geo=KR"},
+      {"rank":4,"keyword":"이찬원","source":"Google Trends 한국","metric":"급상승 검색 200+","url":"https://trends.google.com/trending?geo=KR"},
+      {"rank":5,"keyword":"국가유공자","source":"Google Trends 한국","metric":"급상승 검색 200+","url":"https://trends.google.com/trending?geo=KR"},
+      {"rank":6,"keyword":"유주은","source":"Google Trends 한국","metric":"급상승 검색 100+","url":"https://trends.google.com/trending?geo=KR"},
+      {"rank":7,"keyword":"페이커","source":"Google Trends 한국","metric":"급상승 검색 200+","url":"https://trends.google.com/trending?geo=KR"},
+      {"rank":8,"keyword":"경기도지사","source":"Google Trends 한국","metric":"급상승 검색 500+","url":"https://trends.google.com/trending?geo=KR"},
+      {"rank":9,"keyword":"아이린","source":"Google Trends 한국","metric":"급상승 검색 200+","url":"https://trends.google.com/trending?geo=KR"},
+      {"rank":10,"keyword":"티빙","source":"Google Trends 한국","metric":"급상승 검색 2,000+","url":"https://trends.google.com/trending?geo=KR"}
+    ],
+    "social": [
+      {"rank":1,"keyword":"세베리노","source":"X 한국","metric":"실시간 1위","url":"https://x.com/search?q=%EC%84%B8%EB%B2%A0%EB%A6%AC%EB%85%B8"},
+      {"rank":2,"keyword":"$CHUMP","source":"X 한국","metric":"실시간 2위","url":"https://x.com/search?q=%24CHUMP"},
+      {"rank":3,"keyword":"#HoYoLAND2026","source":"X 한국","metric":"실시간 3위","url":"https://x.com/search?q=%23HoYoLAND2026"},
+      {"rank":4,"keyword":"#호요랜드2026","source":"X 한국","metric":"실시간 4위","url":"https://x.com/search?q=%23%ED%98%B8%EC%9A%94%EB%9E%9C%EB%93%9C2026"},
+      {"rank":5,"keyword":"라이브뷰잉","source":"X 한국","metric":"실시간 5위","url":"https://x.com/search?q=%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%B7%B0%EC%9E%89"},
+      {"rank":1,"keyword":"HEAVEN JENNIE","source":"YouTube 한국","metric":"인기 1위 · 조회 170,000 · 시간당 8,500","url":"https://youtube.com/watch?v=LNk-BX38FzQ"},
+      {"rank":2,"keyword":"재혼 황후 티저 예고편","source":"YouTube 한국","metric":"인기 2위 · 조회 1,300,000 · 시간당 18,000","url":"https://youtube.com/watch?v=CDhtpYWNEuk"},
+      {"rank":3,"keyword":"잉글랜드 이상호","source":"YouTube 한국","metric":"인기 3위 · 조회 707,000 · 시간당 39,000","url":"https://youtube.com/watch?v=XsYf1QRr8D0"},
+      {"rank":4,"keyword":"송하예 행복한 나를 2026","source":"YouTube 한국","metric":"인기 4위 · 조회 192,000 · 시간당 4,900","url":"https://youtube.com/watch?v=Gk8F8waA0tM"},
+      {"rank":5,"keyword":"가능한 사랑 공식 예고편","source":"YouTube 한국","metric":"인기 5위 · 조회 793,000 · 시간당 16,000","url":"https://youtube.com/watch?v=W1kDOqqWNiw"}
+    ],
+    "unavailable": [
+      {"source":"네이버 데이터랩","reason":"후보 없는 실시간 인기 검색어 발견 목록을 제공하지 않음"},
+      {"source":"TikTok Creative Center","reason":"공개 페이지 응답 오류"},
+      {"source":"Instagram","reason":"공개 실시간 트렌드 순위 없음"}
+    ]
   },
   "items": [
     {"community":"natepann","topic":"제주도 관광 위기","title":"충격) 제주도 시내거리 근황 ㅋㅋㅋ","url":"https://pann.nate.com/talk/375598371","publishedAt":"2026-08-29T00:00:00+09:00","views":58000,"comments":89,"needsVerification":true},
