@@ -1,0 +1,26 @@
+{
+  "date": "2026-08-29",
+  "checkedAt": "2026-08-29T21:30:00+09:00",
+  "items": [
+    {
+      "community": "ruliweb",
+      "topic": "출산 로봇",
+      "title": "실제 인간 아기를 잉태하고 낳을 수 있는 로봇",
+      "url": "https://example.com/post-1",
+      "publishedAt": "2026-08-29T20:20:00+09:00",
+      "views": 5903,
+      "comments": 33,
+      "needsVerification": true
+    },
+    {
+      "community": "inven",
+      "topic": "출산 로봇",
+      "title": "중국에서 개발 중이라는 출산 로봇",
+      "url": "https://example.com/post-2",
+      "publishedAt": "2026-08-29T19:50:00+09:00",
+      "views": 2100,
+      "comments": 21,
+      "needsVerification": true
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "timezone": "Asia/Seoul",
+  "dailyCheckTime": "21:30",
+  "sources": {
+    "moamoa": "https://moamoa.kr/",
+    "todayBest": "https://todaybeststory.com/grouped-best"
+  },
+  "communities": [
+    { "id": "bobae", "name": "보배드림", "hours": 24, "sort": "popular" },
+    { "id": "inven", "name": "인벤", "hours": 6, "sort": "popular" },
+    { "id": "ddanzi", "name": "딴지일보", "hours": 12, "sort": "comments" },
+    { "id": "ppomppu", "name": "뽐뿌", "hours": 12, "sort": "popular" },
+    { "id": "82cook", "name": "82쿡", "hours": 24, "sort": "comments" },
+    { "id": "clien", "name": "클리앙", "hours": 12, "sort": "comments" },
+    { "id": "mlbpark", "name": "엠엘비파크", "hours": 6, "sort": "comments" },
+    { "id": "ruliweb", "name": "루리웹", "hours": 3, "sort": "popular" },
+    { "id": "todayhumor", "name": "오늘의유머", "hours": 24, "sort": "popular" },
+    { "id": "humoruniv", "name": "웃긴대학", "hours": 6, "sort": "comments" }
+  ],
+  "classification": {
+    "risingMaxAgeHours": 6,
+    "majorMinCommunities": 2,
+    "maxTopicsPerSection": 5
+  }
+}
