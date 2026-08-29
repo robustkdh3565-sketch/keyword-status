@@ -37,12 +37,13 @@ export function clusterItems(items, options = {}) {
   const clusters = [];
   for (const original of items) {
     const item = { ...original };
+    const hasExplicitTopic = Boolean(item.topic);
     const candidate = normalizeTitle(item.topic || item.title, options);
-    let match = clusters.find((cluster) =>
-      cluster.canonical === candidate || jaccardSimilarity(cluster.canonical, candidate, options) >= threshold
-    );
+    let match = clusters.find((cluster) => cluster.canonical === candidate || (
+      !hasExplicitTopic && !cluster.hasExplicitTopic && jaccardSimilarity(cluster.canonical, candidate, options) >= threshold
+    ));
     if (!match) {
-      match = { canonical: candidate, items: [] };
+      match = { canonical: candidate, hasExplicitTopic, items: [] };
       clusters.push(match);
     }
     item.topic = match.canonical;

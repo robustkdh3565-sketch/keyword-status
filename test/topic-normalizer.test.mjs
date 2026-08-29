@@ -13,3 +13,10 @@ test("유사 제목을 같은 토픽으로 묶는다", () => {
   const clustered = clusterItems([{ title: "새벽배송 제한 추진" }, { title: "새벽배송 제한 업계 반발" }], options);
   assert.equal(clustered[0].topic, clustered[1].topic);
 });
+test("사람이 확정한 서로 다른 토픽은 퍼지 병합하지 않는다", () => {
+  const clustered = clusterItems([
+    { title: "미국 이민 이야기", topic: "미국 이민 현실" },
+    { title: "미국 모텔 이야기", topic: "미국 모텔 운영 현실" }
+  ], options);
+  assert.notEqual(clustered[0].topic, clustered[1].topic);
+});
