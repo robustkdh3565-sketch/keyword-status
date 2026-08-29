@@ -8,7 +8,7 @@
   "communities": [
     { "id": "bobae", "name": "보배드림", "sources": ["moamoa", "todayBest"], "hours": 24, "sort": "popular" },
     { "id": "inven", "name": "인벤", "sources": ["moamoa", "todayBest"], "hours": 6, "sort": "popular" },
-    { "id": "ddanzi", "name": "딴지일보", "sources": ["moamoa"], "hours": 12, "sort": "comments" },
+    { "id": "ddanzi", "name": "딴지일보", "sources": ["moamoa", "todayBest"], "hours": 12, "sort": "comments" },
     { "id": "ppomppu", "name": "뽐뿌", "sources": ["moamoa", "todayBest"], "hours": 12, "sort": "popular" },
     { "id": "82cook", "name": "82쿡", "sources": ["moamoa", "todayBest"], "hours": 24, "sort": "comments" },
     { "id": "clien", "name": "클리앙", "sources": ["moamoa", "todayBest"], "hours": 12, "sort": "comments" },
@@ -24,7 +24,8 @@
     { "id": "fmkorea", "name": "에펨코리아", "sources": ["todayBest"] },
     { "id": "arca", "name": "아카라이브", "sources": ["todayBest"] },
     { "id": "gasengi", "name": "가생이닷컴", "sources": ["todayBest"] },
-    { "id": "slrclub", "name": "SLR클럽", "sources": ["todayBest"] }
+    { "id": "etoland", "name": "이토랜드", "sources": ["todayBest"] },
+    { "id": "ygosu", "name": "와이고수", "sources": ["todayBest"] }
   ],
   "classification": {
     "risingMaxAgeHours": 6,
