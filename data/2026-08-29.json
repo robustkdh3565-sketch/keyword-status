@@ -1,7 +1,7 @@
 {
   "date": "2026-08-29",
-  "checkedAt": "2026-08-29T16:54:56+09:00",
-  "channelCheckedAt": "2026-08-29T20:27:03+09:00",
+  "checkedAt": "2026-08-29T20:55:25+09:00",
+  "channelCheckedAt": "2026-08-29T20:55:25+09:00",
   "research": {
     "박위 학폭 루머": {
       "expandedKeywords": ["박위 학폭 의혹", "박위 동창 반박", "박위 KTX 사고", "위라클 논란"],
@@ -16,16 +16,16 @@
   },
   "channels": {
     "search": [
-      {"rank":1,"keyword":"집중호우","source":"Google Trends 한국","metric":"급상승 검색 200,000+","url":"https://trends.google.com/trending?geo=KR"},
-      {"rank":2,"keyword":"울산 대 김천상무","source":"Google Trends 한국","metric":"급상승 검색 2,000+","url":"https://trends.google.com/trending?geo=KR"},
-      {"rank":3,"keyword":"부천 대 안양","source":"Google Trends 한국","metric":"급상승 검색 1,000+","url":"https://trends.google.com/trending?geo=KR"},
-      {"rank":4,"keyword":"이찬원","source":"Google Trends 한국","metric":"급상승 검색 200+","url":"https://trends.google.com/trending?geo=KR"},
-      {"rank":5,"keyword":"국가유공자","source":"Google Trends 한국","metric":"급상승 검색 200+","url":"https://trends.google.com/trending?geo=KR"},
-      {"rank":6,"keyword":"유주은","source":"Google Trends 한국","metric":"급상승 검색 100+","url":"https://trends.google.com/trending?geo=KR"},
-      {"rank":7,"keyword":"페이커","source":"Google Trends 한국","metric":"급상승 검색 200+","url":"https://trends.google.com/trending?geo=KR"},
-      {"rank":8,"keyword":"경기도지사","source":"Google Trends 한국","metric":"급상승 검색 500+","url":"https://trends.google.com/trending?geo=KR"},
-      {"rank":9,"keyword":"아이린","source":"Google Trends 한국","metric":"급상승 검색 200+","url":"https://trends.google.com/trending?geo=KR"},
-      {"rank":10,"keyword":"티빙","source":"Google Trends 한국","metric":"급상승 검색 2,000+","url":"https://trends.google.com/trending?geo=KR"}
+      {"rank":1,"keyword":"재벌x형사 2","source":"Google Trends 한국","metric":"급상승 검색 500+","url":"https://trends.google.com/trending?geo=KR"},
+      {"rank":2,"keyword":"신승태","source":"Google Trends 한국","metric":"급상승 검색 100+","url":"https://trends.google.com/trending?geo=KR"},
+      {"rank":3,"keyword":"시장","source":"Google Trends 한국","metric":"급상승 검색 200+","url":"https://trends.google.com/trending?geo=KR"},
+      {"rank":4,"keyword":"리버풀 대 노팅엄 포레스트","source":"Google Trends 한국","metric":"급상승 검색 5,000+","url":"https://trends.google.com/trending?geo=KR"},
+      {"rank":5,"keyword":"집중호우","source":"Google Trends 한국","metric":"급상승 검색 200,000+ · 직전 1위","url":"https://trends.google.com/trending?geo=KR"},
+      {"rank":6,"keyword":"두산","source":"Google Trends 한국","metric":"급상승 검색 1,000+","url":"https://trends.google.com/trending?geo=KR"},
+      {"rank":7,"keyword":"울산 대 김천상무","source":"Google Trends 한국","metric":"급상승 검색 2,000+ · 직전 2위","url":"https://trends.google.com/trending?geo=KR"},
+      {"rank":8,"keyword":"부천 대 안양","source":"Google Trends 한국","metric":"급상승 검색 1,000+ · 직전 3위","url":"https://trends.google.com/trending?geo=KR"},
+      {"rank":9,"keyword":"이찬원","source":"Google Trends 한국","metric":"급상승 검색 200+ · 직전 4위","url":"https://trends.google.com/trending?geo=KR"},
+      {"rank":10,"keyword":"국가유공자","source":"Google Trends 한국","metric":"급상승 검색 200+ · 직전 5위","url":"https://trends.google.com/trending?geo=KR"}
     ],
     "social": [
       {"rank":1,"keyword":"세베리노","source":"X 한국","metric":"실시간 1위","url":"https://x.com/search?q=%EC%84%B8%EB%B2%A0%EB%A6%AC%EB%85%B8"},
@@ -33,11 +33,11 @@
       {"rank":3,"keyword":"#HoYoLAND2026","source":"X 한국","metric":"실시간 3위","url":"https://x.com/search?q=%23HoYoLAND2026"},
       {"rank":4,"keyword":"#호요랜드2026","source":"X 한국","metric":"실시간 4위","url":"https://x.com/search?q=%23%ED%98%B8%EC%9A%94%EB%9E%9C%EB%93%9C2026"},
       {"rank":5,"keyword":"라이브뷰잉","source":"X 한국","metric":"실시간 5위","url":"https://x.com/search?q=%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%B7%B0%EC%9E%89"},
-      {"rank":1,"keyword":"HEAVEN JENNIE","source":"YouTube 한국","metric":"인기 1위 · 조회 170,000 · 시간당 8,500","url":"https://youtube.com/watch?v=LNk-BX38FzQ"},
+      {"rank":1,"keyword":"HEAVEN JENNIE","source":"YouTube 한국","metric":"인기 1위 · 조회 190,000 · 시간당 8,400 · 직전 조회 170,000","url":"https://youtube.com/watch?v=LNk-BX38FzQ"},
       {"rank":2,"keyword":"재혼 황후 티저 예고편","source":"YouTube 한국","metric":"인기 2위 · 조회 1,300,000 · 시간당 18,000","url":"https://youtube.com/watch?v=CDhtpYWNEuk"},
-      {"rank":3,"keyword":"잉글랜드 이상호","source":"YouTube 한국","metric":"인기 3위 · 조회 707,000 · 시간당 39,000","url":"https://youtube.com/watch?v=XsYf1QRr8D0"},
-      {"rank":4,"keyword":"송하예 행복한 나를 2026","source":"YouTube 한국","metric":"인기 4위 · 조회 192,000 · 시간당 4,900","url":"https://youtube.com/watch?v=Gk8F8waA0tM"},
-      {"rank":5,"keyword":"가능한 사랑 공식 예고편","source":"YouTube 한국","metric":"인기 5위 · 조회 793,000 · 시간당 16,000","url":"https://youtube.com/watch?v=W1kDOqqWNiw"}
+      {"rank":3,"keyword":"잉글랜드 이상호","source":"YouTube 한국","metric":"인기 3위 · 조회 732,000 · 시간당 36,000 · 직전 조회 707,000","url":"https://youtube.com/watch?v=XsYf1QRr8D0"},
+      {"rank":4,"keyword":"송하예 행복한 나를 2026","source":"YouTube 한국","metric":"인기 4위 · 조회 207,000 · 시간당 5,000 · 직전 조회 192,000","url":"https://youtube.com/watch?v=Gk8F8waA0tM"},
+      {"rank":5,"keyword":"가능한 사랑 공식 예고편","source":"YouTube 한국","metric":"인기 5위 · 조회 806,000 · 시간당 16,000 · 직전 조회 793,000","url":"https://youtube.com/watch?v=W1kDOqqWNiw"}
     ]
   },
   "items": [
@@ -50,15 +50,15 @@
     {"community":"ddanzi","topic":"정치권 민심","title":"민심 무섭네요","url":"https://www.ddanzi.com/free/892919921","publishedAt":"2026-08-29T01:46:51+09:00","views":15482,"comments":33,"reactions":297,"rank":1,"candidateCount":100,"needsVerification":true},
     {"community":"etoland","topic":"대학생 노브라 논쟁","title":"노브라로 학교갔다는 21살 공대녀","url":"https://www.etoland.co.kr/hit/etohumor07/view/%EC%95%BD%ED%9B%84-%EB%85%B8%EB%B8%8C%EB%9D%BC%EB%A1%9C-%ED%95%99%EA%B5%90%EA%B0%94%EB%8B%A4%EB%8A%94-21%EC%82%B4-%EA%B3%B5%EB%8C%80%EB%85%80-9295222","publishedAt":"2026-08-28T12:00:00+09:00","views":23000,"comments":31,"needsVerification":true},
     {"community":"ygosu","topic":"황정음 노브라 논란","title":"황정음 노브라 논란","url":"https://ygosu.com/board/real_article/free/2261033/?type=group0&page=1","publishedAt":"2026-08-29T00:00:00+09:00","views":6400,"comments":2,"needsVerification":true},
-    {"community":"clien","topic":"도쿄 신축 아파트 가격","title":"도쿄 신축 아파트 23억원...","url":"https://www.clien.net/service/board/park/19255185","publishedAt":"2026-08-29T00:56:35+09:00","views":9610,"comments":21,"reactions":189,"rank":1,"candidateCount":100,"needsVerification":true},
+    {"community":"clien","topic":"도쿄 신축 아파트 가격","title":"도쿄 신축 아파트 23억원...","url":"https://www.clien.net/service/board/park/19255185","publishedAt":"2026-08-29T00:56:35+09:00","views":9791,"comments":22,"reactions":220,"rank":1,"candidateCount":100,"needsVerification":true},
     {"community":"humoruniv","topic":"박위 학폭 루머","title":"박위 학폭 루머 관련 댓글들","url":"http://web.humoruniv.com/board/humor/read.html?table=pdswait&number=12384663","publishedAt":"2026-08-29T11:01:00+09:00","views":734,"comments":13,"reactions":117,"rank":1,"candidateCount":100,"needsVerification":true},
     {"community":"fmkorea","topic":"새벽배송 제한","title":"여당 새벽배송 제한 추진...업계 반발","url":"https://www.fmkorea.com/index.php?mid=best2&listStyle=list&document_srl=10267557754","publishedAt":"2026-08-28T12:00:00+09:00","views":670000,"comments":1900,"needsVerification":true},
-    {"community":"todayhumor","topic":"엄마의 섬뜩한 말 오해","title":"엄마가 '아저씨를 썰어서 차갑게 해놨어' 라고 했어","url":"http://www.todayhumor.co.kr/board/view.php?table=humorbest&no=1797323","publishedAt":"2026-08-28T20:09:00+09:00","views":4654,"comments":3,"reactions":30,"rank":1,"candidateCount":20,"needsVerification":false},
+    {"community":"todayhumor","topic":"노래방 데이트 응급실","title":"남친과 노래방 데이트중 응급실 실려간 여친","url":"http://www.todayhumor.co.kr/board/view.php?table=humorbest&no=1797332","publishedAt":"2026-08-29T09:58:00+09:00","views":4887,"comments":5,"reactions":50,"rank":1,"candidateCount":20,"needsVerification":true},
     {"community":"mlbpark","topic":"한국 사회 긍정 변화","title":"요즘 한국의 좋은 변화","url":"http://mlbpark.donga.com/mp/b.php?b=bullpen&id=202608290118314933","publishedAt":"2026-08-29T05:41:54+09:00","views":22910,"comments":119,"reactions":1190,"rank":1,"candidateCount":100,"needsVerification":true},
     {"community":"inven","topic":"여캠 화제","title":"ㅇㅎ) 처음 보는 여캠 눈나","url":"http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&l=2720272","publishedAt":"2026-08-29T07:02:00+09:00","views":9207,"comments":18,"reactions":180,"rank":1,"candidateCount":100,"needsVerification":true},
     {"community":"arca","topic":"MSI 프리렌 5070 Ti","title":"MSI 프리렌한정판 5070 TI","url":"https://arca.live/b/live/181347517?p=1","publishedAt":"2026-08-29T00:00:00+09:00","views":23000,"comments":97,"needsVerification":true},
-    {"community":"bobae","topic":"매불쇼 오윤혜 논쟁","title":"매불쇼 치졸하네 오윤혜불러서 다구리나치고","url":"http://www.bobaedream.co.kr/view?code=strange&No=6981777","publishedAt":"2026-08-29T00:11:00+09:00","views":5619,"comments":31,"reactions":310,"rank":1,"candidateCount":100,"needsVerification":true},
+    {"community":"bobae","topic":"온라인 부정 여론","title":"외출 하기 전에 이건 올리고 나가야지","url":"http://www.bobaedream.co.kr/view?code=strange&No=6982007","publishedAt":"2026-08-29T13:27:00+09:00","views":6170,"comments":17,"reactions":170,"rank":1,"candidateCount":100,"needsVerification":true},
     {"community":"gasengi","topic":"뉴욕타임스 한국 아시아 지사","title":"뉴욕 타임즈가 한국으로 아시아 지사를 옮긴 이유, 일본반응","url":"https://www.gasengi.com/main/board.php?bo_table=history02&wr_id=113709","publishedAt":"2026-08-29T00:00:00+09:00","views":6900,"comments":19,"needsVerification":true},
-    {"community":"82cook","topic":"외국인 노인 부양 논쟁","title":"중국 노인을 왜 우리가 부양? 외국인","url":"http://www.82cook.com/entiz/read.php?bn=15&num=4233268","publishedAt":"2026-08-29T15:45:47+09:00","views":954,"comments":12,"reactions":120,"rank":1,"candidateCount":100,"needsVerification":true}
+    {"community":"82cook","topic":"손가락 저림 진료","title":"손가락저림증상 어느병원 가봐야 하나요?","url":"http://www.82cook.com/entiz/read.php?bn=15&num=4233269","publishedAt":"2026-08-29T15:49:16+09:00","views":912,"comments":17,"reactions":170,"rank":1,"candidateCount":100,"needsVerification":false}
   ]
 }
