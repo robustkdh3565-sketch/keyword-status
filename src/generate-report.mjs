@@ -42,6 +42,30 @@ if (checkOnly) {
 }
 
 const checkedAt = new Date(daily.checkedAt);
+const percentile = (value, values) => {
+  if (!values.length) return 0;
+  if (values.length === 1) return 100;
+  const below = values.filter((candidate) => candidate < value).length;
+  const equal = values.filter((candidate) => candidate === value).length;
+  return ((below + Math.max(0, equal - 1) / 2) / (values.length - 1)) * 100;
+};
+const itemMetrics = (daily.items ?? []).map((item) => ({
+  item,
+  views: Number(item.views || 0),
+  comments: Number(item.comments || 0),
+  reactions: Number(item.reactions || 0),
+  engagement: ((Number(item.comments || 0) + Number(item.reactions || 0)) / Math.max(1, Number(item.views || 0))) * 1000
+}));
+const viewValues = itemMetrics.map((entry) => entry.views);
+const commentValues = itemMetrics.map((entry) => entry.comments);
+const reactionValues = itemMetrics.map((entry) => entry.reactions);
+const engagementValues = itemMetrics.map((entry) => entry.engagement);
+const metricByItem = new Map(itemMetrics.map((entry) => [entry.item, {
+  viewScore: percentile(entry.views, viewValues),
+  commentScore: percentile(entry.comments, commentValues),
+  reactionScore: percentile(entry.reactions, reactionValues),
+  engagementScore: percentile(entry.engagement, engagementValues)
+}]));
 const groups = new Map();
 for (const item of daily.items) {
   const group = groups.get(item.topic) ?? [];
@@ -52,6 +76,34 @@ for (const item of daily.items) {
 const topics = [...groups.entries()].map(([topic, items]) => {
   const newestAgeHours = Math.min(...items.map((item) => (checkedAt - new Date(item.publishedAt)) / 3_600_000));
   const communities = [...new Set(items.map((item) => item.community))];
+  const communityCount = communities.length;
+  const crossCommunityScore = communityCount >= 5 ? 100 : communityCount === 4 ? 85 : communityCount === 3 ? 70 : communityCount === 2 ? 50 : 20;
+  const featureRows = items.map((item) => {
+    const metrics = metricByItem.get(item);
+    const candidateCount = Math.max(2, Number(item.candidateCount || 10));
+    const rank = Math.min(candidateCount, Math.max(1, Number(item.rank || 1)));
+    const channelRankScore = (1 - (rank - 1) / (candidateCount - 1)) * 100;
+    const ageHours = Math.max(0, (checkedAt - new Date(item.publishedAt)) / 3_600_000);
+    const freshnessScore = Math.max(0, Math.min(100, 100 * Math.exp((-Math.log(2) * ageHours) / 12)));
+    return { ...metrics, channelRankScore, freshnessScore };
+  });
+  const maxOf = (key) => Math.max(...featureRows.map((row) => row[key]));
+  const channelRankScore = maxOf("channelRankScore");
+  const commentScore = maxOf("commentScore");
+  const engagementScore = maxOf("engagementScore");
+  const commentsAndEngagementScore = (commentScore + engagementScore) / 2;
+  const reactionScore = maxOf("reactionScore");
+  const viewScore = maxOf("viewScore");
+  const freshnessScore = maxOf("freshnessScore");
+  const weights = rules.scoring.weights;
+  const trendScore =
+    crossCommunityScore * weights.crossCommunity +
+    channelRankScore * weights.channelRank +
+    commentsAndEngagementScore * weights.commentsAndEngagement +
+    reactionScore * weights.reactions +
+    viewScore * weights.views +
+    freshnessScore * weights.freshness;
+  const decision = trendScore >= rules.classification.mustProduceScore ? "반드시 제작" : trendScore >= rules.classification.priorityScore ? "제작 우선" : trendScore >= rules.classification.observeScore ? "추가 관찰" : "제외";
   return {
     topic,
     items,
@@ -59,30 +111,33 @@ const topics = [...groups.entries()].map(([topic, items]) => {
     newestAgeHours,
     totalComments: items.reduce((sum, item) => sum + Number(item.comments || 0), 0),
     totalViews: items.reduce((sum, item) => sum + Number(item.views || 0), 0),
-    needsVerification: items.some((item) => item.needsVerification)
+    needsVerification: items.some((item) => item.needsVerification),
+    trendScore,
+    decision,
+    scores: { crossCommunityScore, channelRankScore, commentsAndEngagementScore, reactionScore, viewScore, freshnessScore }
   };
 });
 
 const major = topics
   .filter((topic) => topic.communities.length >= rules.classification.majorMinCommunities)
-  .sort((a, b) => b.communities.length - a.communities.length || b.totalComments - a.totalComments)
+  .sort((a, b) => b.trendScore - a.trendScore)
   .slice(0, rules.classification.maxTopicsPerSection);
 
 const majorNames = new Set(major.map((topic) => topic.topic));
 const rising = topics
   .filter((topic) => !majorNames.has(topic.topic) && topic.newestAgeHours <= rules.classification.risingMaxAgeHours)
-  .sort((a, b) => b.totalComments - a.totalComments || b.totalViews - a.totalViews)
+  .sort((a, b) => b.trendScore - a.trendScore)
   .slice(0, rules.classification.maxTopicsPerSection);
 
 const formatTopic = (entry) => {
   const names = entry.communities.map((id) => communityMap.get(id)?.name ?? id).join(" · ");
   const verification = entry.needsVerification ? " · 사실 확인 필요" : "";
   const urls = entry.items.map((item) => `[${communityMap.get(item.community)?.name ?? item.community}](${item.url})`).join(" · ");
-  return `- **${entry.topic}** — ${names} · 댓글 ${entry.totalComments.toLocaleString("ko-KR")}개${verification}\n  - 원문: ${urls}`;
+  return `- **${entry.topic}** — ${entry.trendScore.toFixed(1)}점 · ${entry.decision} · ${names} · 댓글 ${entry.totalComments.toLocaleString("ko-KR")}개${verification}\n  - 세부점수: 확산 ${entry.scores.crossCommunityScore.toFixed(0)} · 순위 ${entry.scores.channelRankScore.toFixed(0)} · 댓글/반응률 ${entry.scores.commentsAndEngagementScore.toFixed(0)} · 공감 ${entry.scores.reactionScore.toFixed(0)} · 조회 ${entry.scores.viewScore.toFixed(0)} · 최신성 ${entry.scores.freshnessScore.toFixed(0)}\n  - 원문: ${urls}`;
 };
 
 const videoCandidates = [...major, ...rising]
-  .sort((a, b) => b.communities.length - a.communities.length || b.totalComments - a.totalComments)
+  .sort((a, b) => b.trendScore - a.trendScore)
   .slice(0, 5);
 
 const missing = rules.communities.filter((item) => !seenCommunities.has(item.id)).map((item) => item.name);
@@ -102,7 +157,7 @@ const report = [
   "## 이번 주 영상 소재",
   "",
   videoCandidates.length
-    ? videoCandidates.map((entry, index) => `${index + 1}. **${entry.topic}** — ${entry.communities.length}개 커뮤니티 · ${entry.needsVerification ? "팩트체크형 권장" : "설명·정리형 권장"}\n   - URL: ${entry.items.map((item) => item.url).join(" · ")}`).join("\n")
+    ? videoCandidates.map((entry, index) => `${index + 1}. **${entry.topic}** — ${entry.trendScore.toFixed(1)}점 · ${entry.decision} · ${entry.communities.length}개 커뮤니티 · ${entry.needsVerification ? "팩트체크형 권장" : "설명·정리형 권장"}\n   - URL: ${entry.items.map((item) => item.url).join(" · ")}`).join("\n")
     : "- 해당 없음",
   "",
   "## 커뮤니티별 대표 글",
@@ -121,8 +176,9 @@ await writeFile(outputPath, `${report}\n`, "utf8");
 const escapeHtml = (value) => String(value ?? "").replace(/[&<>\"]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[char]);
 const topicCards = (entries, emptyText) => entries.length ? entries.map((entry) => `
   <article class="topic-card">
-    <div class="topic-head"><h3>${escapeHtml(entry.topic)}</h3>${entry.needsVerification ? '<span class="badge warning">확인 필요</span>' : '<span class="badge">검증 가능</span>'}</div>
-    <p>${entry.communities.map((id) => escapeHtml(communityMap.get(id)?.name ?? id)).join(" · ")} · 댓글 ${entry.totalComments.toLocaleString("ko-KR")}개</p>
+    <div class="topic-head"><h3>${escapeHtml(entry.topic)} · ${entry.trendScore.toFixed(1)}점</h3>${entry.needsVerification ? '<span class="badge warning">확인 필요</span>' : '<span class="badge">검증 가능</span>'}</div>
+    <p>${escapeHtml(entry.decision)} · ${entry.communities.map((id) => escapeHtml(communityMap.get(id)?.name ?? id)).join(" · ")} · 댓글 ${entry.totalComments.toLocaleString("ko-KR")}개</p>
+    <p>확산 ${entry.scores.crossCommunityScore.toFixed(0)} · 순위 ${entry.scores.channelRankScore.toFixed(0)} · 댓글/반응 ${entry.scores.commentsAndEngagementScore.toFixed(0)} · 공감 ${entry.scores.reactionScore.toFixed(0)} · 조회 ${entry.scores.viewScore.toFixed(0)} · 최신성 ${entry.scores.freshnessScore.toFixed(0)}</p>
     <div class="links">${entry.items.map((item) => `<a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">${escapeHtml(communityMap.get(item.community)?.name ?? item.community)} 원문</a>`).join("")}</div>
   </article>`).join("") : `<p class="empty">${escapeHtml(emptyText)}</p>`;
 
@@ -136,7 +192,7 @@ const html = `<!doctype html>
 <section class="stats"><div class="stat"><span>뜨는 주제</span><strong>${rising.length}</strong></div><div class="stat"><span>주요 주제</span><strong>${major.length}</strong></div><div class="stat"><span>영상 후보</span><strong>${videoCandidates.length}</strong></div></section>
 <section class="section"><h2 class="section-title"><span class="dot hot"></span>뜨는 주제</h2><div class="topics">${topicCards(rising,"해당 없음")}</div></section>
 <section class="section"><h2 class="section-title"><span class="dot"></span>주요 주제</h2><div class="topics">${topicCards(major,"해당 없음")}</div></section>
-<section class="section"><h2>이번 주 무조건 검토할 영상 소재</h2><div class="videos">${videoCandidates.map((entry,index)=>`<article class="video"><span class="rank">${index+1}</span><div><strong>${escapeHtml(entry.topic)}</strong><div class="muted">${entry.communities.length}개 커뮤니티 · ${entry.needsVerification?"팩트체크형":"설명·정리형"}</div></div><a href="${escapeHtml(entry.items[0]?.url)}" target="_blank" rel="noreferrer">대표 URL</a></article>`).join("")||'<p class="empty">해당 없음</p>'}</div></section>
+<section class="section"><h2>이번 주 무조건 검토할 영상 소재</h2><div class="videos">${videoCandidates.map((entry,index)=>`<article class="video"><span class="rank">${index+1}</span><div><strong>${escapeHtml(entry.topic)} · ${entry.trendScore.toFixed(1)}점</strong><div class="muted">${escapeHtml(entry.decision)} · ${entry.communities.length}개 커뮤니티 · ${entry.needsVerification?"팩트체크형":"설명·정리형"}</div></div><a href="${escapeHtml(entry.items[0]?.url)}" target="_blank" rel="noreferrer">대표 URL</a></article>`).join("")||'<p class="empty">해당 없음</p>'}</div></section>
 <section class="section"><h2>커뮤니티별 대표 글</h2><div class="community-list">${daily.items.map((item)=>`<div class="community-row"><strong>${escapeHtml(communityMap.get(item.community)?.name??item.community)}</strong><span>${escapeHtml(item.title)}</span><a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">원문 보기</a></div>`).join("")}</div></section>
 <section class="section"><h2>미수집 커뮤니티</h2><p class="muted">${missing.length?escapeHtml(missing.join(", ")):"없음"}</p></section>
 </main></body></html>`;

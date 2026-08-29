@@ -10,6 +10,9 @@
       "publishedAt": "2026-08-29T20:20:00+09:00",
       "views": 5903,
       "comments": 33,
+      "reactions": 0,
+      "rank": 1,
+      "candidateCount": 10,
       "needsVerification": true
     },
     {
@@ -20,6 +23,9 @@
       "publishedAt": "2026-08-29T19:50:00+09:00",
       "views": 2100,
       "comments": 21,
+      "reactions": 0,
+      "rank": 1,
+      "candidateCount": 10,
       "needsVerification": true
     }
   ]

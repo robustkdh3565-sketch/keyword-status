@@ -30,6 +30,26 @@
   "classification": {
     "risingMaxAgeHours": 6,
     "majorMinCommunities": 2,
-    "maxTopicsPerSection": 5
+    "maxTopicsPerSection": 5,
+    "mustProduceScore": 80,
+    "priorityScore": 65,
+    "observeScore": 50
+  },
+  "scoring": {
+    "initialPeriodDays": 30,
+    "weights": {
+      "crossCommunity": 0.30,
+      "channelRank": 0.20,
+      "commentsAndEngagement": 0.30,
+      "reactions": 0.10,
+      "views": 0.05,
+      "freshness": 0.05
+    },
+    "postInitialModel": {
+      "type": "ridge",
+      "retrainIntervalDays": 30,
+      "targets": ["futureCommunityCount24h", "survivedNextDay"],
+      "ridgeAlpha": 1
+    }
   }
 }
