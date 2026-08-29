@@ -1,9 +1,9 @@
 {
   "pipeline": ["communityRanking", "searchRanking", "socialRanking", "crossChannelOverlap"],
   "providers": {
-    "naverDataLab": { "enabledWhenConfigured": true, "role": "koreanSearchTrend", "official": true },
+    "naverDataLab": { "enabledWhenConfigured": false, "role": "disabledByUser", "official": true },
     "googleTrends": { "enabledWhenConfigured": true, "role": "globalSearchTrend", "officialAlpha": true },
-    "naverSearch": { "enabledWhenConfigured": true, "role": "newsBlogSpread", "official": true },
+    "naverSearch": { "enabledWhenConfigured": false, "role": "disabledByUser", "official": true },
     "youtubeDataApi": { "enabledWhenConfigured": true, "role": "videoDemandAndCompetition", "official": true }
   },
   "expansion": {

@@ -5,13 +5,13 @@
   },
   "search": {
     "label": "검색 트렌드",
-    "sources": ["naverDataLab", "googleTrends"],
+    "sources": ["googleTrends"],
     "rankingSignals": ["growth24h", "growth7d", "currentInterest", "persistence"],
     "weights": { "growth24h": 0.40, "growth7d": 0.20, "currentInterest": 0.25, "persistence": 0.15 }
   },
   "social": {
     "label": "SNS 트렌드",
-    "sources": ["youtube", "x", "instagram", "tiktok"],
+    "sources": ["youtube", "x"],
     "rankingSignals": ["viewVelocity", "engagementRate", "creatorSpread", "mentionGrowth", "freshness"],
     "weights": { "viewVelocity": 0.30, "engagementRate": 0.20, "creatorSpread": 0.20, "mentionGrowth": 0.20, "freshness": 0.10 }
   },
@@ -19,5 +19,6 @@
     "scoreBlending": false,
     "showOverlapOnly": true,
     "minimumChannels": 2
-  }
+  },
+  "disabledSources": ["naverDataLab", "instagram", "tiktok"]
 }
