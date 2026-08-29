@@ -77,8 +77,13 @@ const rising = topics
 const formatTopic = (entry) => {
   const names = entry.communities.map((id) => communityMap.get(id)?.name ?? id).join(" · ");
   const verification = entry.needsVerification ? " · 사실 확인 필요" : "";
-  return `- **${entry.topic}** — ${names} · 댓글 ${entry.totalComments.toLocaleString("ko-KR")}개${verification}`;
+  const urls = entry.items.map((item) => `[${communityMap.get(item.community)?.name ?? item.community}](${item.url})`).join(" · ");
+  return `- **${entry.topic}** — ${names} · 댓글 ${entry.totalComments.toLocaleString("ko-KR")}개${verification}\n  - 원문: ${urls}`;
 };
+
+const videoCandidates = [...major, ...rising]
+  .sort((a, b) => b.communities.length - a.communities.length || b.totalComments - a.totalComments)
+  .slice(0, 5);
 
 const missing = rules.communities.filter((item) => !seenCommunities.has(item.id)).map((item) => item.name);
 const report = [
@@ -93,6 +98,12 @@ const report = [
   "## 주요 주제",
   "",
   major.length ? major.map(formatTopic).join("\n") : "- 해당 없음",
+  "",
+  "## 이번 주 영상 소재",
+  "",
+  videoCandidates.length
+    ? videoCandidates.map((entry, index) => `${index + 1}. **${entry.topic}** — ${entry.communities.length}개 커뮤니티 · ${entry.needsVerification ? "팩트체크형 권장" : "설명·정리형 권장"}\n   - URL: ${entry.items.map((item) => item.url).join(" · ")}`).join("\n")
+    : "- 해당 없음",
   "",
   "## 커뮤니티별 대표 글",
   "",
