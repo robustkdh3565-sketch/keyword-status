@@ -178,9 +178,27 @@ const predictedVideos = topics
   .sort((a, b) => b.predictionScore - a.predictionScore)
   .slice(0, rules.classification.predictionMaxTopics);
 
-const searchRankings = daily.channels?.search ?? [];
-const socialRankings = daily.channels?.social ?? [];
-const formatChannelRanking = (item, index) => `- **${item.rank ?? index + 1}위 · ${item.keyword}** — ${item.score === undefined ? "" : `${Number(item.score).toFixed(1)}점 · `}${item.source ?? "출처 미수집"}${item.metric ? ` · ${item.metric}` : ""}${item.url ? `\n  - URL: ${item.url}` : ""}`;
+const dataFiles = (await readdir(resolve(projectRoot, "data")))
+  .filter((name) => /^\d{4}-\d{2}-\d{2}\.json$/.test(name) && name.slice(0, 10) < daily.date)
+  .sort((a, b) => b.localeCompare(a));
+const previousDaily = dataFiles[0]
+  ? await readFile(resolve(projectRoot, "data", dataFiles[0]), "utf8").then(JSON.parse).catch(() => null)
+  : null;
+const rankingKey = (item) => `${String(item.source ?? "").trim().toLowerCase()}\u0000${String(item.keyword ?? "").trim().toLowerCase()}`;
+const addMovement = (entries, previousEntries = []) => {
+  const previousByKey = new Map(previousEntries.map((item) => [rankingKey(item), Number(item.rank)]));
+  return entries.map((item) => {
+    const previousRank = previousByKey.get(rankingKey(item));
+    if (!Number.isFinite(previousRank)) return { ...item, movement: "NEW", movementClass: "new", comparison: "전일 신규" };
+    const change = previousRank - Number(item.rank);
+    if (change > 0) return { ...item, movement: `▲ ${change}`, movementClass: "rising", comparison: `전일 ${previousRank}위 → 현재 ${item.rank}위` };
+    if (change < 0) return { ...item, movement: `▼ ${Math.abs(change)}`, movementClass: "declining", comparison: `전일 ${previousRank}위 → 현재 ${item.rank}위` };
+    return { ...item, movement: "― 유지", movementClass: "major", comparison: `전일·현재 ${item.rank}위` };
+  });
+};
+const searchRankings = addMovement(daily.channels?.search ?? [], previousDaily?.channels?.search ?? []);
+const socialRankings = addMovement(daily.channels?.social ?? [], previousDaily?.channels?.social ?? []);
+const formatChannelRanking = (item, index) => `- **${item.rank ?? index + 1}위 · ${item.keyword}** · **${item.movement}** — ${item.score === undefined ? "" : `${Number(item.score).toFixed(1)}점 · `}${item.source ?? "출처 미수집"}${item.metric ? ` · ${item.metric}` : ""} · ${item.comparison}${item.url ? `\n  - URL: ${item.url}` : ""}`;
 const communityTopics = new Set(topics.map((entry) => entry.topic));
 const searchTopics = new Set(searchRankings.map((entry) => entry.keyword));
 const socialTopics = new Set(socialRankings.map((entry) => entry.keyword));
@@ -266,7 +284,7 @@ const researchCards = videoCandidates.map((entry) => {
 }).join("");
 const predictionCards = predictedVideos.map((entry,index)=>`<article class="video"><span class="rank">${index+1}</span><div><strong>${escapeHtml(entry.topic)} · 예측 ${entry.predictionScore.toFixed(1)}점</strong><div class="muted">현재 조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · 시간당 ${Math.round(entry.viewsPerHour).toLocaleString("ko-KR")}회 · 조회속도 ${entry.scores.viewVelocityScore.toFixed(0)} · 반응 ${entry.scores.commentsAndEngagementScore.toFixed(0)}${entry.needsVerification?" · 사실 확인 필요":""}</div></div><a href="${escapeHtml(entry.items[0]?.url)}" target="_blank" rel="noreferrer">대표 URL</a></article>`).join("");
 const sourceClass = (source = "") => source.includes("Google") ? "google" : source.includes("YouTube") ? "youtube" : source.includes("X ") ? "x" : "default";
-const channelCards = (entries) => entries.map((item,index)=>`<article class="topic-card channel-${sourceClass(item.source)}"><div class="topic-head"><h3>${escapeHtml(item.rank ?? index+1)}위 · ${escapeHtml(item.keyword)}</h3><div class="badges"><span class="status status-new">${escapeHtml(item.status ?? "신규")}</span><span class="source source-${sourceClass(item.source)}">${escapeHtml(item.source ?? "출처 미수집")}</span></div></div><p>${item.score === undefined ? "" : `${Number(item.score).toFixed(1)}점 · `}${item.metric ? escapeHtml(item.metric) : ""}</p><p class="confidence">신뢰도: ${escapeHtml(item.confidence ?? "잠정")} · 첫 스냅샷</p>${item.url ? `<div class="links"><a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">원문</a></div>` : ""}</article>`).join("");
+const channelCards = (entries) => entries.map((item,index)=>`<article class="topic-card channel-${sourceClass(item.source)}"><div class="topic-head"><h3>${escapeHtml(item.rank ?? index+1)}위 · ${escapeHtml(item.keyword)}</h3><div class="badges"><span class="status status-${escapeHtml(item.movementClass)}">${escapeHtml(item.movement)}</span><span class="source source-${sourceClass(item.source)}">${escapeHtml(item.source ?? "출처 미수집")}</span></div></div><p>${item.score === undefined ? "" : `${Number(item.score).toFixed(1)}점 · `}${item.metric ? escapeHtml(item.metric) : ""}</p><p class="confidence">${escapeHtml(item.comparison)} · 전일 리포트 비교</p>${item.url ? `<div class="links"><a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">원문</a></div>` : ""}</article>`).join("");
 
 const html = `<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
