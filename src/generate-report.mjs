@@ -185,9 +185,13 @@ const previousDaily = dataFiles[0]
   ? await readFile(resolve(projectRoot, "data", dataFiles[0]), "utf8").then(JSON.parse).catch(() => null)
   : null;
 const rankingKey = (item) => `${String(item.source ?? "").trim().toLowerCase()}\u0000${String(item.keyword ?? "").trim().toLowerCase()}`;
+const directChannelUrl = (item) => item.source?.includes("Google")
+  ? `https://trends.google.com/trends/explore?date=now%201-d&geo=KR&q=${encodeURIComponent(item.keyword)}`
+  : item.url;
 const addMovement = (entries, previousEntries = []) => {
   const previousByKey = new Map(previousEntries.map((item) => [rankingKey(item), Number(item.rank)]));
-  return entries.map((item) => {
+  return entries.map((rawItem) => {
+    const item = { ...rawItem, url: directChannelUrl(rawItem) };
     const previousRank = previousByKey.get(rankingKey(item));
     if (!Number.isFinite(previousRank)) return {
       ...item,

@@ -111,7 +111,7 @@ const search = [...rss.matchAll(/<item>[\s\S]*?<title>(?:<!\[CDATA\[)?(.*?)(?:\]
     keyword: match[1],
     source: "Google Trends 한국",
     metric: `급상승 검색 ${match[2]}`,
-    url: "https://trends.google.com/trending?geo=KR"
+    url: `https://trends.google.com/trends/explore?date=now%201-d&geo=KR&q=${encodeURIComponent(match[1])}`
   }));
 
 const social = [
