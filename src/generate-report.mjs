@@ -65,28 +65,49 @@ const percentile = (value, values) => {
   const equal = values.filter((candidate) => candidate === value).length;
   return ((below + Math.max(0, equal - 1) / 2) / (values.length - 1)) * 100;
 };
+const hasNumber = (value) => value !== null && value !== undefined && value !== "" && Number.isFinite(Number(value));
+const numberOrNull = (value) => hasNumber(value) ? Number(value) : null;
+const observedViews = (item) => Number(item.views) === 0 && item.source === "todayBest" && (Number(item.comments ?? 0) > 0 || Number(item.reactions ?? 0) > 0)
+  ? null
+  : numberOrNull(item.views);
+const percentileOrNull = (value, values) => hasNumber(value) ? percentile(Number(value), values) : null;
+const averageAvailable = (...values) => {
+  const available = values.filter(hasNumber).map(Number);
+  return available.length ? available.reduce((sum, value) => sum + value, 0) / available.length : null;
+};
+const weightedAvailable = (entries) => {
+  const available = entries.filter(({ value }) => hasNumber(value));
+  const totalWeight = available.reduce((sum, entry) => sum + entry.weight, 0);
+  return totalWeight ? available.reduce((sum, entry) => sum + Number(entry.value) * entry.weight, 0) / totalWeight : null;
+};
+const formatCount = (value, unit) => hasNumber(value) ? `${Number(value).toLocaleString("ko-KR")}${unit}` : "미수집";
+const formatVelocity = (value) => hasNumber(value) ? `${Math.round(Number(value)).toLocaleString("ko-KR")}회` : "측정 대기";
+const formatScore = (value) => hasNumber(value) ? Number(value).toFixed(0) : "미수집";
 const itemMetrics = items.map((item) => ({
   item,
-  views: Number(item.views || 0),
-  comments: Number(item.comments || 0),
-  reactions: Number(item.reactions || 0),
-  engagement: ((Number(item.comments || 0) + Number(item.reactions || 0)) / Math.max(1, Number(item.views || 0))) * 1000
+  views: observedViews(item),
+  comments: numberOrNull(item.comments),
+  reactions: numberOrNull(item.reactions),
+  engagement: hasNumber(observedViews(item)) && observedViews(item) > 0 && (hasNumber(item.comments) || hasNumber(item.reactions))
+    ? ((Number(item.comments ?? 0) + Number(item.reactions ?? 0)) / observedViews(item)) * 1000
+    : null
 }));
-const viewValues = itemMetrics.map((entry) => entry.views);
-const commentValues = itemMetrics.map((entry) => entry.comments);
-const reactionValues = itemMetrics.map((entry) => entry.reactions);
-const engagementValues = itemMetrics.map((entry) => entry.engagement);
+const viewValues = itemMetrics.map((entry) => entry.views).filter(hasNumber);
+const commentValues = itemMetrics.map((entry) => entry.comments).filter(hasNumber);
+const reactionValues = itemMetrics.map((entry) => entry.reactions).filter(hasNumber);
+const engagementValues = itemMetrics.map((entry) => entry.engagement).filter(hasNumber);
 const hourlyViewValues = items.map((item) => {
   const measured = snapshotMetricFor(item);
   if (measured?.measured) return measured.viewsPerHour;
+  if (!hasNumber(observedViews(item)) || item.publishedAtSource === "estimated") return null;
   const ageHours = Math.max(0.5, (checkedAt - new Date(item.publishedAt)) / 3_600_000);
-  return Number(item.views || 0) / ageHours;
-});
+  return observedViews(item) / ageHours;
+}).filter(hasNumber);
 const metricByItem = new Map(itemMetrics.map((entry) => [entry.item, {
-  viewScore: percentile(entry.views, viewValues),
-  commentScore: percentile(entry.comments, commentValues),
-  reactionScore: percentile(entry.reactions, reactionValues),
-  engagementScore: percentile(entry.engagement, engagementValues)
+  viewScore: percentileOrNull(entry.views, viewValues),
+  commentScore: percentileOrNull(entry.comments, commentValues),
+  reactionScore: percentileOrNull(entry.reactions, reactionValues),
+  engagementScore: percentileOrNull(entry.engagement, engagementValues)
 }]));
 const groups = new Map();
 for (const item of items) {
@@ -106,6 +127,8 @@ const topics = [...groups.entries()].map(([topic, items]) => {
   const communities = [...new Set(items.map((item) => item.community))];
   const communityCount = communities.length;
   const communityGroups = [...new Set(communities.map((id) => rules.communityGroups[id] ?? id))];
+  const collectedViews = items.map(observedViews).filter(hasNumber);
+  const collectedComments = items.map((item) => numberOrNull(item.comments)).filter(hasNumber);
   const communitySpreadScore = communityCount >= 5 ? 100 : communityCount === 4 ? 90 : communityCount === 3 ? 75 : communityCount === 2 ? 55 : 20;
   const groupSpreadScore = communityGroups.length >= 4 ? 100 : communityGroups.length === 3 ? 80 : communityGroups.length === 2 ? 60 : 20;
   const impactScore = communitySpreadScore * 0.65 + groupSpreadScore * 0.35;
@@ -115,45 +138,51 @@ const topics = [...groups.entries()].map(([topic, items]) => {
     const freshnessScore = Math.max(0, Math.min(100, 100 * Math.exp((-Math.log(2) * ageHours) / 12)));
     const hoursElapsed = Math.max(0.5, ageHours);
     const measured = snapshotMetricFor(item);
-    const viewsPerHour = measured?.measured ? measured.viewsPerHour : Number(item.views || 0) / hoursElapsed;
-    const viewVelocityScore = percentile(viewsPerHour, hourlyViewValues);
+    const viewsPerHour = measured?.measured
+      ? measured.viewsPerHour
+      : hasNumber(observedViews(item)) && item.publishedAtSource !== "estimated" ? observedViews(item) / hoursElapsed : null;
+    const viewVelocityScore = percentileOrNull(viewsPerHour, hourlyViewValues);
     return { ...metrics, freshnessScore, hoursElapsed, viewsPerHour, viewVelocityScore, velocityMeasured: Boolean(measured?.measured) };
   });
-  const maxOf = (key) => Math.max(...featureRows.map((row) => row[key]));
+  const maxOf = (key) => {
+    const values = featureRows.map((row) => row[key]).filter(hasNumber).map(Number);
+    return values.length ? Math.max(...values) : null;
+  };
   const commentScore = maxOf("commentScore");
   const engagementScore = maxOf("engagementScore");
-  const commentsAndEngagementScore = (commentScore + engagementScore) / 2;
+  const commentsAndEngagementScore = averageAvailable(commentScore, engagementScore);
   const reactionScore = maxOf("reactionScore");
   const viewScore = maxOf("viewScore");
   const viewVelocityScore = maxOf("viewVelocityScore");
-  const viewPerformanceScore = viewVelocityScore * 0.65 + viewScore * 0.35;
+  const viewPerformanceScore = weightedAvailable([{ value: viewVelocityScore, weight: 0.65 }, { value: viewScore, weight: 0.35 }]);
   const freshnessScore = maxOf("freshnessScore");
-  const trendScore =
-    (impactScore * weights.impact +
-    viewPerformanceScore * weights.viewPerformance +
-    commentsAndEngagementScore * weights.commentsAndEngagement +
-    freshnessScore * weights.freshness);
+  const trendScore = weightedAvailable([
+    { value: impactScore, weight: weights.impact },
+    { value: viewPerformanceScore, weight: weights.viewPerformance },
+    { value: commentsAndEngagementScore, weight: weights.commentsAndEngagement },
+    { value: freshnessScore, weight: weights.freshness }
+  ]);
   const decision = trendScore >= rules.classification.mustProduceScore ? "반드시 제작" : trendScore >= rules.classification.priorityScore ? "제작 우선" : trendScore >= rules.classification.observeScore ? "추가 관찰" : "제외";
   const predictionWeights = rules.prediction.weights;
-  const predictionScore = (
-    viewVelocityScore * predictionWeights.viewVelocity +
-    commentsAndEngagementScore * predictionWeights.engagement +
-    freshnessScore * predictionWeights.freshness +
-    impactScore * predictionWeights.impact
-  );
+  const predictionScore = weightedAvailable([
+    { value: viewVelocityScore, weight: predictionWeights.viewVelocity },
+    { value: commentsAndEngagementScore, weight: predictionWeights.engagement },
+    { value: freshnessScore, weight: predictionWeights.freshness },
+    { value: impactScore, weight: predictionWeights.impact }
+  ]);
   return {
     topic,
     items,
     communities,
     communityGroups,
     newestAgeHours,
-    totalComments: items.reduce((sum, item) => sum + Number(item.comments || 0), 0),
-    totalViews: items.reduce((sum, item) => sum + Number(item.views || 0), 0),
+    totalComments: collectedComments.length ? collectedComments.reduce((sum, value) => sum + value, 0) : null,
+    totalViews: collectedViews.length ? collectedViews.reduce((sum, value) => sum + value, 0) : null,
     needsVerification: items.some((item) => item.needsVerification),
     trendScore,
     predictionScore,
     decision,
-    viewsPerHour: Math.max(...featureRows.map((row) => row.viewsPerHour)),
+    viewsPerHour: maxOf("viewsPerHour"),
     velocityMeasured: featureRows.some((row) => row.velocityMeasured),
     scores: { impactScore, commentsAndEngagementScore, reactionScore, viewScore, viewVelocityScore, viewPerformanceScore, freshnessScore }
   };
@@ -174,7 +203,7 @@ const formatTopic = (entry) => {
   const names = entry.communities.map((id) => communityMap.get(id)?.name ?? id).join(" · ");
   const verification = entry.needsVerification ? " · 사실 확인 필요" : "";
   const urls = entry.items.map((item) => `[${communityMap.get(item.community)?.name ?? item.community}](${item.url})`).join(" · ");
-  return `- **${entry.topic}** — ${entry.trendScore.toFixed(1)}점 · ${entry.decision} · ${names} · 조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · ${entry.velocityMeasured ? "실측" : "추정"} 시간당 ${Math.round(entry.viewsPerHour).toLocaleString("ko-KR")}회 · 댓글 ${entry.totalComments.toLocaleString("ko-KR")}개${verification}\n  - 커뮤니티 세부점수: 파급력 ${entry.scores.impactScore.toFixed(0)} · 조회성과 ${entry.scores.viewPerformanceScore.toFixed(0)} · 댓글/반응 ${entry.scores.commentsAndEngagementScore.toFixed(0)} · 최신성 ${entry.scores.freshnessScore.toFixed(0)}\n  - 원문: ${urls}`;
+  return `- **${entry.topic}** — ${entry.trendScore.toFixed(1)}점 · ${entry.decision} · ${names} · 조회 ${formatCount(entry.totalViews, "회")} · ${entry.velocityMeasured ? "실측" : "추정"} 시간당 ${formatVelocity(entry.viewsPerHour)} · 댓글 ${formatCount(entry.totalComments, "개")}${verification}\n  - 커뮤니티 세부점수: 파급력 ${formatScore(entry.scores.impactScore)} · 조회성과 ${formatScore(entry.scores.viewPerformanceScore)} · 댓글/반응 ${formatScore(entry.scores.commentsAndEngagementScore)} · 최신성 ${formatScore(entry.scores.freshnessScore)}\n  - 원문: ${urls}`;
 };
 
 const videoCandidates = topics
@@ -192,33 +221,51 @@ const predictedVideos = topics
 const viewsPerHourFor = (item) => {
   const measured = snapshotMetricFor(item);
   if (measured?.measured) return measured.viewsPerHour;
+  if (!hasNumber(observedViews(item)) || item.publishedAtSource === "estimated") return null;
   const ageHours = Math.max(0.5, (checkedAt - new Date(item.publishedAt)) / 3_600_000);
-  return Number(item.views || 0) / ageHours;
+  return observedViews(item) / ageHours;
 };
 const likelyPostByKey = new Map(items.map((item) => {
   const ageHours = Math.max(0, (checkedAt - new Date(item.publishedAt)) / 3_600_000);
-  const engagement = ((Number(item.comments || 0) + Number(item.reactions || 0)) / Math.max(1, Number(item.views || 0))) * 1000;
-  const velocityScore = percentile(viewsPerHourFor(item), hourlyViewValues);
-  const engagementScore = percentile(engagement, engagementValues);
+  const engagement = hasNumber(observedViews(item)) && observedViews(item) > 0 && (hasNumber(item.comments) || hasNumber(item.reactions))
+    ? ((Number(item.comments ?? 0) + Number(item.reactions ?? 0)) / observedViews(item)) * 1000 : null;
+  const velocityScore = percentileOrNull(viewsPerHourFor(item), hourlyViewValues);
+  const engagementScore = percentileOrNull(engagement, engagementValues);
   const freshnessScore = Math.max(0, Math.min(100, 100 * Math.exp((-Math.log(2) * ageHours) / 12)));
   const spread = new Set((groups.get(item.topic) ?? []).map((candidate) => candidate.community)).size;
   const spreadScore = spread >= 4 ? 100 : spread === 3 ? 80 : spread === 2 ? 60 : 20;
-  const score = velocityScore * 0.40 + engagementScore * 0.30 + freshnessScore * 0.15 + spreadScore * 0.15;
-  const eligible = item.publishedAtSource !== "estimated" && ageHours <= 12 && score >= 65 && (velocityScore >= 70 || Number(item.views || 0) >= 10_000);
+  const score = weightedAvailable([{ value: velocityScore, weight: 0.40 }, { value: engagementScore, weight: 0.30 }, { value: freshnessScore, weight: 0.15 }, { value: spreadScore, weight: 0.15 }]);
+  const eligible = hasNumber(score) && hasNumber(velocityScore) && item.publishedAtSource !== "estimated" && ageHours <= 12 && score >= 65 && (velocityScore >= 70 || (hasNumber(observedViews(item)) && observedViews(item) >= 10_000));
   return [postKey(item), eligible ? { score, velocityScore, engagementScore, freshnessScore, spreadScore } : null];
 }).filter(([, prediction]) => prediction));
 const communitySelections = rules.communities.map((community) => {
   const candidates = items.filter((item) => item.community === community.id);
   if (!candidates.length) return null;
-  const candidateViews = candidates.map((item) => Number(item.views || 0));
-  const candidateEngagement = candidates.map((item) => ((Number(item.comments || 0) + Number(item.reactions || 0)) / Math.max(1, Number(item.views || 0))) * 1000);
+  const candidateViews = candidates.map(observedViews).filter(hasNumber);
+  const candidateEngagement = candidates.map((item) => hasNumber(observedViews(item)) && observedViews(item) > 0 && (hasNumber(item.comments) || hasNumber(item.reactions)) ? ((Number(item.comments ?? 0) + Number(item.reactions ?? 0)) / observedViews(item)) * 1000 : null).filter(hasNumber);
+  const candidateVelocities = candidates.map(viewsPerHourFor).filter(hasNumber);
+  const candidateEngagementDeltas = candidates.map((item) => snapshotMetricFor(item)?.engagementDelta).filter(hasNumber);
+  const risingScore = (item) => {
+    const snapshot = snapshotMetricFor(item);
+    const velocity = viewsPerHourFor(item);
+    const ageHours = Math.max(0, (checkedAt - new Date(item.publishedAt)) / 3_600_000);
+    const freshnessScore = Math.max(0, Math.min(100, 100 * Math.exp((-Math.log(2) * ageHours) / 12)));
+    const rankRiseScore = hasNumber(snapshot?.rankChange) ? Math.max(0, Math.min(100, Number(snapshot.rankChange) * 25)) : null;
+    return weightedAvailable([
+      { value: percentileOrNull(velocity, hourlyViewValues), weight: 0.40 },
+      { value: percentileOrNull(velocity, candidateVelocities), weight: 0.25 },
+      { value: percentileOrNull(snapshot?.engagementDelta, candidateEngagementDeltas), weight: 0.15 },
+      { value: rankRiseScore, weight: 0.10 },
+      { value: freshnessScore, weight: 0.10 }
+    ]);
+  };
   const majorScore = (item) => {
     const rankScore = ((Number(item.candidateCount || candidates.length) - Number(item.rank || candidates.length) + 1) / Math.max(1, Number(item.candidateCount || candidates.length))) * 100;
-    const engagement = ((Number(item.comments || 0) + Number(item.reactions || 0)) / Math.max(1, Number(item.views || 0))) * 1000;
+    const engagement = hasNumber(observedViews(item)) && observedViews(item) > 0 && (hasNumber(item.comments) || hasNumber(item.reactions)) ? ((Number(item.comments ?? 0) + Number(item.reactions ?? 0)) / observedViews(item)) * 1000 : null;
     const snapshot = snapshotMetricFor(item);
     const persistenceScore = snapshotComparison.previous ? (snapshot && !snapshot.isNew ? 100 : 0) : 50;
     const crossSpreadScore = Math.min(100, (groups.get(item.topic)?.length ?? 1) * 25);
-    return rankScore * 0.30 + percentile(Number(item.views || 0), candidateViews) * 0.25 + percentile(engagement, candidateEngagement) * 0.20 + persistenceScore * 0.15 + crossSpreadScore * 0.10;
+    return weightedAvailable([{ value: rankScore, weight: 0.30 }, { value: percentileOrNull(item.views, candidateViews), weight: 0.25 }, { value: percentileOrNull(engagement, candidateEngagement), weight: 0.20 }, { value: persistenceScore, weight: 0.15 }, { value: crossSpreadScore, weight: 0.10 }]);
   };
   const used = new Set();
   const usedTitles = new Set();
@@ -228,13 +275,13 @@ const communitySelections = rules.communities.map((community) => {
     used.add(item.url);
     usedTitles.add(normalizeTitle(item.title));
     const snapshot = snapshotMetricFor(item);
-    return { label, item, viewsPerHour: viewsPerHourFor(item), velocityMeasured: Boolean(snapshot?.measured), snapshot };
+    return { label, item, viewsPerHour: viewsPerHourFor(item), velocityMeasured: Boolean(snapshot?.measured), snapshot, risingScore: label === "뜨는글" ? risingScore(item) : null };
   };
   const majorPost = choose("주요글", [...candidates].sort((a, b) => majorScore(b) - majorScore(a)));
-  const risingPool = snapshotComparison.previous ? candidates.filter((item) => snapshotMetricFor(item)?.measured) : candidates;
-  const risingPost = choose("뜨는글", [...risingPool].sort((a, b) => viewsPerHourFor(b) - viewsPerHourFor(a)));
+  const risingPool = snapshotComparison.previous ? candidates.filter((item) => snapshotMetricFor(item)?.measured) : candidates.filter((item) => hasNumber(viewsPerHourFor(item)));
+  const risingPost = choose("뜨는글", [...risingPool].sort((a, b) => risingScore(b) - risingScore(a)));
   const entryPool = snapshotComparison.previous ? candidates.filter((item) => snapshotMetricFor(item)?.isNew) : candidates;
-  const entryPost = choose("진입글", [...entryPool].sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)));
+  const entryPost = choose(snapshotComparison.previous ? "진입글" : "최신글", [...entryPool].sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)));
   return { community, posts: [entryPost, risingPost, majorPost].filter(Boolean) };
 }).filter(Boolean);
 
@@ -308,8 +355,9 @@ const report = [
   "",
   "| 표식 | 아주 쉽게 말하면 | 선정 기준 |",
   "|---|---|---|",
+  "| 최신글 | 아직 비교할 지난 목록이 없을 때 가장 최근 글 | 첫 스냅샷에서만 표시 |",
   "| 진입글 | 방금 인기 목록에 새로 들어온 글 | 직전 스냅샷에는 없고 지금은 있음 |",
-  "| 뜨는글 | 지금 조회수가 가장 빨리 늘어나는 글 | 스냅샷 사이 실제 시간당 조회 증가 1위 |",
+  "| 뜨는글 | 자기 커뮤니티에서 특히 빨라지는 글 | 실제 속도·커뮤니티 내 백분위·반응 증가·순위 상승·새로움 |",
   "| 주요글 | 지금 많은 사람이 보고 반응하는 중요한 글 | 순위·조회·반응·지속·다른 커뮤니티 확산 |",
   "| 뜰 것 같은 글 | 앞으로 더 커질 가능성이 높은 글 | 속도 40%·반응 30%·새로움 15%·확산 15%, 65점 이상 |",
   "| 실측 | 두 번 재서 진짜로 늘어난 속도 | 직전 조회수와 현재 조회수 비교 |",
@@ -326,7 +374,7 @@ const report = [
   "## 이번 주 영상 소재",
   "",
   videoCandidates.length
-    ? videoCandidates.map((entry, index) => `${index + 1}. **${entry.topic}** — ${entry.trendScore.toFixed(1)}점 · ${entry.decision} · ${entry.communities.length}개 커뮤니티 · 조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · ${entry.needsVerification ? "팩트체크형 권장" : "설명·정리형 권장"}\n   - URL: ${entry.items.map((item) => item.url).join(" · ")}`).join("\n")
+    ? videoCandidates.map((entry, index) => `${index + 1}. **${entry.topic}** — ${entry.trendScore.toFixed(1)}점 · ${entry.decision} · ${entry.communities.length}개 커뮤니티 · 조회 ${formatCount(entry.totalViews, "회")} · ${entry.needsVerification ? "팩트체크형 권장" : "설명·정리형 권장"}\n   - URL: ${entry.items.map((item) => item.url).join(" · ")}`).join("\n")
     : "- 해당 없음",
   "",
   "## 검색 트렌드 순위",
@@ -344,7 +392,7 @@ const report = [
   "## 뜰 것 같은 영상",
   "",
   predictedVideos.length
-    ? predictedVideos.map((entry, index) => `${index + 1}. **${entry.topic}** — 예측 ${entry.predictionScore.toFixed(1)}점 · 현재 조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · 시간당 ${Math.round(entry.viewsPerHour).toLocaleString("ko-KR")}회\n   - 근거: 조회속도 ${entry.scores.viewVelocityScore.toFixed(0)} · 반응 ${entry.scores.commentsAndEngagementScore.toFixed(0)} · 최신성 ${entry.scores.freshnessScore.toFixed(0)} · 파급력 ${entry.scores.impactScore.toFixed(0)}${entry.needsVerification ? " · 사실 확인 필요" : ""}\n   - URL: ${entry.items[0]?.url}`).join("\n")
+    ? predictedVideos.map((entry, index) => `${index + 1}. **${entry.topic}** — 예측 ${entry.predictionScore.toFixed(1)}점 · 현재 조회 ${formatCount(entry.totalViews, "회")} · 시간당 ${formatVelocity(entry.viewsPerHour)}\n   - 근거: 조회속도 ${formatScore(entry.scores.viewVelocityScore)} · 반응 ${formatScore(entry.scores.commentsAndEngagementScore)} · 최신성 ${formatScore(entry.scores.freshnessScore)} · 파급력 ${formatScore(entry.scores.impactScore)}${entry.needsVerification ? " · 사실 확인 필요" : ""}\n   - URL: ${entry.items[0]?.url}`).join("\n")
     : "- 현재 기준 충족 후보 없음",
   "",
   "## 커뮤니티별 대표 글",
@@ -352,7 +400,7 @@ const report = [
   ...communitySelections.map(({ community, posts }) => `### ${community.name}\n\n${posts.map((entry) => {
     const { label, item, viewsPerHour } = entry;
     const predicted = likelyPostByKey.get(postKey(item));
-    return `- **${label}** — [${item.title}](${item.url}) · 내부 ${item.rank ?? "-"}위 · 조회 ${item.views === undefined ? "확인 불가" : `${Number(item.views).toLocaleString("ko-KR")}회`} · ${entry.velocityMeasured ? "실측" : "추정"} 시간당 ${Math.round(viewsPerHour).toLocaleString("ko-KR")}회${entry.snapshot?.rankChange > 0 ? ` · 순위 ▲${entry.snapshot.rankChange}` : ""}${predicted ? ` · **뜰 것 같은 글 ${predicted.score.toFixed(1)}점**` : ""}`;
+    return `- **${label}** — [${item.title}](${item.url}) · 내부 ${item.rank ?? "-"}위 · 조회 ${formatCount(observedViews(item), "회")} · ${entry.velocityMeasured ? "실측" : "추정"} 시간당 ${formatVelocity(viewsPerHour)}${hasNumber(entry.risingScore) ? ` · 뜨는 점수 ${entry.risingScore.toFixed(0)}` : ""}${entry.snapshot?.rankChange > 0 ? ` · 순위 ▲${entry.snapshot.rankChange}` : ""}${predicted ? ` · **뜰 것 같은 글 ${predicted.score.toFixed(1)}점**` : ""}`;
   }).join("\n")}`)
 ].join("\n");
 
@@ -364,8 +412,8 @@ const escapeHtml = (value) => String(value ?? "").replace(/[&<>\"]/g, (char) => 
 const topicCards = (entries, emptyText, status = "신규") => entries.length ? entries.map((entry) => `
   <article class="topic-card">
     <div class="topic-head"><h3>${escapeHtml(entry.topic)} · ${entry.trendScore.toFixed(1)}점</h3><div class="badges"><span class="status status-${status === "뜨는" ? "rising" : status === "주요" ? "major" : status === "하락" ? "declining" : "new"}">${status}</span>${entry.needsVerification ? '<span class="badge warning">확인 필요</span>' : '<span class="badge">검증 가능</span>'}</div></div>
-    <p>${escapeHtml(entry.decision)} · ${entry.communities.map((id) => escapeHtml(communityMap.get(id)?.name ?? id)).join(" · ")} · 조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · 댓글 ${entry.totalComments.toLocaleString("ko-KR")}개</p>
-    <p>조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · ${entry.velocityMeasured ? "실측" : "추정"} 시간당 ${Math.round(entry.viewsPerHour).toLocaleString("ko-KR")}회 · 파급력 ${entry.scores.impactScore.toFixed(0)} · 조회성과 ${entry.scores.viewPerformanceScore.toFixed(0)} · 댓글/반응 ${entry.scores.commentsAndEngagementScore.toFixed(0)} · 최신성 ${entry.scores.freshnessScore.toFixed(0)}</p>
+    <p>${escapeHtml(entry.decision)} · ${entry.communities.map((id) => escapeHtml(communityMap.get(id)?.name ?? id)).join(" · ")} · 조회 ${formatCount(entry.totalViews, "회")} · 댓글 ${formatCount(entry.totalComments, "개")}</p>
+    <p>조회 ${formatCount(entry.totalViews, "회")} · ${entry.velocityMeasured ? "실측" : "추정"} 시간당 ${formatVelocity(entry.viewsPerHour)} · 파급력 ${formatScore(entry.scores.impactScore)} · 조회성과 ${formatScore(entry.scores.viewPerformanceScore)} · 댓글/반응 ${formatScore(entry.scores.commentsAndEngagementScore)} · 최신성 ${formatScore(entry.scores.freshnessScore)}</p>
     <div class="links">${entry.items.map((item) => `<a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">${escapeHtml(communityMap.get(item.community)?.name ?? item.community)} 원문</a>`).join("")}</div>
   </article>`).join("") : `<p class="empty">${escapeHtml(emptyText)}</p>`;
 
@@ -375,7 +423,7 @@ const researchCards = videoCandidates.map((entry) => {
   const links = [research.naverTrend, research.googleTrend, research.youtube, research.naverSearch].filter((value) => value?.url);
   return `<article class="topic-card"><h3>${escapeHtml(entry.topic)}</h3><p>확장어: ${escapeHtml(research.expandedKeywords?.join(" · ") || "없음")}</p><p>네이버 ${escapeHtml(research.naverTrend?.delta24h ?? "-")}% · Google ${escapeHtml(research.googleTrend?.delta24h ?? "-")}% · YouTube 기회 ${escapeHtml(research.youtube?.opportunityScore ?? "-")}점</p><div class="links">${links.map((value) => `<a href="${escapeHtml(value.url)}" target="_blank" rel="noreferrer">검증 URL</a>`).join("")}</div></article>`;
 }).join("");
-const predictionCards = predictedVideos.map((entry,index)=>`<article class="video"><span class="rank">${index+1}</span><div><strong>${escapeHtml(entry.topic)} · 예측 ${entry.predictionScore.toFixed(1)}점</strong><div class="muted">현재 조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · ${entry.velocityMeasured ? "실측" : "추정"} 시간당 ${Math.round(entry.viewsPerHour).toLocaleString("ko-KR")}회 · 조회속도 ${entry.scores.viewVelocityScore.toFixed(0)} · 반응 ${entry.scores.commentsAndEngagementScore.toFixed(0)}${entry.needsVerification?" · 사실 확인 필요":""}</div></div><a href="${escapeHtml(entry.items[0]?.url)}" target="_blank" rel="noreferrer">대표 URL</a></article>`).join("");
+const predictionCards = predictedVideos.map((entry,index)=>`<article class="video"><span class="rank">${index+1}</span><div><strong>${escapeHtml(entry.topic)} · 예측 ${entry.predictionScore.toFixed(1)}점</strong><div class="muted">현재 조회 ${formatCount(entry.totalViews, "회")} · ${entry.velocityMeasured ? "실측" : "추정"} 시간당 ${formatVelocity(entry.viewsPerHour)} · 조회속도 ${formatScore(entry.scores.viewVelocityScore)} · 반응 ${formatScore(entry.scores.commentsAndEngagementScore)}${entry.needsVerification?" · 사실 확인 필요":""}</div></div><a href="${escapeHtml(entry.items[0]?.url)}" target="_blank" rel="noreferrer">대표 URL</a></article>`).join("");
 const sourceClass = (source = "") => source.includes("Google") ? "google" : source.includes("YouTube") ? "youtube" : source.includes("X ") ? "x" : "default";
 const channelCards = (entries) => entries.map((item,index)=>`<article class="topic-card channel-${sourceClass(item.source)}"><div class="topic-head"><h3>${escapeHtml(item.rank ?? index+1)}위 · ${escapeHtml(item.keyword)}</h3><div class="badges"><span class="status status-${escapeHtml(item.movementClass)}">${escapeHtml(item.movement)}</span><span class="source source-${sourceClass(item.source)}">${escapeHtml(item.source ?? "출처 미수집")}</span></div></div><p>${item.score === undefined ? "" : `${Number(item.score).toFixed(1)}점 · `}${item.metric ? escapeHtml(item.metric) : ""}</p><p class="confidence">${escapeHtml(item.comparison)} · 전일 리포트 비교</p>${item.movementAnalysis ? `<p class="analysis"><strong>${analysisLabel(item)}:</strong> ${escapeHtml(item.movementAnalysis)}</p>` : ""}${item.url ? `<p class="visible-url"><strong>URL:</strong> <a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">${escapeHtml(item.url)}</a></p>` : ""}</article>`).join("");
 
@@ -390,8 +438,9 @@ const html = `<!doctype html>
 <header><div><h1>키워드 현황</h1><p class="muted">${escapeHtml(daily.date)} · 커뮤니티 ${escapeHtml(daily.checkedAt)} · 검색/SNS ${escapeHtml(daily.channelCheckedAt ?? "미수집")}</p><p class="muted">스냅샷: ${escapeHtml(snapshotStatus)}</p></div><p class="muted">수집 ${seenCommunities.size}/${rules.communities.length}개 커뮤니티 · 내부 표본 ${items.length}건 · 가중치 ${weights === learnedWeights ? "학습됨" : "초기 고정값"}</p></header>
 <section class="stats"><div class="stat"><span>뜨는 주제</span><strong>${rising.length}</strong></div><div class="stat"><span>주요 주제</span><strong>${major.length}</strong></div><div class="stat"><span>데이터 완성도</span><strong>${dataQualityScore.toFixed(0)}%</strong></div></section>
 <section class="guide"><h2>표식은 이렇게 보면 돼요</h2><div class="guide-grid">
+<div class="guide-item"><span class="status status-new">최신글</span><p><strong>아직 비교 전인 최근 글</strong>첫 번째 측정이라 새로 들어왔는지는 아직 몰라요.</p></div>
 <div class="guide-item"><span class="status status-new">진입글</span><p><strong>방금 들어온 글</strong>지난번 인기 목록에는 없었는데 지금 새로 나타났어요.</p></div>
-<div class="guide-item"><span class="status status-rising">뜨는글</span><p><strong>지금 빨라지는 글</strong>조회수가 실제로 가장 빠르게 늘고 있어요.</p></div>
+<div class="guide-item"><span class="status status-rising">뜨는글</span><p><strong>자기 커뮤니티에서 빨라지는 글</strong>실제 속도와 반응·순위 상승을 함께 봐요.</p></div>
 <div class="guide-item"><span class="status status-major">주요글</span><p><strong>지금 중요한 글</strong>순위·조회·반응이 높고 오래 살아남거나 여러 곳에 퍼졌어요.</p></div>
 <div class="guide-item"><span class="prediction-badge">뜰 것 같은 글</span><p><strong>앞으로 더 커질 후보</strong>속도 40%·반응 30%·새로움 15%·확산 15%로 65점 이상이에요.</p></div>
 <div class="guide-item"><span class="badge">실측</span><p><strong>두 번 재본 진짜 속도</strong>직전 조회수와 지금 조회수를 비교했어요.</p></div>
@@ -400,12 +449,12 @@ const html = `<!doctype html>
 <div class="legend"><span class="status status-new">신규</span><span class="status status-rising">뜨는</span><span class="status status-major">주요</span><span class="status status-declining">하락</span><span class="source source-google">Google 검색</span><span class="source source-x">X</span><span class="source source-youtube">YouTube</span></div>
 <section class="section"><h2 class="section-title"><span class="dot hot"></span>뜨는 주제</h2><div class="topics">${topicCards(rising,"해당 없음","뜨는")}</div></section>
 <section class="section"><h2 class="section-title"><span class="dot"></span>주요 주제</h2><div class="topics">${topicCards(major,"해당 없음","주요")}</div></section>
-<section class="section"><h2>이번 주 무조건 검토할 영상 소재</h2><div class="videos">${videoCandidates.map((entry,index)=>`<article class="video"><span class="rank">${index+1}</span><div><strong>${escapeHtml(entry.topic)} · ${entry.trendScore.toFixed(1)}점</strong><div class="muted">${escapeHtml(entry.decision)} · ${entry.communities.length}개 커뮤니티 · 조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · ${entry.needsVerification?"팩트체크형":"설명·정리형"}</div></div><a href="${escapeHtml(entry.items[0]?.url)}" target="_blank" rel="noreferrer">대표 URL</a></article>`).join("")||'<p class="empty">해당 없음</p>'}</div></section>
+<section class="section"><h2>이번 주 무조건 검토할 영상 소재</h2><div class="videos">${videoCandidates.map((entry,index)=>`<article class="video"><span class="rank">${index+1}</span><div><strong>${escapeHtml(entry.topic)} · ${entry.trendScore.toFixed(1)}점</strong><div class="muted">${escapeHtml(entry.decision)} · ${entry.communities.length}개 커뮤니티 · 조회 ${formatCount(entry.totalViews, "회")} · ${entry.needsVerification?"팩트체크형":"설명·정리형"}</div></div><a href="${escapeHtml(entry.items[0]?.url)}" target="_blank" rel="noreferrer">대표 URL</a></article>`).join("")||'<p class="empty">해당 없음</p>'}</div></section>
 <section class="section"><h2>검색 트렌드 순위</h2><div class="topics">${channelCards(searchRankings)||'<p class="empty">미수집</p>'}</div></section>
 <section class="section"><h2>SNS 트렌드 순위</h2><div class="topics">${channelCards(socialRankings)||'<p class="empty">미수집</p>'}</div></section>
 <section class="section"><h2>채널 교차 키워드</h2><div class="topics">${crossChannelTopics.map((entry)=>`<article class="topic-card"><h3>${escapeHtml(entry.keyword)}</h3><p>${escapeHtml(entry.channels.join(" · "))}</p></article>`).join("")||'<p class="empty">현재 교차 키워드 없음</p>'}</div></section>
 <section class="section"><h2>뜰 것 같은 영상</h2><p class="muted">최근 12시간 후보 중 조회속도·반응률·최신성·파급력을 결합한 예측입니다.</p><div class="videos">${predictionCards||'<p class="empty">현재 기준 충족 후보 없음</p>'}</div></section>
-<section class="section"><h2>커뮤니티별 대표 글</h2><p class="muted">진입글은 직전 스냅샷 신규, 뜨는글은 실제 구간 조회속도, 주요글은 순위·조회·반응·지속성·교차 확산으로 선정합니다. 첫 측정은 추정값입니다.</p><div class="community-list">${communitySelections.map(({community,posts})=>`<article class="community-group"><h3>${escapeHtml(community.name)} <span class="badge">${posts.length}개 글</span></h3>${posts.map((entry)=>{const {label,item,viewsPerHour}=entry;const predicted=likelyPostByKey.get(postKey(item));const labelClass=label==="진입글"?"new":label==="뜨는글"?"rising":"major";return `<div class="community-row"><span class="status status-${labelClass}">${label}</span><span><strong>${escapeHtml(item.title)}</strong><br><small>내부 ${escapeHtml(item.rank??"-")}위 · 조회 ${item.views===undefined?"확인 불가":`${Number(item.views).toLocaleString("ko-KR")}회`} · ${entry.velocityMeasured?"실측":"추정"} 시간당 ${Math.round(viewsPerHour).toLocaleString("ko-KR")}회${entry.snapshot?.rankChange>0?` · 순위 ▲${entry.snapshot.rankChange}`:""}</small>${predicted?`<span class="prediction-badge">뜰 것 같은 글 ${predicted.score.toFixed(1)}점</span>`:""}</span><a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">원문 보기</a></div>`}).join("")}</article>`).join("")}</div></section>
+<section class="section"><h2>커뮤니티별 대표 글</h2><p class="muted">첫 측정은 최신글만 표시하고, 두 번째부터 진입글을 판정합니다. 뜨는글은 커뮤니티 규모를 보정한 상승점수, 주요글은 순위·조회·반응·지속성·교차 확산으로 선정합니다.</p><div class="community-list">${communitySelections.map(({community,posts})=>`<article class="community-group"><h3>${escapeHtml(community.name)} <span class="badge">${posts.length}개 글</span></h3>${posts.map((entry)=>{const {label,item,viewsPerHour}=entry;const predicted=likelyPostByKey.get(postKey(item));const labelClass=label==="진입글"||label==="최신글"?"new":label==="뜨는글"?"rising":"major";return `<div class="community-row"><span class="status status-${labelClass}">${label}</span><span><strong>${escapeHtml(item.title)}</strong><br><small>내부 ${escapeHtml(item.rank??"-")}위 · 조회 ${formatCount(observedViews(item),"회")} · ${entry.velocityMeasured?"실측":"추정"} 시간당 ${formatVelocity(viewsPerHour)}${hasNumber(entry.risingScore)?` · 뜨는 점수 ${entry.risingScore.toFixed(0)}`:""}${entry.snapshot?.rankChange>0?` · 순위 ▲${entry.snapshot.rankChange}`:""}</small>${predicted?`<span class="prediction-badge">뜰 것 같은 글 ${predicted.score.toFixed(1)}점</span>`:""}</span><a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">원문 보기</a></div>`}).join("")}</article>`).join("")}</div></section>
 </main></body></html>`;
 
 const htmlPath = resolve(projectRoot, `reports/${daily.date}.html`);
