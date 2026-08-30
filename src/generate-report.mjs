@@ -189,7 +189,13 @@ const addMovement = (entries, previousEntries = []) => {
   const previousByKey = new Map(previousEntries.map((item) => [rankingKey(item), Number(item.rank)]));
   return entries.map((item) => {
     const previousRank = previousByKey.get(rankingKey(item));
-    if (!Number.isFinite(previousRank)) return { ...item, movement: "NEW", movementClass: "new", comparison: "전일 신규" };
+    if (!Number.isFinite(previousRank)) return {
+      ...item,
+      movement: "NEW",
+      movementClass: "new",
+      comparison: "전일 신규",
+      movementAnalysis: item.analysis ?? `전일 ${item.source} 상위 목록에 없었으나 현재 ${item.rank}위로 신규 진입했습니다. 공개 데이터만으로 구체적인 촉발 이슈는 확인되지 않았습니다.`
+    };
     const change = previousRank - Number(item.rank);
     if (change > 0) return {
       ...item,
@@ -204,7 +210,8 @@ const addMovement = (entries, previousEntries = []) => {
 };
 const searchRankings = addMovement(daily.channels?.search ?? [], previousDaily?.channels?.search ?? []);
 const socialRankings = addMovement(daily.channels?.social ?? [], previousDaily?.channels?.social ?? []);
-const formatChannelRanking = (item, index) => `- **${item.rank ?? index + 1}위 · ${item.keyword}** · **${item.movement}** — ${item.score === undefined ? "" : `${Number(item.score).toFixed(1)}점 · `}${item.source ?? "출처 미수집"}${item.metric ? ` · ${item.metric}` : ""} · ${item.comparison}${item.movementAnalysis ? `\n  - 상승 분석: ${item.movementAnalysis}` : ""}${item.url ? `\n  - URL: ${item.url}` : ""}`;
+const analysisLabel = (item) => item.movement === "NEW" ? "신규 분석" : "상승 분석";
+const formatChannelRanking = (item, index) => `- **${item.rank ?? index + 1}위 · ${item.keyword}** · **${item.movement}** — ${item.score === undefined ? "" : `${Number(item.score).toFixed(1)}점 · `}${item.source ?? "출처 미수집"}${item.metric ? ` · ${item.metric}` : ""} · ${item.comparison}${item.movementAnalysis ? `\n  - ${analysisLabel(item)}: ${item.movementAnalysis}` : ""}${item.url ? `\n  - URL: ${item.url}` : ""}`;
 const communityTopics = new Set(topics.map((entry) => entry.topic));
 const searchTopics = new Set(searchRankings.map((entry) => entry.keyword));
 const socialTopics = new Set(socialRankings.map((entry) => entry.keyword));
@@ -290,7 +297,7 @@ const researchCards = videoCandidates.map((entry) => {
 }).join("");
 const predictionCards = predictedVideos.map((entry,index)=>`<article class="video"><span class="rank">${index+1}</span><div><strong>${escapeHtml(entry.topic)} · 예측 ${entry.predictionScore.toFixed(1)}점</strong><div class="muted">현재 조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · 시간당 ${Math.round(entry.viewsPerHour).toLocaleString("ko-KR")}회 · 조회속도 ${entry.scores.viewVelocityScore.toFixed(0)} · 반응 ${entry.scores.commentsAndEngagementScore.toFixed(0)}${entry.needsVerification?" · 사실 확인 필요":""}</div></div><a href="${escapeHtml(entry.items[0]?.url)}" target="_blank" rel="noreferrer">대표 URL</a></article>`).join("");
 const sourceClass = (source = "") => source.includes("Google") ? "google" : source.includes("YouTube") ? "youtube" : source.includes("X ") ? "x" : "default";
-const channelCards = (entries) => entries.map((item,index)=>`<article class="topic-card channel-${sourceClass(item.source)}"><div class="topic-head"><h3>${escapeHtml(item.rank ?? index+1)}위 · ${escapeHtml(item.keyword)}</h3><div class="badges"><span class="status status-${escapeHtml(item.movementClass)}">${escapeHtml(item.movement)}</span><span class="source source-${sourceClass(item.source)}">${escapeHtml(item.source ?? "출처 미수집")}</span></div></div><p>${item.score === undefined ? "" : `${Number(item.score).toFixed(1)}점 · `}${item.metric ? escapeHtml(item.metric) : ""}</p><p class="confidence">${escapeHtml(item.comparison)} · 전일 리포트 비교</p>${item.movementAnalysis ? `<p class="analysis"><strong>상승 분석:</strong> ${escapeHtml(item.movementAnalysis)}</p>` : ""}${item.url ? `<div class="links"><a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">원문</a></div>` : ""}</article>`).join("");
+const channelCards = (entries) => entries.map((item,index)=>`<article class="topic-card channel-${sourceClass(item.source)}"><div class="topic-head"><h3>${escapeHtml(item.rank ?? index+1)}위 · ${escapeHtml(item.keyword)}</h3><div class="badges"><span class="status status-${escapeHtml(item.movementClass)}">${escapeHtml(item.movement)}</span><span class="source source-${sourceClass(item.source)}">${escapeHtml(item.source ?? "출처 미수집")}</span></div></div><p>${item.score === undefined ? "" : `${Number(item.score).toFixed(1)}점 · `}${item.metric ? escapeHtml(item.metric) : ""}</p><p class="confidence">${escapeHtml(item.comparison)} · 전일 리포트 비교</p>${item.movementAnalysis ? `<p class="analysis"><strong>${analysisLabel(item)}:</strong> ${escapeHtml(item.movementAnalysis)}</p>` : ""}${item.url ? `<div class="links"><a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">원문</a></div>` : ""}</article>`).join("");
 
 const html = `<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
