@@ -3,6 +3,7 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { compareSnapshots, postKey } from "./lib/snapshot-metrics.mjs";
 import { compactItem, compactSnapshot, snapshotFileName } from "./lib/compact-snapshot.mjs";
+import { selectMoamoaCommunities, shouldCollectSocialSource, todayBestCommunityIds } from "./lib/snapshot-plan.mjs";
 import { normalizeTitle } from "./lib/topic-normalizer.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -30,6 +31,7 @@ const checkedAt = new Intl.DateTimeFormat("sv-SE", {
 }).format(now).replace(" ", "T") + "+09:00";
 
 const communityIds = new Set(rules.communities.map((community) => community.id));
+const lowCostSnapshotMode = snapshotOnly;
 const todayBestMap = {
   "82C": "82cook",
   ARC: "arca",
@@ -169,7 +171,8 @@ const collectionStatus = {
   search: { status: "collecting", providers: ["googleTrends"] },
   youtube: { status: "pending", providers: ["youtube"] },
   x: { status: "pending", providers: ["x"] },
-  disabledSources: channelConfig.disabledSources ?? []
+  disabledSources: channelConfig.disabledSources ?? [],
+  mode: lowCostSnapshotMode ? "snapshot-only-low-cost" : "full-collect"
 };
 
 const groupedUrl = `https://todaybeststory.com/api/v2/communities/posts/grouped-best?startDate=${date}&endDate=${date}&topN=10`;
@@ -203,9 +206,12 @@ for (const community of grouped.communities ?? []) {
   });
 }
 
-const moamoaIds = rules.communities
-  .filter((community) => community.sources.includes("moamoa"))
-  .map((community) => community.id);
+const moamoaIds = selectMoamoaCommunities({
+  snapshotOnly: lowCostSnapshotMode,
+  rules,
+  collectedCommunityIds: new Set(itemsByCommunity.keys()),
+  todayBestIds: todayBestCommunityIds(todayBestMap)
+});
 for (const id of moamoaIds) {
   try {
     const posts = await fetch(`https://moamoa.kr/api?scope=24&sort=popular&sites=${id}`).then((response) => {
@@ -248,8 +254,9 @@ for (const id of moamoaIds) {
 }
 collectionStatus.community = {
   status: "collected",
-  providers: ["todayBest", "moamoa"],
-  communityCount: itemsByCommunity.size
+  providers: ["todayBest", ...(moamoaIds.length ? ["moamoa"] : [])],
+  communityCount: itemsByCommunity.size,
+  moamoaRequests: moamoaIds.length
 };
 
 function extractJsonBlock(html, marker) {
@@ -354,21 +361,29 @@ const searchEntries = [...rss.matchAll(/<item>[\s\S]*?<title>(?:<!\[CDATA\[)?(.*
 collectionStatus.search = { status: "collected", providers: ["googleTrends"], count: searchEntries.length };
 
 let youtubeEntries = [];
-try {
-  youtubeEntries = await collectYoutubeTrending();
-  collectionStatus.youtube = { status: "collected", providers: ["youtube"], count: youtubeEntries.length };
-} catch (error) {
-  collectionStatus.youtube = { status: "uncollected", providers: ["youtube"], reason: error.message };
-  console.warn(`YouTube: ${error.message}`);
+if (shouldCollectSocialSource({ snapshotOnly: lowCostSnapshotMode, source: "youtube" })) {
+  try {
+    youtubeEntries = await collectYoutubeTrending();
+    collectionStatus.youtube = { status: "collected", providers: ["youtube"], count: youtubeEntries.length };
+  } catch (error) {
+    collectionStatus.youtube = { status: "uncollected", providers: ["youtube"], reason: error.message };
+    console.warn(`YouTube: ${error.message}`);
+  }
+} else {
+  collectionStatus.youtube = { status: "skipped", providers: ["youtube"], reason: "snapshot-only 저비용 모드에서는 YouTube를 수집하지 않습니다" };
 }
 
 let xEntries = [];
-try {
-  xEntries = await collectXTrending();
-  collectionStatus.x = { status: "collected", providers: ["x"], count: xEntries.length };
-} catch (error) {
-  collectionStatus.x = { status: "uncollected", providers: ["x"], reason: error.message };
-  console.warn(`X: ${error.message}`);
+if (shouldCollectSocialSource({ snapshotOnly: lowCostSnapshotMode, source: "x" })) {
+  try {
+    xEntries = await collectXTrending();
+    collectionStatus.x = { status: "collected", providers: ["x"], count: xEntries.length };
+  } catch (error) {
+    collectionStatus.x = { status: "uncollected", providers: ["x"], reason: error.message };
+    console.warn(`X: ${error.message}`);
+  }
+} else {
+  collectionStatus.x = { status: "skipped", providers: ["x"], reason: "snapshot-only 저비용 모드에서는 X를 수집하지 않습니다" };
 }
 
 const items = [...itemsByCommunity.entries()].flatMap(([community, posts]) => {
