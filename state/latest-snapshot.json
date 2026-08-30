@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-08-30",
+  "checkedAt": "2026-08-30T15:10:26+09:00",
+  "snapshot": "snapshots/2026-08-30/151026.json",
+  "previousSnapshotCheckedAt": "2026-08-30T15:08:15+09:00",
+  "counts": {
+    "communities": 19,
+    "posts": 181,
+    "search": 10,
+    "youtube": 0,
+    "x": 0,
+    "measured": 181,
+    "new": 0
+  },
+  "status": {
+    "community": "collected",
+    "search": "collected",
+    "youtube": "uncollected",
+    "x": "uncollected"
+  }
+}

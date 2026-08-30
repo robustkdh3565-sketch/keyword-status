@@ -2,6 +2,7 @@ import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { compareSnapshots, postKey } from "./lib/snapshot-metrics.mjs";
+import { compactItem, compactSnapshot, snapshotFileName } from "./lib/compact-snapshot.mjs";
 import { normalizeTitle } from "./lib/topic-normalizer.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -423,13 +424,13 @@ const daily = {
     youtube: collectionStatus.youtube.status,
     x: collectionStatus.x.status
   },
-  items: itemsWithComparison
+  items: itemsWithComparison.map(compactItem)
 };
 
 const output = resolve(root, "data", `${date}.json`);
-const snapshotName = `${checkedAt.slice(11, 19).replaceAll(":", "")}.json`;
+const snapshotName = snapshotFileName(checkedAt, rules.snapshots?.internalTimes);
 const snapshotPath = resolve(snapshotDirectory, snapshotName);
-const snapshotPayload = {
+const snapshotPayload = compactSnapshot({
   date,
   checkedAt,
   snapshotOnly,
@@ -455,17 +456,32 @@ const snapshotPayload = {
     }
   },
   items: itemsWithComparison
-};
+});
 
 await mkdir(snapshotDirectory, { recursive: true });
-await writeFile(snapshotPath, `${JSON.stringify(snapshotPayload, null, 2)}\n`, "utf8");
+await writeFile(snapshotPath, `${JSON.stringify(snapshotPayload)}\n`, "utf8");
 if (!snapshotOnly) {
   await writeFile(output, `${JSON.stringify(daily, null, 2)}\n`, "utf8");
 }
 
+const measuredCount = [...comparison.metrics.values()].filter((metric) => metric.measured).length;
+const newCount = [...comparison.metrics.values()].filter((metric) => metric.isNew).length;
+const latestState = {
+  schemaVersion: 1,
+  date,
+  checkedAt,
+  snapshot: `snapshots/${date}/${snapshotName}`,
+  previousSnapshotCheckedAt: comparison.previous?.checkedAt ?? null,
+  counts: { communities: itemsByCommunity.size, posts: items.length, search: searchEntries.length, youtube: youtubeEntries.length, x: xEntries.length, measured: measuredCount, new: newCount },
+  status: Object.fromEntries(Object.entries(collectionStatus).filter(([key]) => key !== "disabledSources").map(([key, value]) => [key, value.status]))
+};
+const stateDirectory = resolve(root, "state");
+await mkdir(stateDirectory, { recursive: true });
+await writeFile(resolve(stateDirectory, "latest-snapshot.json"), `${JSON.stringify(latestState, null, 2)}\n`, "utf8");
+
 console.log([
   snapshotOnly ? "내부 스냅샷 전용 실행" : output,
   `스냅샷 ${snapshotPath}`,
-  `커뮤니티 ${itemsByCommunity.size}개 · 게시물 ${items.length}건 · 검색 ${searchEntries.length}건 · YouTube ${youtubeEntries.length}건 · X ${xEntries.length}건`,
-  `직전 스냅샷 ${comparison.previous?.checkedAt ?? "없음"}`
+  `커뮤니티 ${itemsByCommunity.size} · 글 ${items.length} · 검색 ${searchEntries.length} · YouTube ${youtubeEntries.length} · X ${xEntries.length}`,
+  `실측 ${measuredCount} · 신규 ${newCount} · 직전 ${comparison.previous?.checkedAt ?? "없음"}`
 ].join("\n"));

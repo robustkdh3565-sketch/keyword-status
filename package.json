@@ -6,6 +6,7 @@
   "scripts": {
     "collect": "node src/collect-daily.mjs",
     "snapshot": "node src/collect-daily.mjs --snapshot-only",
+    "snapshots:compact": "node src/compact-snapshots.mjs",
     "report": "node src/generate-report.mjs",
     "check": "node src/generate-report.mjs --check",
     "train": "node src/train-model.mjs",
