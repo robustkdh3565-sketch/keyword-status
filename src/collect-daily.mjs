@@ -1,8 +1,9 @@
-import { readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const snapshotOnly = process.argv.includes("--snapshot-only");
 const rules = JSON.parse(await readFile(resolve(root, "config/rules.json"), "utf8"));
 const now = new Date();
 const parts = new Intl.DateTimeFormat("en-CA", {
@@ -55,6 +56,7 @@ for (const community of grouped.communities ?? []) {
     title: post.postTitle,
     url: post.postUrl,
     publishedAt: post.postDatetime ?? checkedAt,
+    publishedAtSource: post.postDatetime ? "source" : "estimated",
     views: post.readCount,
     comments: post.commentCount,
     reactions: post.upvoteCount,
@@ -85,6 +87,7 @@ for (const id of moamoaIds) {
         "82cook": `https://www.82cook.com/entiz/read.php?bn=15&num=${post.id}`
       })[id],
       publishedAt: post.date ?? checkedAt,
+      publishedAtSource: post.date ? "source" : "estimated",
       views: post.views,
       comments: post.comments,
       reactions: Math.max(0, Number(post.point ?? 0) - Number(post.views ?? 0)),
@@ -114,20 +117,22 @@ const search = [...rss.matchAll(/<item>[\s\S]*?<title>(?:<!\[CDATA\[)?(.*?)(?:\]
     url: `https://trends.google.com/trends/explore?date=now%201-d&geo=KR&q=${encodeURIComponent(match[1])}`
   }));
 
-const social = [
-  [1, "$CHUMP", "X 한국", "실시간 1위", "https://x.com/search?q=%24CHUMP"],
-  [2, "라이브뷰잉", "X 한국", "실시간 2위", "https://x.com/search?q=%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%B7%B0%EC%9E%89"],
-  [3, "#ENHYPEN23rdWin", "X 한국", "실시간 3위", "https://x.com/search?q=%23ENHYPEN23rdWin"],
-  [4, "#HoYoLAND2026", "X 한국", "실시간 4위", "https://x.com/search?q=%23HoYoLAND2026"],
-  [5, "#호요랜드2026", "X 한국", "실시간 5위", "https://x.com/search?q=%23%ED%98%B8%EC%9A%94%EB%9E%9C%EB%93%9C2026"],
-  [1, "HEAVEN JENNIE", "YouTube 한국", "인기 1위 · 조회 349,000 · 시간당 8,000", "https://youtube.com/watch?v=LNk-BX38FzQ"],
-  [2, "재혼 황후 티저 예고편", "YouTube 한국", "인기 2위 · 조회 1,500,000 · 시간당 16,000", "https://youtube.com/watch?v=CDhtpYWNEuk"],
-  [3, "T1 vs BFX LCK 플레이오프", "YouTube 한국", "인기 3위 · 조회 2,000,000 · 시간당 185,000", "https://youtube.com/watch?v=LSCnrGz5-HU"],
-  [4, "송하예 행복한 나를 2026", "YouTube 한국", "인기 4위 · 조회 302,000 · 시간당 4,800", "https://youtube.com/watch?v=Gk8F8waA0tM"],
-  [5, "가능한 사랑 공식 예고편", "YouTube 한국", "인기 5위 · 조회 898,000 · 시간당 12,000", "https://youtube.com/watch?v=W1kDOqqWNiw"]
-].map(([rank, keyword, source, metric, url]) => ({ rank, keyword, source, metric, url }));
+// YouTube와 X는 인증된 실시간 수집 결과가 연결되기 전까지 예시값을 사용하지 않는다.
+const social = [];
 
-const daily = { date, checkedAt, channelCheckedAt: checkedAt, research: {}, channels: { search, social }, items };
+const daily = {
+  date,
+  checkedAt,
+  channelCheckedAt: checkedAt,
+  research: {},
+  channels: { search, social },
+  collectionStatus: { community: "collected", search: "collected", youtube: "uncollected", x: "uncollected" },
+  items
+};
 const output = resolve(root, "data", `${date}.json`);
-await writeFile(output, `${JSON.stringify(daily, null, 2)}\n`, "utf8");
-console.log(`${output}\n커뮤니티 ${itemsByCommunity.size}개 · 게시물 ${items.length}건 · 검색 ${search.length}건 · SNS ${social.length}건`);
+const snapshotDirectory = resolve(root, "snapshots", date);
+const snapshotName = `${checkedAt.slice(11, 19).replaceAll(":", "")}.json`;
+await mkdir(snapshotDirectory, { recursive: true });
+await writeFile(resolve(snapshotDirectory, snapshotName), `${JSON.stringify({ date, checkedAt, channels: daily.channels, items }, null, 2)}\n`, "utf8");
+if (!snapshotOnly) await writeFile(output, `${JSON.stringify(daily, null, 2)}\n`, "utf8");
+console.log(`${snapshotOnly ? "내부 스냅샷 전용" : output}\n스냅샷 ${resolve(snapshotDirectory, snapshotName)}\n커뮤니티 ${itemsByCommunity.size}개 · 게시물 ${items.length}건 · 검색 ${search.length}건 · SNS ${social.length}건`);

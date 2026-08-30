@@ -2,6 +2,7 @@ import { readFile, writeFile, mkdir, readdir } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { clusterItems, normalizeTitle } from "./lib/topic-normalizer.mjs";
+import { compareSnapshots, postKey } from "./lib/snapshot-metrics.mjs";
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const inputArg = process.argv.find((arg) => arg.endsWith(".json"));
@@ -44,6 +45,16 @@ if (checkOnly) {
 
 const checkedAt = new Date(daily.checkedAt);
 const items = clusterItems(daily.items, rules.normalization);
+const snapshotDirectory = resolve(projectRoot, "snapshots", daily.date);
+const snapshotFiles = await readdir(snapshotDirectory).catch(() => []);
+const snapshotHistory = await Promise.all(snapshotFiles
+  .filter((name) => name.endsWith(".json"))
+  .map((name) => readFile(resolve(snapshotDirectory, name), "utf8").then(JSON.parse).catch(() => null)));
+const snapshotComparison = compareSnapshots({ checkedAt: daily.checkedAt, items }, snapshotHistory.filter(Boolean));
+const snapshotMetricFor = (item) => snapshotComparison.metrics.get(postKey(item));
+const snapshotStatus = snapshotComparison.previous
+  ? `${snapshotComparison.previous.checkedAt} 대비 실제 증가량 측정`
+  : "첫 스냅샷 또는 이전 측정 없음 · 속도는 게시 후 평균 추정";
 const qualityFields = ["views", "comments", "reactions", "rank", "candidateCount", "publishedAt"];
 const qualityPresent = items.reduce((sum, item) => sum + qualityFields.filter((field) => item[field] !== undefined && item[field] !== null).length, 0);
 const dataQualityScore = items.length ? (qualityPresent / (items.length * qualityFields.length)) * 100 : 0;
@@ -66,6 +77,8 @@ const commentValues = itemMetrics.map((entry) => entry.comments);
 const reactionValues = itemMetrics.map((entry) => entry.reactions);
 const engagementValues = itemMetrics.map((entry) => entry.engagement);
 const hourlyViewValues = items.map((item) => {
+  const measured = snapshotMetricFor(item);
+  if (measured?.measured) return measured.viewsPerHour;
   const ageHours = Math.max(0.5, (checkedAt - new Date(item.publishedAt)) / 3_600_000);
   return Number(item.views || 0) / ageHours;
 });
@@ -101,9 +114,10 @@ const topics = [...groups.entries()].map(([topic, items]) => {
     const ageHours = Math.max(0, (checkedAt - new Date(item.publishedAt)) / 3_600_000);
     const freshnessScore = Math.max(0, Math.min(100, 100 * Math.exp((-Math.log(2) * ageHours) / 12)));
     const hoursElapsed = Math.max(0.5, ageHours);
-    const viewsPerHour = Number(item.views || 0) / hoursElapsed;
+    const measured = snapshotMetricFor(item);
+    const viewsPerHour = measured?.measured ? measured.viewsPerHour : Number(item.views || 0) / hoursElapsed;
     const viewVelocityScore = percentile(viewsPerHour, hourlyViewValues);
-    return { ...metrics, freshnessScore, hoursElapsed, viewsPerHour, viewVelocityScore };
+    return { ...metrics, freshnessScore, hoursElapsed, viewsPerHour, viewVelocityScore, velocityMeasured: Boolean(measured?.measured) };
   });
   const maxOf = (key) => Math.max(...featureRows.map((row) => row[key]));
   const commentScore = maxOf("commentScore");
@@ -140,6 +154,7 @@ const topics = [...groups.entries()].map(([topic, items]) => {
     predictionScore,
     decision,
     viewsPerHour: Math.max(...featureRows.map((row) => row.viewsPerHour)),
+    velocityMeasured: featureRows.some((row) => row.velocityMeasured),
     scores: { impactScore, commentsAndEngagementScore, reactionScore, viewScore, viewVelocityScore, viewPerformanceScore, freshnessScore }
   };
 });
@@ -159,7 +174,7 @@ const formatTopic = (entry) => {
   const names = entry.communities.map((id) => communityMap.get(id)?.name ?? id).join(" · ");
   const verification = entry.needsVerification ? " · 사실 확인 필요" : "";
   const urls = entry.items.map((item) => `[${communityMap.get(item.community)?.name ?? item.community}](${item.url})`).join(" · ");
-  return `- **${entry.topic}** — ${entry.trendScore.toFixed(1)}점 · ${entry.decision} · ${names} · 조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · 시간당 ${Math.round(entry.viewsPerHour).toLocaleString("ko-KR")}회 · 댓글 ${entry.totalComments.toLocaleString("ko-KR")}개${verification}\n  - 커뮤니티 세부점수: 파급력 ${entry.scores.impactScore.toFixed(0)} · 조회성과 ${entry.scores.viewPerformanceScore.toFixed(0)} · 댓글/반응 ${entry.scores.commentsAndEngagementScore.toFixed(0)} · 최신성 ${entry.scores.freshnessScore.toFixed(0)}\n  - 원문: ${urls}`;
+  return `- **${entry.topic}** — ${entry.trendScore.toFixed(1)}점 · ${entry.decision} · ${names} · 조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · ${entry.velocityMeasured ? "실측" : "추정"} 시간당 ${Math.round(entry.viewsPerHour).toLocaleString("ko-KR")}회 · 댓글 ${entry.totalComments.toLocaleString("ko-KR")}개${verification}\n  - 커뮤니티 세부점수: 파급력 ${entry.scores.impactScore.toFixed(0)} · 조회성과 ${entry.scores.viewPerformanceScore.toFixed(0)} · 댓글/반응 ${entry.scores.commentsAndEngagementScore.toFixed(0)} · 최신성 ${entry.scores.freshnessScore.toFixed(0)}\n  - 원문: ${urls}`;
 };
 
 const videoCandidates = topics
@@ -176,12 +191,24 @@ const predictedVideos = topics
   .slice(0, rules.classification.predictionMaxTopics);
 const predictedByUrl = new Map(predictedVideos.flatMap((entry) => entry.items.map((item) => [item.url, entry])));
 const viewsPerHourFor = (item) => {
+  const measured = snapshotMetricFor(item);
+  if (measured?.measured) return measured.viewsPerHour;
   const ageHours = Math.max(0.5, (checkedAt - new Date(item.publishedAt)) / 3_600_000);
   return Number(item.views || 0) / ageHours;
 };
 const communitySelections = rules.communities.map((community) => {
   const candidates = items.filter((item) => item.community === community.id);
   if (!candidates.length) return null;
+  const candidateViews = candidates.map((item) => Number(item.views || 0));
+  const candidateEngagement = candidates.map((item) => ((Number(item.comments || 0) + Number(item.reactions || 0)) / Math.max(1, Number(item.views || 0))) * 1000);
+  const majorScore = (item) => {
+    const rankScore = ((Number(item.candidateCount || candidates.length) - Number(item.rank || candidates.length) + 1) / Math.max(1, Number(item.candidateCount || candidates.length))) * 100;
+    const engagement = ((Number(item.comments || 0) + Number(item.reactions || 0)) / Math.max(1, Number(item.views || 0))) * 1000;
+    const snapshot = snapshotMetricFor(item);
+    const persistenceScore = snapshotComparison.previous ? (snapshot && !snapshot.isNew ? 100 : 0) : 50;
+    const crossSpreadScore = Math.min(100, (groups.get(item.topic)?.length ?? 1) * 25);
+    return rankScore * 0.30 + percentile(Number(item.views || 0), candidateViews) * 0.25 + percentile(engagement, candidateEngagement) * 0.20 + persistenceScore * 0.15 + crossSpreadScore * 0.10;
+  };
   const used = new Set();
   const usedTitles = new Set();
   const choose = (label, sorted) => {
@@ -189,11 +216,14 @@ const communitySelections = rules.communities.map((community) => {
     if (!item) return null;
     used.add(item.url);
     usedTitles.add(normalizeTitle(item.title));
-    return { label, item, viewsPerHour: viewsPerHourFor(item) };
+    const snapshot = snapshotMetricFor(item);
+    return { label, item, viewsPerHour: viewsPerHourFor(item), velocityMeasured: Boolean(snapshot?.measured), snapshot };
   };
-  const majorPost = choose("주요글", [...candidates].sort((a, b) => Number(a.rank || 99) - Number(b.rank || 99)));
-  const risingPost = choose("뜨는글", [...candidates].sort((a, b) => viewsPerHourFor(b) - viewsPerHourFor(a)));
-  const entryPost = choose("진입글", [...candidates].sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)));
+  const majorPost = choose("주요글", [...candidates].sort((a, b) => majorScore(b) - majorScore(a)));
+  const risingPool = snapshotComparison.previous ? candidates.filter((item) => snapshotMetricFor(item)?.measured) : candidates;
+  const risingPost = choose("뜨는글", [...risingPool].sort((a, b) => viewsPerHourFor(b) - viewsPerHourFor(a)));
+  const entryPool = snapshotComparison.previous ? candidates.filter((item) => snapshotMetricFor(item)?.isNew) : candidates;
+  const entryPost = choose("진입글", [...entryPool].sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)));
   return { community, posts: [entryPost, risingPost, majorPost].filter(Boolean) };
 }).filter(Boolean);
 
@@ -258,6 +288,7 @@ const report = [
   `# ${daily.date} 키워드 현황`,
   "",
   `확인 시각: ${daily.checkedAt}`,
+  `스냅샷 상태: ${snapshotStatus}`,
   `검색·SNS 확인 시각: ${daily.channelCheckedAt ?? "미수집"}`,
   `데이터 완성도: ${dataQualityScore.toFixed(1)}% (조회·댓글·공감·순위·후보수·게시시각 기준)`,
   `트렌드 점수 가중치: ${weights === learnedWeights ? `학습됨 (${learnedModel.trainedAt})` : "초기 고정값"}`,
@@ -296,9 +327,10 @@ const report = [
   "",
   "## 커뮤니티별 대표 글",
   "",
-  ...communitySelections.map(({ community, posts }) => `### ${community.name}\n\n${posts.map(({ label, item, viewsPerHour }) => {
+  ...communitySelections.map(({ community, posts }) => `### ${community.name}\n\n${posts.map((entry) => {
+    const { label, item, viewsPerHour } = entry;
     const predicted = predictedByUrl.get(item.url);
-    return `- **${label}** — [${item.title}](${item.url}) · 내부 ${item.rank ?? "-"}위 · 조회 ${item.views === undefined ? "확인 불가" : `${Number(item.views).toLocaleString("ko-KR")}회`} · 시간당 ${Math.round(viewsPerHour).toLocaleString("ko-KR")}회${predicted ? ` · **뜰 가능성 ${predicted.predictionScore.toFixed(1)}점**` : ""}`;
+    return `- **${label}** — [${item.title}](${item.url}) · 내부 ${item.rank ?? "-"}위 · 조회 ${item.views === undefined ? "확인 불가" : `${Number(item.views).toLocaleString("ko-KR")}회`} · ${entry.velocityMeasured ? "실측" : "추정"} 시간당 ${Math.round(viewsPerHour).toLocaleString("ko-KR")}회${entry.snapshot?.rankChange > 0 ? ` · 순위 ▲${entry.snapshot.rankChange}` : ""}${predicted ? ` · **뜰 가능성 ${predicted.predictionScore.toFixed(1)}점**` : ""}`;
   }).join("\n")}`)
 ].join("\n");
 
@@ -311,7 +343,7 @@ const topicCards = (entries, emptyText, status = "신규") => entries.length ? e
   <article class="topic-card">
     <div class="topic-head"><h3>${escapeHtml(entry.topic)} · ${entry.trendScore.toFixed(1)}점</h3><div class="badges"><span class="status status-${status === "뜨는" ? "rising" : status === "주요" ? "major" : status === "하락" ? "declining" : "new"}">${status}</span>${entry.needsVerification ? '<span class="badge warning">확인 필요</span>' : '<span class="badge">검증 가능</span>'}</div></div>
     <p>${escapeHtml(entry.decision)} · ${entry.communities.map((id) => escapeHtml(communityMap.get(id)?.name ?? id)).join(" · ")} · 조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · 댓글 ${entry.totalComments.toLocaleString("ko-KR")}개</p>
-    <p>조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · 시간당 ${Math.round(entry.viewsPerHour).toLocaleString("ko-KR")}회 · 파급력 ${entry.scores.impactScore.toFixed(0)} · 조회성과 ${entry.scores.viewPerformanceScore.toFixed(0)} · 댓글/반응 ${entry.scores.commentsAndEngagementScore.toFixed(0)} · 최신성 ${entry.scores.freshnessScore.toFixed(0)}</p>
+    <p>조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · ${entry.velocityMeasured ? "실측" : "추정"} 시간당 ${Math.round(entry.viewsPerHour).toLocaleString("ko-KR")}회 · 파급력 ${entry.scores.impactScore.toFixed(0)} · 조회성과 ${entry.scores.viewPerformanceScore.toFixed(0)} · 댓글/반응 ${entry.scores.commentsAndEngagementScore.toFixed(0)} · 최신성 ${entry.scores.freshnessScore.toFixed(0)}</p>
     <div class="links">${entry.items.map((item) => `<a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">${escapeHtml(communityMap.get(item.community)?.name ?? item.community)} 원문</a>`).join("")}</div>
   </article>`).join("") : `<p class="empty">${escapeHtml(emptyText)}</p>`;
 
@@ -321,7 +353,7 @@ const researchCards = videoCandidates.map((entry) => {
   const links = [research.naverTrend, research.googleTrend, research.youtube, research.naverSearch].filter((value) => value?.url);
   return `<article class="topic-card"><h3>${escapeHtml(entry.topic)}</h3><p>확장어: ${escapeHtml(research.expandedKeywords?.join(" · ") || "없음")}</p><p>네이버 ${escapeHtml(research.naverTrend?.delta24h ?? "-")}% · Google ${escapeHtml(research.googleTrend?.delta24h ?? "-")}% · YouTube 기회 ${escapeHtml(research.youtube?.opportunityScore ?? "-")}점</p><div class="links">${links.map((value) => `<a href="${escapeHtml(value.url)}" target="_blank" rel="noreferrer">검증 URL</a>`).join("")}</div></article>`;
 }).join("");
-const predictionCards = predictedVideos.map((entry,index)=>`<article class="video"><span class="rank">${index+1}</span><div><strong>${escapeHtml(entry.topic)} · 예측 ${entry.predictionScore.toFixed(1)}점</strong><div class="muted">현재 조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · 시간당 ${Math.round(entry.viewsPerHour).toLocaleString("ko-KR")}회 · 조회속도 ${entry.scores.viewVelocityScore.toFixed(0)} · 반응 ${entry.scores.commentsAndEngagementScore.toFixed(0)}${entry.needsVerification?" · 사실 확인 필요":""}</div></div><a href="${escapeHtml(entry.items[0]?.url)}" target="_blank" rel="noreferrer">대표 URL</a></article>`).join("");
+const predictionCards = predictedVideos.map((entry,index)=>`<article class="video"><span class="rank">${index+1}</span><div><strong>${escapeHtml(entry.topic)} · 예측 ${entry.predictionScore.toFixed(1)}점</strong><div class="muted">현재 조회 ${entry.totalViews.toLocaleString("ko-KR")}회 · ${entry.velocityMeasured ? "실측" : "추정"} 시간당 ${Math.round(entry.viewsPerHour).toLocaleString("ko-KR")}회 · 조회속도 ${entry.scores.viewVelocityScore.toFixed(0)} · 반응 ${entry.scores.commentsAndEngagementScore.toFixed(0)}${entry.needsVerification?" · 사실 확인 필요":""}</div></div><a href="${escapeHtml(entry.items[0]?.url)}" target="_blank" rel="noreferrer">대표 URL</a></article>`).join("");
 const sourceClass = (source = "") => source.includes("Google") ? "google" : source.includes("YouTube") ? "youtube" : source.includes("X ") ? "x" : "default";
 const channelCards = (entries) => entries.map((item,index)=>`<article class="topic-card channel-${sourceClass(item.source)}"><div class="topic-head"><h3>${escapeHtml(item.rank ?? index+1)}위 · ${escapeHtml(item.keyword)}</h3><div class="badges"><span class="status status-${escapeHtml(item.movementClass)}">${escapeHtml(item.movement)}</span><span class="source source-${sourceClass(item.source)}">${escapeHtml(item.source ?? "출처 미수집")}</span></div></div><p>${item.score === undefined ? "" : `${Number(item.score).toFixed(1)}점 · `}${item.metric ? escapeHtml(item.metric) : ""}</p><p class="confidence">${escapeHtml(item.comparison)} · 전일 리포트 비교</p>${item.movementAnalysis ? `<p class="analysis"><strong>${analysisLabel(item)}:</strong> ${escapeHtml(item.movementAnalysis)}</p>` : ""}${item.url ? `<p class="visible-url"><strong>URL:</strong> <a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">${escapeHtml(item.url)}</a></p>` : ""}</article>`).join("");
 
@@ -332,7 +364,7 @@ const html = `<!doctype html>
 :root{color-scheme:light dark;--bg:#f5f7fb;--panel:#fff;--text:#172033;--muted:#697386;--line:#e5e9f2;--hot:#ed4b43;--main:#5c5ce2;--soft:#eef0ff;--warn:#9a5b00;--new:#1677ff;--rising:#f97316;--major:#7c3aed;--declining:#64748b;--google:#4285f4;--youtube:#ff0033;--x:#111827}@media(prefers-color-scheme:dark){:root{--bg:#11141b;--panel:#1a1f2a;--text:#eef2ff;--muted:#9aa5ba;--line:#303848;--soft:#292c47;--warn:#ffc266;--x:#e5e7eb}}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif}main{max-width:1080px;margin:auto;padding:32px 20px 64px}header{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:24px}h1,h2,h3,p{margin-top:0}h1{margin-bottom:8px}.muted,.topic-card p{color:var(--muted)}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}.stat,.topic-card,.video,.community-row{background:var(--panel);border:1px solid var(--line);border-radius:14px}.stat{padding:18px}.stat strong{display:block;font-size:28px;margin-top:6px}.legend{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 30px}.status,.source{display:inline-flex;align-items:center;font-size:12px;font-weight:700;padding:5px 9px;border-radius:999px;color:#fff;white-space:nowrap}.status-new{background:var(--new)}.status-rising{background:var(--rising)}.status-major{background:var(--major)}.status-declining{background:var(--declining)}.source-google{background:var(--google)}.source-youtube{background:var(--youtube)}.source-x{background:var(--x)}.source-default{background:var(--declining)}.section{margin-top:34px}.section-title{display:flex;align-items:center;gap:8px}.dot{width:10px;height:10px;border-radius:50%;background:var(--main)}.dot.hot{background:var(--hot)}.topics{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.topic-card{padding:18px;border-left-width:4px}.channel-google{border-left-color:var(--google)}.channel-youtube{border-left-color:var(--youtube)}.channel-x{border-left-color:var(--x)}.topic-head{display:flex;justify-content:space-between;gap:12px}.topic-head h3{margin-bottom:8px}.badges{display:flex;gap:6px;align-items:flex-start}.badge{font-size:12px;background:var(--soft);padding:5px 8px;border-radius:999px;white-space:nowrap}.badge.warning{color:var(--warn)}.confidence{font-size:12px}.links{display:flex;gap:8px;flex-wrap:wrap}.links a,.community-row a,.visible-url a{color:var(--main);text-decoration:none}.visible-url{font-size:12px;overflow-wrap:anywhere;word-break:break-all}.videos{display:grid;gap:10px}.video{padding:16px;display:grid;grid-template-columns:42px 1fr auto;gap:12px;align-items:center}.rank{font-size:24px;color:var(--main);font-weight:700}.community-list{display:grid;gap:8px}.community-row{padding:13px 15px;display:grid;grid-template-columns:130px 1fr auto;gap:12px;align-items:center}.prediction-badge{display:inline-flex;margin-left:8px;padding:4px 8px;border-radius:999px;background:var(--rising);color:#fff;font-size:11px;font-weight:800;white-space:nowrap}.empty{color:var(--muted)}@media(max-width:680px){header{display:block}.stats,.topics{grid-template-columns:1fr}.topic-head{display:block}.badges{margin-bottom:10px}.video{grid-template-columns:34px 1fr}.video>a{grid-column:2}.community-row{grid-template-columns:1fr}.community-row span{font-size:13px;color:var(--muted)}}
 .community-list{gap:18px}.community-group{display:grid;gap:8px}.community-group h3{margin:0 0 2px}.community-row{grid-template-columns:76px 1fr auto}.community-row small{color:var(--muted)}
 </style></head><body><main>
-<header><div><h1>키워드 현황</h1><p class="muted">${escapeHtml(daily.date)} · 커뮤니티 ${escapeHtml(daily.checkedAt)} · 검색/SNS ${escapeHtml(daily.channelCheckedAt ?? "미수집")}</p></div><p class="muted">수집 ${seenCommunities.size}/${rules.communities.length}개 커뮤니티 · 내부 표본 ${items.length}건 · 가중치 ${weights === learnedWeights ? "학습됨" : "초기 고정값"}</p></header>
+<header><div><h1>키워드 현황</h1><p class="muted">${escapeHtml(daily.date)} · 커뮤니티 ${escapeHtml(daily.checkedAt)} · 검색/SNS ${escapeHtml(daily.channelCheckedAt ?? "미수집")}</p><p class="muted">스냅샷: ${escapeHtml(snapshotStatus)}</p></div><p class="muted">수집 ${seenCommunities.size}/${rules.communities.length}개 커뮤니티 · 내부 표본 ${items.length}건 · 가중치 ${weights === learnedWeights ? "학습됨" : "초기 고정값"}</p></header>
 <section class="stats"><div class="stat"><span>뜨는 주제</span><strong>${rising.length}</strong></div><div class="stat"><span>주요 주제</span><strong>${major.length}</strong></div><div class="stat"><span>데이터 완성도</span><strong>${dataQualityScore.toFixed(0)}%</strong></div></section>
 <div class="legend"><span class="status status-new">신규</span><span class="status status-rising">뜨는</span><span class="status status-major">주요</span><span class="status status-declining">하락</span><span class="source source-google">Google 검색</span><span class="source source-x">X</span><span class="source source-youtube">YouTube</span></div>
 <section class="section"><h2 class="section-title"><span class="dot hot"></span>뜨는 주제</h2><div class="topics">${topicCards(rising,"해당 없음","뜨는")}</div></section>
@@ -342,7 +374,7 @@ const html = `<!doctype html>
 <section class="section"><h2>SNS 트렌드 순위</h2><div class="topics">${channelCards(socialRankings)||'<p class="empty">미수집</p>'}</div></section>
 <section class="section"><h2>채널 교차 키워드</h2><div class="topics">${crossChannelTopics.map((entry)=>`<article class="topic-card"><h3>${escapeHtml(entry.keyword)}</h3><p>${escapeHtml(entry.channels.join(" · "))}</p></article>`).join("")||'<p class="empty">현재 교차 키워드 없음</p>'}</div></section>
 <section class="section"><h2>뜰 것 같은 영상</h2><p class="muted">최근 12시간 후보 중 조회속도·반응률·최신성·파급력을 결합한 예측입니다.</p><div class="videos">${predictionCards||'<p class="empty">현재 기준 충족 후보 없음</p>'}</div></section>
-<section class="section"><h2>커뮤니티별 대표 글</h2><p class="muted">각 커뮤니티 상위 수집 글에서 진입글·뜨는글·주요글을 중복 없이 선정합니다.</p><div class="community-list">${communitySelections.map(({community,posts})=>`<article class="community-group"><h3>${escapeHtml(community.name)} <span class="badge">${posts.length}개 글</span></h3>${posts.map(({label,item,viewsPerHour})=>{const predicted=predictedByUrl.get(item.url);const labelClass=label==="진입글"?"new":label==="뜨는글"?"rising":"major";return `<div class="community-row"><span class="status status-${labelClass}">${label}</span><span><strong>${escapeHtml(item.title)}</strong><br><small>내부 ${escapeHtml(item.rank??"-")}위 · 조회 ${item.views===undefined?"확인 불가":`${Number(item.views).toLocaleString("ko-KR")}회`} · 시간당 ${Math.round(viewsPerHour).toLocaleString("ko-KR")}회</small>${predicted?`<span class="prediction-badge">뜰 가능성 ${predicted.predictionScore.toFixed(1)}점</span>`:""}</span><a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">원문 보기</a></div>`}).join("")}</article>`).join("")}</div></section>
+<section class="section"><h2>커뮤니티별 대표 글</h2><p class="muted">진입글은 직전 스냅샷 신규, 뜨는글은 실제 구간 조회속도, 주요글은 순위·조회·반응·지속성·교차 확산으로 선정합니다. 첫 측정은 추정값입니다.</p><div class="community-list">${communitySelections.map(({community,posts})=>`<article class="community-group"><h3>${escapeHtml(community.name)} <span class="badge">${posts.length}개 글</span></h3>${posts.map((entry)=>{const {label,item,viewsPerHour}=entry;const predicted=predictedByUrl.get(item.url);const labelClass=label==="진입글"?"new":label==="뜨는글"?"rising":"major";return `<div class="community-row"><span class="status status-${labelClass}">${label}</span><span><strong>${escapeHtml(item.title)}</strong><br><small>내부 ${escapeHtml(item.rank??"-")}위 · 조회 ${item.views===undefined?"확인 불가":`${Number(item.views).toLocaleString("ko-KR")}회`} · ${entry.velocityMeasured?"실측":"추정"} 시간당 ${Math.round(viewsPerHour).toLocaleString("ko-KR")}회${entry.snapshot?.rankChange>0?` · 순위 ▲${entry.snapshot.rankChange}`:""}</small>${predicted?`<span class="prediction-badge">뜰 가능성 ${predicted.predictionScore.toFixed(1)}점</span>`:""}</span><a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">원문 보기</a></div>`}).join("")}</article>`).join("")}</div></section>
 </main></body></html>`;
 
 const htmlPath = resolve(projectRoot, `reports/${daily.date}.html`);
