@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "collect": "node src/collect-daily.mjs",
     "report": "node src/generate-report.mjs",
     "check": "node src/generate-report.mjs --check",
     "train": "node src/train-model.mjs",
