@@ -12,3 +12,7 @@ jobs:
           node-version: 24
       - run: npm test
       - run: node src/generate-report.mjs --check data/daily.example.json
+      - name: Verify latest committed report quality gate
+        run: |
+          latest=$(find data -maxdepth 1 -type f -name '????-??-??.json' | sort | tail -1)
+          npm run quality -- "$latest"

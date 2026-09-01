@@ -9,6 +9,7 @@
     "snapshots:compact": "node src/compact-snapshots.mjs",
     "report": "node src/generate-report.mjs",
     "check": "node src/generate-report.mjs --check",
+    "quality": "node src/quality-gate.mjs",
     "train": "node src/train-model.mjs",
     "test": "node --test"
   }

@@ -5,6 +5,7 @@ import { clusterItems, normalizeTitle } from "./lib/topic-normalizer.mjs";
 import { compareSnapshots, postKey } from "./lib/snapshot-metrics.mjs";
 import { buildExpansionThemes, buildWeeklyTopics } from "./lib/weekly-topics.mjs";
 import { buildCrossChannelTopics } from "./lib/cross-channel-topics.mjs";
+import { extractCoreRankings, validateAnalysis, validateCoreRankings, validateDailyInput, validateRenderedReports } from "./lib/report-quality.mjs";
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const inputArg = process.argv.find((arg) => arg.endsWith(".json"));
@@ -21,18 +22,11 @@ const inputPath = resolve(projectRoot, inputArg);
 const daily = JSON.parse(await readFile(inputPath, "utf8"));
 const communityMap = new Map(rules.communities.map((item) => [item.id, item]));
 
-const errors = [];
-if (!daily.date || !daily.checkedAt || !Array.isArray(daily.items)) {
-  errors.push("date, checkedAt, items 필드가 필요합니다.");
-}
-
+const inputQuality = validateDailyInput(daily, rules);
+const errors = [...inputQuality.errors];
 const seenCommunities = new Set();
-for (const [index, item] of (daily.items ?? []).entries()) {
-  if (!communityMap.has(item.community)) errors.push(`${index + 1}번 항목의 community가 올바르지 않습니다.`);
+for (const item of daily.items ?? []) {
   seenCommunities.add(item.community);
-  for (const key of ["title", "url", "publishedAt"]) {
-    if (!item[key]) errors.push(`${index + 1}번 항목에 ${key}가 없습니다.`);
-  }
 }
 
 if (errors.length) {
@@ -41,7 +35,8 @@ if (errors.length) {
 }
 
 if (checkOnly) {
-  console.log(`${daily.items.length}개 항목 검증 완료`);
+  for (const warning of inputQuality.warnings) console.warn(`주의: ${warning}`);
+  console.log(`${daily.items.length}개 항목 검증 완료 · 영구 입력 품질 게이트 통과`);
   process.exit(0);
 }
 
@@ -351,6 +346,11 @@ const socialRankings = addMovement(daily.channels?.social ?? [], previousDaily?.
 const analysisLabel = (item) => item.movement === "NEW" ? "신규 분석" : "상승 분석";
 const formatChannelRanking = (item, index) => `- **${item.rank ?? index + 1}위 · ${item.keyword}** · **${item.movement}** — ${item.score === undefined ? "" : `${Number(item.score).toFixed(1)}점 · `}${item.source ?? "출처 미수집"}${item.metric ? ` · ${item.metric}` : ""} · ${item.comparison}${item.movementAnalysis ? `\n  - ${analysisLabel(item)}: ${item.movementAnalysis}` : ""}${item.url ? `\n  - URL: ${item.url}` : ""}`;
 const crossChannelTopics = buildCrossChannelTopics({ communityTopics: topics, searchEntries: searchRankings, socialEntries: socialRankings, normalization: rules.normalization });
+const analysisQuality = validateAnalysis({ weekly, expansions: expansionThemes, crossChannelTopics, normalization: rules.normalization });
+if (analysisQuality.errors.length) {
+  console.error(analysisQuality.errors.map((error) => `- ${error}`).join("\n"));
+  process.exit(1);
+}
 
 const researchFor = (topic) => daily.research?.[topic] ?? null;
 const formatResearch = (entry) => {
@@ -445,8 +445,6 @@ const report = [
 ].join("\n");
 
 const outputPath = resolve(projectRoot, `reports/${daily.date}.md`);
-await mkdir(dirname(outputPath), { recursive: true });
-await writeFile(outputPath, `${report}\n`, "utf8");
 
 const escapeHtml = (value) => String(value ?? "").replace(/[&<>\"]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[char]);
 const topicCards = (entries, emptyText, status = "신규") => entries.length ? entries.map((entry) => `
@@ -506,7 +504,21 @@ ${collectionWarning ? `<section class="collection-warning"><strong>수집 주의
 </main></body></html>`;
 
 const htmlPath = resolve(projectRoot, `reports/${daily.date}.html`);
+const renderedQuality = validateRenderedReports({ markdown: report, html });
+const baselinePath = resolve(projectRoot, `state/quality-baselines/${daily.date}.json`);
+const currentCoreRankings = extractCoreRankings(report);
+const existingBaseline = await readFile(baselinePath, "utf8").then(JSON.parse).catch(() => null);
+const rankingQuality = existingBaseline ? validateCoreRankings(currentCoreRankings, existingBaseline) : { errors: [] };
+const finalQualityErrors = [...renderedQuality.errors, ...rankingQuality.errors];
+if (finalQualityErrors.length) {
+  console.error(finalQualityErrors.map((error) => `- ${error}`).join("\n"));
+  process.exit(1);
+}
+await mkdir(dirname(outputPath), { recursive: true });
+await mkdir(dirname(baselinePath), { recursive: true });
+await writeFile(outputPath, `${report}\n`, "utf8");
 await writeFile(htmlPath, html, "utf8");
+if (!existingBaseline) await writeFile(baselinePath, `${JSON.stringify(currentCoreRankings, null, 2)}\n`, "utf8");
 
 const reportsDir = resolve(projectRoot, "reports");
 const reportFiles = (await readdir(reportsDir))
@@ -519,4 +531,5 @@ const indexHtml = `<!doctype html>
 </style></head><body><main><h1>커뮤니티 리서치 누적 리포트</h1><p class="muted">최신 리포트가 항상 최상단에 표시됩니다.</p><div class="reports">${reportFiles.map((file,index)=>{const date=file.replace(".html","");return `<article class="report"><strong>${escapeHtml(date)}</strong><span>${index===0?'<span class="latest">최신 리포트</span>':'일일 커뮤니티 리서치'}</span><a href="./${escapeHtml(file)}">리포트 열기</a></article>`}).join("")}</div></main></body></html>`;
 const indexPath = resolve(reportsDir, "index.html");
 await writeFile(indexPath, indexHtml, "utf8");
-console.log(`${outputPath}\n${htmlPath}\n${indexPath}`);
+for (const warning of inputQuality.warnings) console.warn(`주의: ${warning}`);
+console.log(`${outputPath}\n${htmlPath}\n${indexPath}\n품질 게이트 통과${existingBaseline ? " · 핵심 순위 기준선 일치" : " · 핵심 순위 기준선 생성"}`);

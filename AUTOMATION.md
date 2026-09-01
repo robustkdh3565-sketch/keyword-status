@@ -14,9 +14,21 @@
 2. `npm test`
 3. `npm run check -- data/YYYY-MM-DD.json`
 4. `npm run report -- data/YYYY-MM-DD.json`
-5. 변경 파일만 커밋하고 `main`에 푸시한다.
-6. GitHub Pages의 날짜별 리포트가 HTTP 200인지 확인한다.
-7. Gmail 보낸편지함에 `[키워드 현황] YYYY-MM-DD 트렌드 리포트`가 없을 때만 `robustkdh3565@gmail.com`, `ownwellcorp@gmail.com`으로 발송한다.
+5. `npm run quality -- data/YYYY-MM-DD.json`
+6. 변경 파일만 커밋하고 `main`에 푸시한다.
+7. GitHub Pages의 날짜별 리포트가 HTTP 200인지 확인한다.
+8. Gmail 보낸편지함에 `[키워드 현황] YYYY-MM-DD 트렌드 리포트`가 없을 때만 `robustkdh3565@gmail.com`, `ownwellcorp@gmail.com`으로 발송한다.
+
+## 영구 품질 게이트
+
+- 입력 URL은 `http/https`만 허용하며 빈 URL과 동일 URL 중복은 실패 처리한다.
+- 정규화 후 비거나 물음표·초성·특수문자만 남는 키워드는 순위·주간·확장 영역에서 제외한다.
+- 미수집 커뮤니티와 3건 미만 표본은 이름과 건수를 경고한다.
+- HTML·Markdown에 `NaN`, `undefined`, `Infinity`, 빈 제목, 빈 링크가 있으면 실패 처리한다.
+- 주간 주요와 관찰 후보의 topic ID 중복을 실패 처리한다.
+- 관측 인접 키워드와 콘텐츠 기획 각도는 분리하고, 교차 키워드에는 양쪽 근거 URL을 요구한다.
+- 날짜별 핵심 순위 기준선과 뜨는 주제·주요 주제·영상 후보가 달라지면 실패 처리한다.
+- 품질 게이트 실패 시 커밋·푸시·메일 발송을 하지 않는다.
 
 ## 오후 3시·7시
 
