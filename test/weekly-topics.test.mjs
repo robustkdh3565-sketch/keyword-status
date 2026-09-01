@@ -28,6 +28,15 @@ test("기사형 제목을 짧은 표준 키워드로 정리한다", () => {
   assert.equal(canonicalizeKeyword("단독 배우 이용주 29일 별세... 향년 44세"), "배우 이용주 별세");
 });
 
+test("정규화 후 의미가 사라진 제목은 주간 후보에서 제외한다", () => {
+  const weekly = buildWeeklyTopics({ dailies: [{ date: "2026-08-30", items: [
+    { community: "a", topic: "??????", title: "??????", url: "a", views: 100 },
+    { community: "b", topic: "ㅇㅅ", title: "ㅇㅅ", url: "b", views: 200 },
+    { community: "c", topic: "정상 주제", title: "정상 주제", url: "c", views: 300 }
+  ] }], reportDate: "2026-08-30" });
+  assert.deepEqual(weekly.topics.map((entry) => entry.canonical), ["정상 주제"]);
+});
+
 test("관측된 확장어와 아이디어 후보를 구분한다", () => {
   const weekly = buildWeeklyTopics({ dailies, reportDate: "2026-08-30" });
   const expansions = buildExpansionThemes({ weekly, dailies });

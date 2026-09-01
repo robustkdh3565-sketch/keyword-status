@@ -66,6 +66,7 @@ export function buildWeeklyTopics({ dailies, reportDate, communityGroups = {}, n
     for (const item of daily.items ?? []) {
       const originalTopic = normalizeTitle(item.topic || item.title, normalization);
       const candidate = canonicalizeKeyword(originalTopic, normalization);
+      if (!candidate || !/[가-힣A-Za-z0-9]{2,}/.test(candidate)) continue;
       let group = groups.find((entry) => entry.canonical === candidate || jaccardSimilarity(entry.canonical, candidate, normalization) >= 0.72);
       if (!group) {
         group = { canonical: candidate, aliases: new Set(), rows: [] };
