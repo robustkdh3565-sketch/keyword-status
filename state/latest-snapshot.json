@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
-  "date": "2026-09-02",
-  "checkedAt": "2026-09-02T15:02:25+09:00",
-  "snapshot": "snapshots/2026-09-02/150000.json",
-  "previousSnapshotCheckedAt": "2026-09-02T11:00:38+09:00",
+  "date": "2026-09-03",
+  "checkedAt": "2026-09-03T12:48:15+09:00",
+  "snapshot": "snapshots/2026-09-03/124815.json",
+  "previousSnapshotCheckedAt": "2026-09-03T12:47:21+09:00",
   "counts": {
     "communities": 19,
-    "posts": 174,
+    "posts": 173,
     "search": 10,
     "youtube": 0,
     "x": 0,
-    "measured": 107,
-    "new": 61
+    "measured": 140,
+    "new": 22
   },
   "status": {
     "community": "collected",
