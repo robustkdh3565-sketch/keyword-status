@@ -1,0 +1,6490 @@
+{
+  "date": "2026-09-05",
+  "checkedAt": "2026-09-05T12:31:36+09:00",
+  "channelCheckedAt": "2026-09-05T12:31:36+09:00",
+  "research": {},
+  "channels": {
+    "search": [
+      {
+        "rank": 1,
+        "keyword": "채무",
+        "normalizedTitle": "채무",
+        "source": "Google Trends 한국",
+        "sourceType": "googleTrends",
+        "metric": "급상승 검색 200+",
+        "url": "https://trends.google.com/trends/explore?date=now%201-d&geo=KR&q=%EC%B1%84%EB%AC%B4",
+        "sourceRank": 1
+      },
+      {
+        "rank": 2,
+        "keyword": "실업급여",
+        "normalizedTitle": "실업급여",
+        "source": "Google Trends 한국",
+        "sourceType": "googleTrends",
+        "metric": "급상승 검색 100+",
+        "url": "https://trends.google.com/trends/explore?date=now%201-d&geo=KR&q=%EC%8B%A4%EC%97%85%EA%B8%89%EC%97%AC",
+        "sourceRank": 2
+      },
+      {
+        "rank": 3,
+        "keyword": "테니스 선수",
+        "normalizedTitle": "테니스 선수",
+        "source": "Google Trends 한국",
+        "sourceType": "googleTrends",
+        "metric": "급상승 검색 1000+",
+        "url": "https://trends.google.com/trends/explore?date=now%201-d&geo=KR&q=%ED%85%8C%EB%8B%88%EC%8A%A4%20%EC%84%A0%EC%88%98",
+        "sourceRank": 3
+      },
+      {
+        "rank": 4,
+        "keyword": "인턴",
+        "normalizedTitle": "인턴",
+        "source": "Google Trends 한국",
+        "sourceType": "googleTrends",
+        "metric": "급상승 검색 200+",
+        "url": "https://trends.google.com/trends/explore?date=now%201-d&geo=KR&q=%EC%9D%B8%ED%84%B4",
+        "sourceRank": 4
+      },
+      {
+        "rank": 5,
+        "keyword": "용 준형",
+        "normalizedTitle": "준형",
+        "source": "Google Trends 한국",
+        "sourceType": "googleTrends",
+        "metric": "급상승 검색 2000+",
+        "url": "https://trends.google.com/trends/explore?date=now%201-d&geo=KR&q=%EC%9A%A9%20%EC%A4%80%ED%98%95",
+        "sourceRank": 5
+      },
+      {
+        "rank": 6,
+        "keyword": "네팔",
+        "normalizedTitle": "네팔",
+        "source": "Google Trends 한국",
+        "sourceType": "googleTrends",
+        "metric": "급상승 검색 10000+",
+        "url": "https://trends.google.com/trends/explore?date=now%201-d&geo=KR&q=%EB%84%A4%ED%8C%94",
+        "sourceRank": 6
+      },
+      {
+        "rank": 7,
+        "keyword": "식이",
+        "normalizedTitle": "식이",
+        "source": "Google Trends 한국",
+        "sourceType": "googleTrends",
+        "metric": "급상승 검색 200+",
+        "url": "https://trends.google.com/trends/explore?date=now%201-d&geo=KR&q=%EC%8B%9D%EC%9D%B4",
+        "sourceRank": 7
+      },
+      {
+        "rank": 8,
+        "keyword": "홍명보",
+        "normalizedTitle": "홍명보",
+        "source": "Google Trends 한국",
+        "sourceType": "googleTrends",
+        "metric": "급상승 검색 20000+",
+        "url": "https://trends.google.com/trends/explore?date=now%201-d&geo=KR&q=%ED%99%8D%EB%AA%85%EB%B3%B4",
+        "sourceRank": 8
+      },
+      {
+        "rank": 9,
+        "keyword": "한혜연",
+        "normalizedTitle": "한혜연",
+        "source": "Google Trends 한국",
+        "sourceType": "googleTrends",
+        "metric": "급상승 검색 100+",
+        "url": "https://trends.google.com/trends/explore?date=now%201-d&geo=KR&q=%ED%95%9C%ED%98%9C%EC%97%B0",
+        "sourceRank": 9
+      },
+      {
+        "rank": 10,
+        "keyword": "이영표",
+        "normalizedTitle": "이영표",
+        "source": "Google Trends 한국",
+        "sourceType": "googleTrends",
+        "metric": "급상승 검색 1000+",
+        "url": "https://trends.google.com/trends/explore?date=now%201-d&geo=KR&q=%EC%9D%B4%EC%98%81%ED%91%9C",
+        "sourceRank": 10
+      }
+    ],
+    "social": []
+  },
+  "collectionStatus": {
+    "community": "collected",
+    "search": "collected",
+    "youtube": "uncollected",
+    "x": "uncollected"
+  },
+  "items": [
+    {
+      "community": "82cook",
+      "topic": "나르시스트 친구 가족이랑 여행 갔다가 완전 똥 밟았네요.",
+      "normalizedTitle": "나르시스트 친구 가족이랑 여행 갔다가 완전 밟았네요.",
+      "title": "나르시스트 친구 가족이랑 여행 갔다가 완전 똥 밟았네요.",
+      "url": "https://www.82cook.com/entiz/read.php?num=4235423",
+      "publishedAt": "2026-09-04T05:58:16.000Z",
+      "publishedAtSource": "source",
+      "views": 17071,
+      "comments": 132,
+      "reactions": 0,
+      "rank": 1,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 1
+        },
+        {
+          "source": "moamoa",
+          "rank": 2
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 1,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "82cook",
+      "topic": "부산대기계 vs 중앙대 기계",
+      "normalizedTitle": "부산대기계 vs 중앙대 기계",
+      "title": "부산대기계 vs 중앙대 기계",
+      "url": "https://www.82cook.com/entiz/read.php?bn=15&num=4235684",
+      "publishedAt": "2026-09-05T02:11:06.000Z",
+      "publishedAtSource": "source",
+      "views": 998,
+      "comments": 24,
+      "reactions": 240,
+      "rank": 2,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 1
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 2,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "82cook",
+      "topic": "결혼생활 20년 넘는 분들께 여쭙니다",
+      "normalizedTitle": "결혼생활 20년 넘는 분들께 여쭙니다",
+      "title": "결혼생활 20년 넘는 분들께 여쭙니다",
+      "url": "https://www.82cook.com/entiz/read.php?num=4235435",
+      "publishedAt": "2026-09-04T06:19:28.000Z",
+      "publishedAtSource": "source",
+      "views": 14211,
+      "comments": 82,
+      "reactions": 0,
+      "rank": 3,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 2
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 3,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "82cook",
+      "topic": "LG 구본무 선대회장 배우자, 양아들 구광모 LG 회장 파양 소송에서 패소",
+      "normalizedTitle": "LG 구본무 선대회장 배우자 양아들 구광모 LG 회장 파양 소송에서 패소",
+      "title": "LG 구본무 선대회장 배우자, 양아들 구광모 LG 회장 파양 소송에서 패소",
+      "url": "https://www.82cook.com/entiz/read.php?num=4235230",
+      "publishedAt": "2026-09-03T15:11:23.000Z",
+      "publishedAtSource": "source",
+      "views": 13058,
+      "comments": 37,
+      "reactions": 0,
+      "rank": 4,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 3
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 4,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "82cook",
+      "topic": "[기사]리박스쿨 댓글조작 교육 강사, 국힘 추천 전직 EBS 이..",
+      "normalizedTitle": "기사 리박스쿨 댓글조작 교육 강사 국힘 추천 전직 EBS 이..",
+      "title": "[기사]리박스쿨 댓글조작 교육 강사, 국힘 추천 전직 EBS 이..",
+      "url": "https://www.82cook.com/entiz/read.php?bn=15&num=4235487",
+      "publishedAt": "2026-09-04T08:55:14.000Z",
+      "publishedAtSource": "source",
+      "views": 951,
+      "comments": 19,
+      "reactions": 190,
+      "rank": 5,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 3
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 5,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "82cook",
+      "topic": "구광모 회장 새엄마 12살 차이",
+      "normalizedTitle": "구광모 회장 새엄마 12살 차이",
+      "title": "구광모 회장 새엄마 12살 차이",
+      "url": "https://www.82cook.com/entiz/read.php?num=4235533",
+      "publishedAt": "2026-09-04T11:09:00.000Z",
+      "publishedAtSource": "source",
+      "views": 12672,
+      "comments": 24,
+      "reactions": 0,
+      "rank": 6,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 4
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 6,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "82cook",
+      "topic": "찜기로 어떤 요리 해드세요?",
+      "normalizedTitle": "찜기로 어떤 요리 해드세요",
+      "title": "찜기로 어떤 요리 해드세요?",
+      "url": "https://www.82cook.com/entiz/read.php?bn=15&num=4235630",
+      "publishedAt": "2026-09-04T23:02:21.000Z",
+      "publishedAtSource": "source",
+      "views": 980,
+      "comments": 13,
+      "reactions": 130,
+      "rank": 7,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 4
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 7,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "82cook",
+      "topic": "파리바게뜨 반값행사해요",
+      "normalizedTitle": "파리바게뜨 반값행사해요",
+      "title": "파리바게뜨 반값행사해요",
+      "url": "https://www.82cook.com/entiz/read.php?num=4235371",
+      "publishedAt": "2026-09-04T03:27:16.000Z",
+      "publishedAtSource": "source",
+      "views": 12651,
+      "comments": 16,
+      "reactions": 0,
+      "rank": 8,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 5
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 8,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "82cook",
+      "topic": "평산책방 - 대통령의 언어",
+      "normalizedTitle": "평산책방 대통령의 언어",
+      "title": "평산책방 - 대통령의 언어",
+      "url": "https://www.82cook.com/entiz/read.php?bn=15&num=4235632",
+      "publishedAt": "2026-09-04T23:19:06.000Z",
+      "publishedAtSource": "source",
+      "views": 982,
+      "comments": 11,
+      "reactions": 110,
+      "rank": 9,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 5
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 9,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "82cook",
+      "topic": "금감원 직원 1720명, 李대통령에게 탄원…\"지방이전, 최악의 결정\"",
+      "normalizedTitle": "금감원 직원 1720명 李대통령에게 탄원... 지방이전 최악의 결정",
+      "title": "금감원 직원 1720명, 李대통령에게 탄원…\"지방이전, 최악의 결정\"",
+      "url": "https://www.82cook.com/entiz/read.php?num=4235512",
+      "publishedAt": "2026-09-04T10:03:19.000Z",
+      "publishedAtSource": "source",
+      "views": 10861,
+      "comments": 50,
+      "reactions": 0,
+      "rank": 10,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 6
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 10,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "arca",
+      "topic": "꿈을 이룬 소꿉친구",
+      "normalizedTitle": "꿈을 이룬 소꿉친구",
+      "title": "꿈을 이룬 소꿉친구",
+      "url": "https://arca.live/b/live/181905626?p=1",
+      "publishedAt": "2026-09-03T10:18:00.000Z",
+      "publishedAtSource": "source",
+      "views": 7758,
+      "comments": 49,
+      "reactions": 231,
+      "rank": 1,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 1
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 1,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "arca",
+      "topic": "음침아싸녀한테 장난삼아 고백하는 Manhwa",
+      "normalizedTitle": "음침아싸녀한테 장난삼아 고백하는 Manhwa",
+      "title": "음침아싸녀한테 장난삼아 고백하는 Manhwa",
+      "url": "https://arca.live/b/live/181999517?p=1",
+      "publishedAt": "2026-09-04T08:58:35.000Z",
+      "publishedAtSource": "source",
+      "views": 6085,
+      "comments": 135,
+      "reactions": 145,
+      "rank": 2,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 2
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 2,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "arca",
+      "topic": "경찰 아내는 나에게 무관심하다.",
+      "normalizedTitle": "경찰 아내는 나에게 무관심하다.",
+      "title": "경찰 아내는 나에게 무관심하다.",
+      "url": "https://arca.live/b/live/181938909?p=1",
+      "publishedAt": "2026-09-03T15:15:35.000Z",
+      "publishedAtSource": "source",
+      "views": 5998,
+      "comments": 47,
+      "reactions": 171,
+      "rank": 3,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 3
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 3,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "arca",
+      "topic": "지구온난화 해결함",
+      "normalizedTitle": "지구온난화 해결함",
+      "title": "지구온난화 해결함",
+      "url": "https://arca.live/b/live/182021639?p=1",
+      "publishedAt": "2026-09-04T11:51:29.000Z",
+      "publishedAtSource": "source",
+      "views": 5214,
+      "comments": 71,
+      "reactions": 155,
+      "rank": 4,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 4
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 4,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "arca",
+      "topic": "갤 뉴비 질문글 개웃기네",
+      "normalizedTitle": "뉴비 질문글 개웃기네",
+      "title": "갤 뉴비 질문글 개웃기네 ㅋㅋㅋㅋ",
+      "url": "https://arca.live/b/live/181992932?p=1",
+      "publishedAt": "2026-09-04T07:47:00.000Z",
+      "publishedAtSource": "source",
+      "views": 4925,
+      "comments": 61,
+      "reactions": 137,
+      "rank": 5,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 5
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 5,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "arca",
+      "topic": "\"누님, 술이 왜 위험한지 아십니까?\"",
+      "normalizedTitle": "누님 술이 위험한지 아십니까",
+      "title": "\"누님, 술이 왜 위험한지 아십니까?\"",
+      "url": "https://arca.live/b/live/181973789?p=1",
+      "publishedAt": "2026-09-04T04:01:16.000Z",
+      "publishedAtSource": "source",
+      "views": 4927,
+      "comments": 37,
+      "reactions": 136,
+      "rank": 6,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 6
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 6,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "arca",
+      "topic": "와 씨발 트위터에서 개쩌는거 찾음",
+      "normalizedTitle": "씨발 트위터에서 개쩌는거 찾음",
+      "title": "와 씨발 트위터에서 개쩌는거 찾음ㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
+      "url": "https://arca.live/b/live/182027631?p=1",
+      "publishedAt": "2026-09-04T12:36:22.000Z",
+      "publishedAtSource": "source",
+      "views": 4557,
+      "comments": 34,
+      "reactions": 150,
+      "rank": 7,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 7
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 7,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "arca",
+      "topic": "현시각 롭챈",
+      "normalizedTitle": "현시각 롭챈",
+      "title": "현시각 롭챈.jpg",
+      "url": "https://arca.live/b/live/182010006?p=1",
+      "publishedAt": "2026-09-04T10:23:08.000Z",
+      "publishedAtSource": "source",
+      "views": 4443,
+      "comments": 16,
+      "reactions": 118,
+      "rank": 8,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 8
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 8,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "arca",
+      "topic": "어우 할배냄새",
+      "normalizedTitle": "어우 할배냄새",
+      "title": "어우 할배냄새",
+      "url": "https://arca.live/b/live/182008912?p=1",
+      "publishedAt": "2026-09-04T10:13:51.000Z",
+      "publishedAtSource": "source",
+      "views": 4344,
+      "comments": 58,
+      "reactions": 114,
+      "rank": 9,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 9
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 9,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "arca",
+      "topic": "밍빙이 지인 수혈해줘ㅓ",
+      "normalizedTitle": "밍빙이 지인 수혈해줘",
+      "title": "밍빙이 지인 수혈해줘ㅓ",
+      "url": "https://arca.live/b/live/181926324?p=1",
+      "publishedAt": "2026-09-03T13:12:55.000Z",
+      "publishedAtSource": "source",
+      "views": 4190,
+      "comments": 90,
+      "reactions": 113,
+      "rank": 10,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 10
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 10,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "bobae",
+      "topic": "대홍수 난 네팔에 간 한국인 산악인 근황",
+      "normalizedTitle": "대홍수 네팔에 한국인 산악인",
+      "title": "대홍수 난 네팔에 간 한국인 산악인 근황",
+      "url": "https://www.bobaedream.co.kr/view?code=best&No=1029091&vdate=h",
+      "publishedAt": "2026-09-04T21:48:00.000Z",
+      "publishedAtSource": "source",
+      "views": 16011,
+      "comments": 25,
+      "reactions": 160,
+      "rank": 1,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 1
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 1,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "bobae",
+      "topic": "슬슬 조중동이 잼통 탄핵 공격 시작됐네",
+      "normalizedTitle": "슬슬 조중동이 잼통 탄핵 공격 시작됐네",
+      "title": "슬슬 조중동이 잼통 탄핵 공격 시작됐네",
+      "url": "https://www.bobaedream.co.kr/view?code=strange&No=6985273",
+      "publishedAt": "2026-09-04T05:31:00.000Z",
+      "publishedAtSource": "source",
+      "views": 9905,
+      "comments": 62,
+      "reactions": 620,
+      "rank": 2,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 1
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 2,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "bobae",
+      "topic": "블라에서 논란이었던 20대 여성 자살시킨 사건",
+      "normalizedTitle": "블라에서 논란이었던 20대 여성 자살시킨 사건",
+      "title": "블라에서 논란이었던 20대 여성 자살시킨 사건",
+      "url": "https://www.bobaedream.co.kr/view?code=best&No=1029087&vdate=h",
+      "publishedAt": "2026-09-04T17:06:00.000Z",
+      "publishedAtSource": "source",
+      "views": 15123,
+      "comments": 39,
+      "reactions": 122,
+      "rank": 3,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 2
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 3,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "bobae",
+      "topic": "좌파들의 여신♡ 답다 ㅎ",
+      "normalizedTitle": "좌파들의 여신♡ 답다",
+      "title": "좌파들의 여신♡ 답다 ㅎ",
+      "url": "https://www.bobaedream.co.kr/view?code=strange&No=6985537",
+      "publishedAt": "2026-09-04T21:16:00.000Z",
+      "publishedAtSource": "source",
+      "views": 2405,
+      "comments": 5,
+      "reactions": 50,
+      "rank": 4,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 2
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 4,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "bobae",
+      "topic": "공무원 퇴출 레전드",
+      "normalizedTitle": "공무원 퇴출 레전드",
+      "title": "공무원 퇴출 레전드",
+      "url": "https://www.bobaedream.co.kr/view?code=best&No=1029095&vdate=h",
+      "publishedAt": "2026-09-04T20:49:00.000Z",
+      "publishedAtSource": "source",
+      "views": 13786,
+      "comments": 21,
+      "reactions": 67,
+      "rank": 5,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 3
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 5,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "bobae",
+      "topic": "용혜인 까지마라",
+      "normalizedTitle": "용혜인 까지마라",
+      "title": "용혜인 까지마라",
+      "url": "https://www.bobaedream.co.kr/view?code=strange&No=6985540",
+      "publishedAt": "2026-09-04T22:07:00.000Z",
+      "publishedAtSource": "source",
+      "views": 2327,
+      "comments": 8,
+      "reactions": 80,
+      "rank": 6,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 3
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 6,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "bobae",
+      "topic": "진짜 나 혼자 산다 쓰레기들이네요",
+      "normalizedTitle": "진짜 혼자 산다 쓰레기들이네요",
+      "title": "진짜 나 혼자 산다 쓰레기들이네요",
+      "url": "https://www.bobaedream.co.kr/view?code=best&No=1029096&vdate=h",
+      "publishedAt": "2026-09-04T22:00:00.000Z",
+      "publishedAtSource": "source",
+      "views": 12955,
+      "comments": 45,
+      "reactions": 164,
+      "rank": 7,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 4
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 7,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "bobae",
+      "topic": "가수 박진영 클났네요. 국회에서 경고",
+      "normalizedTitle": "가수 박진영 클났네요. 국회에서 경고",
+      "title": "가수 박진영 클났네요. 국회에서 경고",
+      "url": "https://www.bobaedream.co.kr/view?code=strange&No=6985548",
+      "publishedAt": "2026-09-04T23:23:00.000Z",
+      "publishedAtSource": "source",
+      "views": 1907,
+      "comments": 2,
+      "reactions": 20,
+      "rank": 8,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 4
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 8,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "bobae",
+      "topic": "남자 셋이 룸싸롱 가서~",
+      "normalizedTitle": "남자 셋이 룸싸롱 가서",
+      "title": "남자 셋이 룸싸롱 가서~",
+      "url": "https://www.bobaedream.co.kr/view?code=best&No=1029144&vdate=h",
+      "publishedAt": "2026-09-04T23:24:00.000Z",
+      "publishedAtSource": "source",
+      "views": 11971,
+      "comments": 0,
+      "reactions": 128,
+      "rank": 9,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 5
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 9,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "bobae",
+      "topic": "[베스트펌] 언니가 파혼당하는 걸 보고 절망한 블라녀;;",
+      "normalizedTitle": "베스트펌 언니가 파혼당하는 보고 절망한 블라녀",
+      "title": "[베스트펌] 언니가 파혼당하는 걸 보고 절망한 블라녀;;",
+      "url": "https://www.bobaedream.co.kr/view?code=strange&No=6985535",
+      "publishedAt": "2026-09-04T21:01:00.000Z",
+      "publishedAtSource": "source",
+      "views": 1587,
+      "comments": 0,
+      "reactions": 0,
+      "rank": 10,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 5
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 10,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "clien",
+      "topic": "유투브 프리미엄 축출되었네요",
+      "normalizedTitle": "유투브 프리미엄 축출되었네요",
+      "title": "유투브 프리미엄 축출되었네요",
+      "url": "https://www.clien.net/service/board/park/19258496",
+      "publishedAt": "2026-09-04T08:02:20.000Z",
+      "publishedAtSource": "source",
+      "views": 8684,
+      "comments": 34,
+      "reactions": 340,
+      "rank": 1,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 1
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 1,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "clien",
+      "topic": "김어준의 결심이 임박한것 같습니다.",
+      "normalizedTitle": "김어준의 결심이 임박한것 같습니다.",
+      "title": "김어준의 결심이 임박한것 같습니다.",
+      "url": "https://www.clien.net/service/board/park/19258687?od=T33&po=0&category=0&groupCd=clien_all",
+      "publishedAt": "2026-09-04T14:59:50.000Z",
+      "publishedAtSource": "source",
+      "views": 7999,
+      "comments": 24,
+      "reactions": 9,
+      "rank": 2,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 1
+        },
+        {
+          "source": "moamoa",
+          "rank": 3
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 2,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "clien",
+      "topic": "단독] 이 대통령, '연임 불출마 선언' 요구에 “도둑질 안 하겠단 말 굳이 해야 하나”",
+      "normalizedTitle": "단독 대통령 연임 불출마 선언 요구에 도둑질 하겠단 굳이 해야 하나",
+      "title": "단독] 이 대통령, '연임 불출마 선언' 요구에 “도둑질 안 하겠단 말 굳이 해야 하나”",
+      "url": "https://www.clien.net/service/board/park/19258697?od=T33&po=0&category=0&groupCd=clien_all",
+      "publishedAt": "2026-09-04T15:39:12.000Z",
+      "publishedAtSource": "source",
+      "views": 7602,
+      "comments": 52,
+      "reactions": 5,
+      "rank": 3,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 2
+        },
+        {
+          "source": "todayBest",
+          "rank": 2
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 3,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "clien",
+      "topic": "대통령 sns 메세지 떴습니다",
+      "normalizedTitle": "대통령 sns 메세지 떴습니다",
+      "title": "대통령 sns 메세지 떴습니다",
+      "url": "https://www.clien.net/service/board/park/19258630?od=T33&po=0&category=0&groupCd=clien_all",
+      "publishedAt": "2026-09-04T12:46:30.000Z",
+      "publishedAtSource": "source",
+      "views": 6851,
+      "comments": 51,
+      "reactions": 6,
+      "rank": 4,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 3
+        },
+        {
+          "source": "moamoa",
+          "rank": 6
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 4,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "clien",
+      "topic": "초등 저학년 3시 하교..교사 99%가 반대",
+      "normalizedTitle": "초등 저학년 3시 하교..교사 99 반대",
+      "title": "초등 저학년 3시 하교..교사 99%가 반대",
+      "url": "https://www.clien.net/service/board/park/19258360",
+      "publishedAt": "2026-09-04T03:35:42.000Z",
+      "publishedAtSource": "source",
+      "views": 6860,
+      "comments": 127,
+      "reactions": 1270,
+      "rank": 5,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 4
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 5,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "clien",
+      "topic": "[펌] 장르만 여의도 또 사고침",
+      "normalizedTitle": "장르만 여의도 사고침",
+      "title": "[펌] 장르만 여의도 또 사고침",
+      "url": "https://www.clien.net/service/board/park/19258453?od=T33&po=0&category=0&groupCd=clien_all",
+      "publishedAt": "2026-09-04T06:54:22.000Z",
+      "publishedAtSource": "source",
+      "views": 6560,
+      "comments": 20,
+      "reactions": 8,
+      "rank": 6,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 4
+        },
+        {
+          "source": "moamoa",
+          "rank": 9
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 6,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "clien",
+      "topic": "저희동네 상황",
+      "normalizedTitle": "저희동네 상황",
+      "title": "현재 저희동네 상황 ㅎㄷㄷ",
+      "url": "https://www.clien.net/service/board/park/19258488",
+      "publishedAt": "2026-09-04T07:53:14.000Z",
+      "publishedAtSource": "source",
+      "views": 7645,
+      "comments": 13,
+      "reactions": 130,
+      "rank": 7,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 5
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 7,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "clien",
+      "topic": "조롱만 여의도, 9월4일 방송 내린 이유",
+      "normalizedTitle": "조롱만 여의도 9월4일 방송 내린",
+      "title": "조롱만 여의도, 9월4일 방송 내린 이유",
+      "url": "https://www.clien.net/service/board/park/19258413?od=T33&po=0&category=0&groupCd=clien_all",
+      "publishedAt": "2026-09-04T05:24:37.000Z",
+      "publishedAtSource": "source",
+      "views": 6072,
+      "comments": 23,
+      "reactions": 25,
+      "rank": 8,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 5
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 8,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "clien",
+      "topic": "김제동 넘 좋네요",
+      "normalizedTitle": "김제동 좋네요",
+      "title": "김제동 넘 좋네요 ㅎㅎ",
+      "url": "https://www.clien.net/service/board/park/19258565?od=T33&po=0&category=0&groupCd=clien_all",
+      "publishedAt": "2026-09-04T10:17:43.000Z",
+      "publishedAtSource": "source",
+      "views": 5793,
+      "comments": 13,
+      "reactions": 11,
+      "rank": 9,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 6
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 9,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "clien",
+      "topic": "베트남 아내와 결혼 90일 만에 숨진 50대…유서엔 '너무 많이 맞아'",
+      "normalizedTitle": "베트남 아내와 결혼 90일 만에 숨진 50대...유서엔 너무 많이 맞아",
+      "title": "베트남 아내와 결혼 90일 만에 숨진 50대…유서엔 '너무 많이 맞아'",
+      "url": "https://www.clien.net/service/board/park/19258482",
+      "publishedAt": "2026-09-04T07:43:13.000Z",
+      "publishedAtSource": "source",
+      "views": 7050,
+      "comments": 23,
+      "reactions": 230,
+      "rank": 10,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 7
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 10,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "dcinside",
+      "topic": "[브갤] 요즘 남녀들이 서로 사랑하지 못하는 이유",
+      "normalizedTitle": "브갤 요즘 남녀들이 서로 사랑하지 못하는",
+      "title": "[브갤] 요즘 남녀들이 서로 사랑하지 못하는 이유.JPG",
+      "url": "https://gall.dcinside.com/board/view/?id=dcbest&no=460262&list_num=100&_dcbest=1&page=1",
+      "publishedAt": "2026-09-04T16:20:00.000Z",
+      "publishedAtSource": "source",
+      "views": 28464,
+      "comments": 514,
+      "reactions": 91,
+      "rank": 1,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 1
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 1,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "dcinside",
+      "topic": "[프갤] 헬스하면서 야동을 보면 피가 어디로 쏠릴까",
+      "normalizedTitle": "프갤 헬스하면서 야동을 보면 피가 어디로 쏠릴까",
+      "title": "[프갤] 헬스하면서 야동을 보면 피가 어디로 쏠릴까.JPG",
+      "url": "https://gall.dcinside.com/board/view/?id=dcbest&no=460266&list_num=100&_dcbest=1&page=1",
+      "publishedAt": "2026-09-04T16:40:00.000Z",
+      "publishedAtSource": "source",
+      "views": 23853,
+      "comments": 116,
+      "reactions": 76,
+      "rank": 2,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 2
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 2,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "dcinside",
+      "topic": "[특갤] 85% 적중한 OpenAI 전 직원의 AI 미래에 대한 끔찍한 결말",
+      "normalizedTitle": "특갤 85 적중한 OpenAI 직원의 AI 미래에 대한 끔찍한 결말",
+      "title": "[특갤] 85% 적중한 OpenAI 전 직원의 AI 미래에 대한 끔찍한 결말",
+      "url": "https://gall.dcinside.com/board/view/?id=dcbest&no=460254&list_num=100&_dcbest=1&page=1",
+      "publishedAt": "2026-09-04T15:40:00.000Z",
+      "publishedAtSource": "source",
+      "views": 23642,
+      "comments": 305,
+      "reactions": 70,
+      "rank": 3,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 3
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 3,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "dcinside",
+      "topic": "[싱갤] 싱기방기 남자면서 여자인 금발백마 미모",
+      "normalizedTitle": "싱갤 싱기방기 남자면서 여자인 금발백마 미모",
+      "title": "[싱갤] 싱기방기 남자면서 여자인 금발백마 미모",
+      "url": "https://gall.dcinside.com/board/view/?id=dcbest&no=460258&list_num=100&_dcbest=1&page=1",
+      "publishedAt": "2026-09-04T16:00:00.000Z",
+      "publishedAtSource": "source",
+      "views": 23260,
+      "comments": 157,
+      "reactions": 41,
+      "rank": 4,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 4
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 4,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "dcinside",
+      "topic": "[출갤] 국제결혼의 최후",
+      "normalizedTitle": "출갤 국제결혼의 최후",
+      "title": "[출갤] 국제결혼의 최후",
+      "url": "https://gall.dcinside.com/board/view/?id=dcbest&no=460260&list_num=100&_dcbest=1&page=1",
+      "publishedAt": "2026-09-04T16:10:00.000Z",
+      "publishedAtSource": "source",
+      "views": 21636,
+      "comments": 325,
+      "reactions": 150,
+      "rank": 5,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 5
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 5,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "dcinside",
+      "topic": "[싱갤] 싱글벙글 주유소 혼유사고 레전드",
+      "normalizedTitle": "싱갤 싱글벙글 주유소 혼유사고 레전드",
+      "title": "[싱갤] 싱글벙글 주유소 혼유사고 레전드.jpg",
+      "url": "https://gall.dcinside.com/board/view/?id=dcbest&no=460310&list_num=100&_dcbest=1&page=1",
+      "publishedAt": "2026-09-05T01:50:00.000Z",
+      "publishedAtSource": "source",
+      "views": 18271,
+      "comments": 146,
+      "reactions": 53,
+      "rank": 6,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 6
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 6,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "dcinside",
+      "topic": "[동갤] 표본을 만들고 기억하는 일본, 전부 불태우는 한국",
+      "normalizedTitle": "동갤 표본을 만들고 기억하는 일본 전부 불태우는 한국",
+      "title": "[동갤] 표본을 만들고 기억하는 일본, 전부 불태우는 한국",
+      "url": "https://gall.dcinside.com/board/view/?id=dcbest&no=460256&list_num=100&_dcbest=1&page=1",
+      "publishedAt": "2026-09-04T15:50:00.000Z",
+      "publishedAtSource": "source",
+      "views": 13745,
+      "comments": 399,
+      "reactions": 134,
+      "rank": 7,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 7
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 7,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "dcinside",
+      "topic": "[싱갤] 싱글벙글 이강인보다 잘한다는 한국 축구 신동..",
+      "normalizedTitle": "싱갤 싱글벙글 이강인보다 잘한다는 한국 축구 신동..",
+      "title": "[싱갤] 싱글벙글 이강인보다 잘한다는 한국 축구 신동...JPG",
+      "url": "https://gall.dcinside.com/board/view/?id=dcbest&no=460295&list_num=100&_dcbest=1&page=1",
+      "publishedAt": "2026-09-05T00:30:00.000Z",
+      "publishedAtSource": "source",
+      "views": 13632,
+      "comments": 127,
+      "reactions": 60,
+      "rank": 8,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 8
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 8,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "dcinside",
+      "topic": "[특갤] 아스트라가 블렌더로 미술 궁전을 재현했습니다.",
+      "normalizedTitle": "특갤 아스트라가 블렌더로 미술 궁전을 재현했습니다.",
+      "title": "[특갤] 아스트라가 블렌더로 미술 궁전을 재현했습니다.",
+      "url": "https://gall.dcinside.com/board/view/?id=dcbest&no=460264&list_num=100&_dcbest=1&page=1",
+      "publishedAt": "2026-09-04T16:30:00.000Z",
+      "publishedAtSource": "source",
+      "views": 13627,
+      "comments": 109,
+      "reactions": 51,
+      "rank": 9,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 9
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 9,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "dcinside",
+      "topic": "[아갤] 추성훈이 아버지가 돌아가신 후 헤어스타일을 바꾼 이유",
+      "normalizedTitle": "아갤 추성훈이 아버지가 돌아가신 헤어스타일을 바꾼",
+      "title": "[아갤] 추성훈이 아버지가 돌아가신 후 헤어스타일을 바꾼 이유.jpg",
+      "url": "https://gall.dcinside.com/board/view/?id=dcbest&no=460248&list_num=100&_dcbest=1&page=1",
+      "publishedAt": "2026-09-04T15:10:00.000Z",
+      "publishedAtSource": "source",
+      "views": 12657,
+      "comments": 80,
+      "reactions": 68,
+      "rank": 10,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 10
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 10,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ddanzi",
+      "topic": "추미애도지사 입장문",
+      "normalizedTitle": "추미애도지사 입장문",
+      "title": "추미애도지사 입장문",
+      "url": "https://www.ddanzi.com/index.php?mid=free&page=1&document_srl=893544161&statusList=BEST%2CHOTBEST%2CBESTAC%2CHOTBESTAC",
+      "publishedAt": "2026-09-04T15:00:39.000Z",
+      "publishedAtSource": "source",
+      "views": 12233,
+      "comments": 11,
+      "reactions": 142,
+      "rank": 1,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 1
+        },
+        {
+          "source": "todayBest",
+          "rank": 1
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 1,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ddanzi",
+      "topic": "KODEX 200 어떻게 이럴수가 있냐구요😫😫😫",
+      "normalizedTitle": "KODEX 200 어떻게 이럴수가 있냐구요",
+      "title": "KODEX 200 어떻게 이럴수가 있냐구요😫😫😫",
+      "url": "https://www.ddanzi.com/free/893501436",
+      "publishedAt": "2026-09-04T05:19:30.000Z",
+      "publishedAtSource": "source",
+      "views": 11069,
+      "comments": 80,
+      "reactions": 800,
+      "rank": 2,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 2
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 2,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ddanzi",
+      "topic": "이재명 대통령의 말로 예상",
+      "normalizedTitle": "이재명 대통령의 말로 예상",
+      "title": "이재명 대통령의 말로 예상",
+      "url": "https://www.ddanzi.com/index.php?mid=free&page=1&document_srl=893554212&statusList=BEST%2CHOTBEST%2CBESTAC%2CHOTBESTAC",
+      "publishedAt": "2026-09-04T22:56:41.000Z",
+      "publishedAtSource": "source",
+      "views": 8742,
+      "comments": 60,
+      "reactions": 184,
+      "rank": 3,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 2
+        },
+        {
+          "source": "moamoa",
+          "rank": 10
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 3,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ddanzi",
+      "topic": "돈 들어온대요",
+      "normalizedTitle": "들어온대요",
+      "title": "돈 들어온대요 ㄷㄷㄷ",
+      "url": "https://www.ddanzi.com/free/893511259",
+      "publishedAt": "2026-09-04T07:05:20.000Z",
+      "publishedAtSource": "source",
+      "views": 11145,
+      "comments": 48,
+      "reactions": 480,
+      "rank": 4,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 3
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 4,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ddanzi",
+      "topic": "조성은live 펌) 김승원 내정자에 대한 한 마디",
+      "normalizedTitle": "조성은live 김승원 내정자에 대한 마디",
+      "title": "조성은live 펌) 김승원 내정자에 대한 한 마디",
+      "url": "https://www.ddanzi.com/index.php?mid=free&page=1&document_srl=893559582&statusList=BEST%2CHOTBEST%2CBESTAC%2CHOTBESTAC",
+      "publishedAt": "2026-09-05T00:53:29.000Z",
+      "publishedAtSource": "source",
+      "views": 4989,
+      "comments": 20,
+      "reactions": 102,
+      "rank": 5,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 3
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 5,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ddanzi",
+      "topic": "김용민의원 트윗~ 큰일난건가요???",
+      "normalizedTitle": "김용민의원 트윗 큰일난건가요",
+      "title": "김용민의원 트윗~ 큰일난건가요???",
+      "url": "https://www.ddanzi.com/free/893521600",
+      "publishedAt": "2026-09-04T08:51:54.000Z",
+      "publishedAtSource": "source",
+      "views": 10456,
+      "comments": 67,
+      "reactions": 670,
+      "rank": 6,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 4
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 6,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ddanzi",
+      "topic": "정청래의원님 페이스북",
+      "normalizedTitle": "정청래의원님 페이스북",
+      "title": "정청래의원님 페이스북",
+      "url": "https://www.ddanzi.com/index.php?mid=free&page=1&document_srl=893556076&statusList=BEST%2CHOTBEST%2CBESTAC%2CHOTBESTAC",
+      "publishedAt": "2026-09-04T23:48:00.000Z",
+      "publishedAtSource": "source",
+      "views": 4836,
+      "comments": 18,
+      "reactions": 105,
+      "rank": 7,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 4
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 7,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ddanzi",
+      "topic": "이재명 외연확장 성공했네요",
+      "normalizedTitle": "이재명 외연확장 성공했네요",
+      "title": "이재명 외연확장 성공했네요",
+      "url": "https://www.ddanzi.com/free/893544399",
+      "publishedAt": "2026-09-04T15:05:15.000Z",
+      "publishedAtSource": "source",
+      "views": 9750,
+      "comments": 16,
+      "reactions": 160,
+      "rank": 8,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 5
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 8,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ddanzi",
+      "topic": "두 번 연타로 한달 정지. 이제 끝났습니다…",
+      "normalizedTitle": "연타로 한달 정지. 이제 끝났습니다...",
+      "title": "두 번 연타로 한달 정지. 이제 끝났습니다…",
+      "url": "https://www.ddanzi.com/index.php?mid=free&page=1&document_srl=893544879&statusList=BEST%2CHOTBEST%2CBESTAC%2CHOTBESTAC",
+      "publishedAt": "2026-09-04T15:17:12.000Z",
+      "publishedAtSource": "source",
+      "views": 2337,
+      "comments": 17,
+      "reactions": 90,
+      "rank": 9,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 5
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 9,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ddanzi",
+      "topic": "[속보]추미애 아들 사건 지휘 김관정, 초대 중수청장 후보로",
+      "normalizedTitle": "추미애 아들 사건 지휘 김관정 초대 중수청장 후보로",
+      "title": "[속보]추미애 아들 사건 지휘 김관정, 초대 중수청장 후보로",
+      "url": "https://www.ddanzi.com/free/893524153",
+      "publishedAt": "2026-09-04T09:24:57.000Z",
+      "publishedAtSource": "source",
+      "views": 9210,
+      "comments": 60,
+      "reactions": 600,
+      "rank": 10,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 6
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 10,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "dogdrip",
+      "topic": "남편에게 장기이식 거부한 아내",
+      "normalizedTitle": "남편에게 장기이식 거부한 아내",
+      "title": "남편에게 장기이식 거부한 아내",
+      "url": "https://www.dogdrip.net/dogdrip/723047332?sort_index=popular&page=1",
+      "publishedAt": "2026-09-05T01:07:08.000Z",
+      "publishedAtSource": "source",
+      "views": null,
+      "comments": 295,
+      "reactions": 164,
+      "rank": 1,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 1
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": false,
+        "elapsedHours": 0.01,
+        "previousRank": 1,
+        "rankChange": 0,
+        "viewsDelta": null,
+        "viewsPerHour": null,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "dogdrip",
+      "topic": "여의도 한강공원 돗자리 단속에 빡쳐버린 시민들",
+      "normalizedTitle": "여의도 한강공원 돗자리 단속에 빡쳐버린 시민들",
+      "title": "여의도 한강공원 돗자리 단속에 빡쳐버린 시민들 ㅋㅋㅋㅋㅋ",
+      "url": "https://www.dogdrip.net/dogdrip/723007782?sort_index=popular&page=1",
+      "publishedAt": "2026-09-04T14:07:08.000Z",
+      "publishedAtSource": "source",
+      "views": null,
+      "comments": 141,
+      "reactions": 231,
+      "rank": 2,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 2
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": false,
+        "elapsedHours": 0.01,
+        "previousRank": 2,
+        "rankChange": 0,
+        "viewsDelta": null,
+        "viewsPerHour": null,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "dogdrip",
+      "topic": "업계 종사자가 알려주는 건설판 망해버린 과정",
+      "normalizedTitle": "업계 종사자가 알려주는 건설판 망해버린 과정",
+      "title": "업계 종사자가 알려주는 건설판 망해버린 과정 .jpg",
+      "url": "https://www.dogdrip.net/dogdrip/723002631?sort_index=popular&page=1",
+      "publishedAt": "2026-09-04T14:07:08.000Z",
+      "publishedAtSource": "source",
+      "views": null,
+      "comments": 210,
+      "reactions": 140,
+      "rank": 3,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 3
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": false,
+        "elapsedHours": 0.01,
+        "previousRank": 3,
+        "rankChange": 0,
+        "viewsDelta": null,
+        "viewsPerHour": null,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "dogdrip",
+      "topic": "보이스 피싱당한 철구 근황",
+      "normalizedTitle": "보이스 피싱당한 철구",
+      "title": "보이스 피싱당한 철구 근황 ㅋㅋㅋㅋㅋㅋㅋ.mp4",
+      "url": "https://www.dogdrip.net/dogdrip/723004677?sort_index=popular&page=1",
+      "publishedAt": "2026-09-04T13:07:08.000Z",
+      "publishedAtSource": "source",
+      "views": null,
+      "comments": 102,
+      "reactions": 243,
+      "rank": 4,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 4
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": false,
+        "elapsedHours": 0.01,
+        "previousRank": 4,
+        "rankChange": 0,
+        "viewsDelta": null,
+        "viewsPerHour": null,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "dogdrip",
+      "topic": "민원인 앞에서 소리지른 공무원",
+      "normalizedTitle": "민원인 앞에서 소리지른 공무원",
+      "title": "민원인 앞에서 소리지른 공무원",
+      "url": "https://www.dogdrip.net/dogdrip/722983090?sort_index=popular&page=1",
+      "publishedAt": "2026-09-04T11:07:08.000Z",
+      "publishedAtSource": "source",
+      "views": null,
+      "comments": 135,
+      "reactions": 196,
+      "rank": 5,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 5
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": false,
+        "elapsedHours": 0.01,
+        "previousRank": 5,
+        "rankChange": 0,
+        "viewsDelta": null,
+        "viewsPerHour": null,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "dogdrip",
+      "topic": "컴퓨터를 꺼도 켜져 있다고 난리난 윈도우 설정",
+      "normalizedTitle": "컴퓨터를 꺼도 켜져 있다고 난리난 윈도우 설정",
+      "title": "컴퓨터를 꺼도 켜져 있다고 난리난 윈도우 설정",
+      "url": "https://www.dogdrip.net/dogdrip/722968128?sort_index=popular&page=1",
+      "publishedAt": "2026-09-04T09:07:08.000Z",
+      "publishedAtSource": "source",
+      "views": null,
+      "comments": 177,
+      "reactions": 153,
+      "rank": 6,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 6
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": false,
+        "elapsedHours": 0.01,
+        "previousRank": 6,
+        "rankChange": 0,
+        "viewsDelta": null,
+        "viewsPerHour": null,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "dogdrip",
+      "topic": "[속보]'나혼산' 전현무 즉흥여행 논란 결국 모두 인정 \"제작진 불찰\"",
+      "normalizedTitle": "나혼산 전현무 즉흥여행 결국 모두 인정 제작진 불찰",
+      "title": "[속보]'나혼산' 전현무 즉흥여행 논란 결국 모두 인정 \"제작진 불찰\"",
+      "url": "https://www.dogdrip.net/dogdrip/722962552?sort_index=popular&page=1",
+      "publishedAt": "2026-09-04T08:07:08.000Z",
+      "publishedAtSource": "source",
+      "views": null,
+      "comments": 164,
+      "reactions": 148,
+      "rank": 7,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 7
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": false,
+        "elapsedHours": 0.01,
+        "previousRank": 7,
+        "rankChange": 0,
+        "viewsDelta": null,
+        "viewsPerHour": null,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "dogdrip",
+      "topic": "블랙핑크 리사, “K팝 문화에선 연애할 수 없다”",
+      "normalizedTitle": "블랙핑크 리사 K팝 문화에선 연애할 없다",
+      "title": "블랙핑크 리사, “K팝 문화에선 연애할 수 없다”",
+      "url": "https://www.dogdrip.net/dogdrip/723019806?sort_index=popular&page=1",
+      "publishedAt": "2026-09-04T15:07:08.000Z",
+      "publishedAtSource": "source",
+      "views": null,
+      "comments": 176,
+      "reactions": 133,
+      "rank": 8,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 8
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": false,
+        "elapsedHours": 0.01,
+        "previousRank": 8,
+        "rankChange": 0,
+        "viewsDelta": null,
+        "viewsPerHour": null,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "dogdrip",
+      "topic": "지구온난화 해결했다",
+      "normalizedTitle": "지구온난화 해결했다",
+      "title": "속보) 지구온난화 해결했다",
+      "url": "https://www.dogdrip.net/dogdrip/722977894?sort_index=popular&page=1",
+      "publishedAt": "2026-09-04T10:07:08.000Z",
+      "publishedAtSource": "source",
+      "views": null,
+      "comments": 103,
+      "reactions": 203,
+      "rank": 9,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 9
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": false,
+        "elapsedHours": 0.01,
+        "previousRank": 9,
+        "rankChange": 0,
+        "viewsDelta": null,
+        "viewsPerHour": null,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "dogdrip",
+      "topic": "여의도 알박기 돗자리 정상화 ㅅㅅㅅㅅㅅㅅㅅ",
+      "normalizedTitle": "여의도 알박기 돗자리 정상화",
+      "title": "여의도 알박기 돗자리 정상화 ㅅㅅㅅㅅㅅㅅㅅ",
+      "url": "https://www.dogdrip.net/dogdrip/722968028?sort_index=popular&page=1",
+      "publishedAt": "2026-09-04T09:07:08.000Z",
+      "publishedAtSource": "source",
+      "views": null,
+      "comments": 104,
+      "reactions": 201,
+      "rank": 10,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 10
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": false,
+        "elapsedHours": 0.01,
+        "previousRank": 10,
+        "rankChange": 0,
+        "viewsDelta": null,
+        "viewsPerHour": null,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "etoland",
+      "topic": "용궁사 타투녀 해명",
+      "normalizedTitle": "용궁사 타투녀 해명",
+      "title": "용궁사 타투녀 해명",
+      "url": "https://www.etoland.co.kr/hit/etohumor07/view/용궁사-타투녀-해명-9312149",
+      "publishedAt": "2026-09-04T00:33:55.000Z",
+      "publishedAtSource": "source",
+      "views": 22998,
+      "comments": 132,
+      "reactions": 155,
+      "rank": 1,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 1
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 1,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "etoland",
+      "topic": "결국 멸종 결정",
+      "normalizedTitle": "결국 멸종 결정",
+      "title": "결국 멸종 결정.jpg",
+      "url": "https://www.etoland.co.kr/hit/etohumor07/view/결국-멸종-결정-jpg-9312170",
+      "publishedAt": "2026-09-04T00:53:02.000Z",
+      "publishedAtSource": "source",
+      "views": 22003,
+      "comments": 61,
+      "reactions": 104,
+      "rank": 2,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 2
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 2,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "etoland",
+      "topic": "용도를 알수없는 모텔 시설",
+      "normalizedTitle": "용도를 알수없는 모텔 시설",
+      "title": "용도를 알수없는 모텔 시설",
+      "url": "https://www.etoland.co.kr/hit/etohumor07/view/용도를-알수없는-모텔-시설-9312139",
+      "publishedAt": "2026-09-04T00:29:29.000Z",
+      "publishedAtSource": "source",
+      "views": 21095,
+      "comments": 47,
+      "reactions": 80,
+      "rank": 3,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 3
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 3,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "etoland",
+      "topic": "호주 워홀 여성 유튜버의 해명",
+      "normalizedTitle": "호주 워홀 여성 유튜버의 해명",
+      "title": "호주 워홀 여성 유튜버의 해명.jpg",
+      "url": "https://www.etoland.co.kr/hit/etohumor07/view/호주-워홀-여성-유튜버의-해명-jpg-9312076",
+      "publishedAt": "2026-09-03T23:51:36.000Z",
+      "publishedAtSource": "source",
+      "views": 20173,
+      "comments": 105,
+      "reactions": 124,
+      "rank": 4,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 4
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 4,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "etoland",
+      "topic": "노안 여고생으로 유명했던 여자 근황",
+      "normalizedTitle": "노안 여고생으로 유명했던 여자",
+      "title": "노안 여고생으로 유명했던 여자 근황",
+      "url": "https://www.etoland.co.kr/hit/etohumor07/view/노안-여고생으로-유명했던-여자-근황-9312168",
+      "publishedAt": "2026-09-04T00:51:13.000Z",
+      "publishedAtSource": "source",
+      "views": 17277,
+      "comments": 37,
+      "reactions": 83,
+      "rank": 5,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 5
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 5,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "etoland",
+      "topic": "경마로 전 재산 다 날린 일본인..",
+      "normalizedTitle": "경마로 재산 날린 일본인..",
+      "title": "경마로 전 재산 다 날린 일본인..",
+      "url": "https://www.etoland.co.kr/hit/etohumor07/view/경마로-전-재산-다-날린-일본인-9312674",
+      "publishedAt": "2026-09-04T04:48:02.000Z",
+      "publishedAtSource": "source",
+      "views": 15675,
+      "comments": 50,
+      "reactions": 81,
+      "rank": 6,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 6
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 6,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "etoland",
+      "topic": "고도비만 스모선수의 결혼 전 / 후",
+      "normalizedTitle": "고도비만 스모선수의 결혼",
+      "title": "고도비만 스모선수의 결혼 전 / 후",
+      "url": "https://www.etoland.co.kr/hit/etohumor07/view/고도비만-스모선수의-결혼-전-후-9311940",
+      "publishedAt": "2026-09-03T21:59:56.000Z",
+      "publishedAtSource": "source",
+      "views": 15260,
+      "comments": 43,
+      "reactions": 98,
+      "rank": 7,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 7
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 7,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "etoland",
+      "topic": "나홍진 '호프' 근황",
+      "normalizedTitle": "나홍진 호프",
+      "title": "나홍진 '호프' 근황.jpg",
+      "url": "https://www.etoland.co.kr/hit/etohumor07/view/나홍진-39호프39-근황-jpg-9312629",
+      "publishedAt": "2026-09-04T04:21:15.000Z",
+      "publishedAtSource": "source",
+      "views": 14807,
+      "comments": 72,
+      "reactions": 102,
+      "rank": 8,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 8
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 8,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "etoland",
+      "topic": "실물 보면 놀란다는 충주시 홍보팀 장연주 주무관",
+      "normalizedTitle": "실물 보면 놀란다는 충주시 홍보팀 장연주 주무관",
+      "title": "실물 보면 놀란다는 충주시 홍보팀 장연주 주무관.jpg",
+      "url": "https://www.etoland.co.kr/hit/etohumor07/view/실물-보면-놀란다는-충주시-홍보팀-장연주-주무관-jpg-9311685",
+      "publishedAt": "2026-09-03T16:17:28.000Z",
+      "publishedAtSource": "source",
+      "views": 13671,
+      "comments": 27,
+      "reactions": 65,
+      "rank": 9,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 9
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 9,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "etoland",
+      "topic": "펌)남친이 못 미더운 여친",
+      "normalizedTitle": "남친이 미더운 여친",
+      "title": "펌)남친이 못 미더운 여친.jpg",
+      "url": "https://www.etoland.co.kr/hit/etohumor07/view/펌남친이-못-미더운-여친-jpg-9312726",
+      "publishedAt": "2026-09-04T05:36:21.000Z",
+      "publishedAtSource": "source",
+      "views": 13285,
+      "comments": 36,
+      "reactions": 100,
+      "rank": 10,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 10
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 10,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "fmkorea",
+      "topic": "즉흥여행인척 하지마라",
+      "normalizedTitle": "즉흥여행인척 하지마라",
+      "title": "즉흥여행인척 하지마라",
+      "url": "https://www.fmkorea.com/index.php?mid=best2&listStyle=list&document_srl=10295825527",
+      "publishedAt": "2026-09-04T07:58:00.000Z",
+      "publishedAtSource": "source",
+      "views": 670000,
+      "comments": 640,
+      "reactions": 3078,
+      "rank": 1,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 1
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 1,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "fmkorea",
+      "topic": "진짜 '나혼자산다' 쓰레기들이네",
+      "normalizedTitle": "진짜 나혼자산다 쓰레기들이네",
+      "title": "진짜 '나혼자산다' 쓰레기들이네",
+      "url": "https://www.fmkorea.com/index.php?mid=best2&listStyle=list&document_srl=10298405886",
+      "publishedAt": "2026-09-04T22:18:00.000Z",
+      "publishedAtSource": "source",
+      "views": 670000,
+      "comments": 674,
+      "reactions": 2166,
+      "rank": 2,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 2
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 2,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "fmkorea",
+      "topic": "알고리즘 탄 아들 키우기 현실",
+      "normalizedTitle": "알고리즘 아들 키우기 현실",
+      "title": "알고리즘 탄 아들 키우기 현실ㅋㅋㅋㅋㅋㅋ",
+      "url": "https://www.fmkorea.com/index.php?mid=best2&listStyle=list&document_srl=10297413245",
+      "publishedAt": "2026-09-04T14:03:00.000Z",
+      "publishedAtSource": "source",
+      "views": 670000,
+      "comments": 574,
+      "reactions": 2144,
+      "rank": 3,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 3
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 3,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "fmkorea",
+      "topic": "장사 엄청 잘되는 맛집의 주차 시스템",
+      "normalizedTitle": "장사 엄청 잘되는 맛집의 주차 시스템",
+      "title": "장사 엄청 잘되는 맛집의 주차 시스템.jpg",
+      "url": "https://www.fmkorea.com/index.php?mid=best2&listStyle=list&document_srl=10297155321",
+      "publishedAt": "2026-09-04T13:39:00.000Z",
+      "publishedAtSource": "source",
+      "views": 670000,
+      "comments": 571,
+      "reactions": 1933,
+      "rank": 4,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 4
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 4,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "fmkorea",
+      "topic": "여의도 한강공원 돗자리 단속에 개빡친 시민들",
+      "normalizedTitle": "여의도 한강공원 돗자리 단속에 개빡친 시민들",
+      "title": "여의도 한강공원 돗자리 단속에 개빡친 시민들",
+      "url": "https://www.fmkorea.com/index.php?mid=best2&listStyle=list&document_srl=10298405291",
+      "publishedAt": "2026-09-04T22:15:00.000Z",
+      "publishedAtSource": "source",
+      "views": 670000,
+      "comments": 883,
+      "reactions": 1515,
+      "rank": 5,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 5
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 5,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "fmkorea",
+      "topic": "한국 아침보다 일본 아침이 훨씬 개쩐다는 사람",
+      "normalizedTitle": "한국 아침보다 일본 아침이 훨씬 개쩐다는 사람",
+      "title": "한국 아침보다 일본 아침이 훨씬 개쩐다는 사람",
+      "url": "https://www.fmkorea.com/index.php?mid=best2&listStyle=list&document_srl=10297988829",
+      "publishedAt": "2026-09-04T17:37:00.000Z",
+      "publishedAtSource": "source",
+      "views": 670000,
+      "comments": 382,
+      "reactions": 1971,
+      "rank": 6,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 6
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 6,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "fmkorea",
+      "topic": "[오피셜] \"씨맥\" 김대호 감독, 6년 만에 월즈 진출",
+      "normalizedTitle": "오피셜 씨맥 김대호 감독 6년 만에 월즈 진출",
+      "title": "[오피셜] \"씨맥\" 김대호 감독, 6년 만에 월즈 진출 ㄷㄷㄷㄷㄷㄷㄷㄷ",
+      "url": "https://www.fmkorea.com/index.php?mid=best2&listStyle=list&document_srl=10296600820",
+      "publishedAt": "2026-09-04T11:48:00.000Z",
+      "publishedAtSource": "source",
+      "views": 670000,
+      "comments": 365,
+      "reactions": 1908,
+      "rank": 7,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 7
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 7,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "fmkorea",
+      "topic": "트위터 Kpop팬들 줘패는 중국인 형님",
+      "normalizedTitle": "트위터 Kpop팬들 줘패는 중국인 형님",
+      "title": "트위터 Kpop팬들 줘패는 중국인 형님",
+      "url": "https://www.fmkorea.com/index.php?mid=best2&listStyle=list&document_srl=10298440691",
+      "publishedAt": "2026-09-04T23:20:00.000Z",
+      "publishedAtSource": "source",
+      "views": 670000,
+      "comments": 664,
+      "reactions": 1289,
+      "rank": 8,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 8
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 8,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "fmkorea",
+      "topic": "말실수 한번으로 수백만 안티 만들어낸 일본 여배우",
+      "normalizedTitle": "말실수 한번으로 수백만 안티 만들어낸 일본 여배우",
+      "title": "말실수 한번으로 수백만 안티 만들어낸 일본 여배우.jpg",
+      "url": "https://www.fmkorea.com/index.php?mid=best2&listStyle=list&document_srl=10298577656",
+      "publishedAt": "2026-09-05T00:51:00.000Z",
+      "publishedAtSource": "source",
+      "views": 670000,
+      "comments": 585,
+      "reactions": 1060,
+      "rank": 9,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 9
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 9,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "fmkorea",
+      "topic": "삼성 이번 번인 관련해서 언론통제 심한듯",
+      "normalizedTitle": "삼성 이번 번인 관련해서 언론통제 심한듯",
+      "title": "삼성 이번 번인 관련해서 언론통제 심한듯",
+      "url": "https://www.fmkorea.com/index.php?mid=best2&listStyle=list&document_srl=10298455187",
+      "publishedAt": "2026-09-05T00:46:00.000Z",
+      "publishedAtSource": "source",
+      "views": 670000,
+      "comments": 580,
+      "reactions": 899,
+      "rank": 10,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 10
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 10,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "gasengi",
+      "topic": "日 언론 \"한국은 계속 세계적 히트, 일본 쿨재팬은 망함\" 일본반응",
+      "normalizedTitle": "언론 한국은 계속 세계적 히트 일본 쿨재팬은 망함 일본반응",
+      "title": "日 언론 \"한국은 계속 세계적 히트, 일본 쿨재팬은 망함\" 일본반응",
+      "url": "https://www.gasengi.com/main/board.php?bo_table=history02&wr_id=114001",
+      "publishedAt": "2026-09-05T00:29:00.000Z",
+      "publishedAtSource": "source",
+      "views": 3727,
+      "comments": 21,
+      "reactions": 0,
+      "rank": 1,
+      "candidateCount": 1,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 1
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 1,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "inven",
+      "topic": "ㅇㅎ) 댓글로 요청하는 대로 해주는 룩북 눈나",
+      "normalizedTitle": "댓글로 요청하는 대로 해주는 룩북 눈나",
+      "title": "ㅇㅎ) 댓글로 요청하는 대로 해주는 룩북 눈나",
+      "url": "https://www.inven.co.kr/board/webzine/2097/2723429",
+      "publishedAt": "2026-09-04T22:02:00.000Z",
+      "publishedAtSource": "source",
+      "views": 8346,
+      "comments": 37,
+      "reactions": 370,
+      "rank": 1,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 1
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 1,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "inven",
+      "topic": "일본의 사형집행",
+      "normalizedTitle": "일본의 사형집행",
+      "title": "일본의 사형집행",
+      "url": "https://www.inven.co.kr/board/webzine/2097/2723420?iskin=webzine",
+      "publishedAt": "2026-09-04T17:47:00.000Z",
+      "publishedAtSource": "source",
+      "views": 7068,
+      "comments": 31,
+      "reactions": 9,
+      "rank": 2,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 1
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 2,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "inven",
+      "topic": "ㅇㅎ) 자연 E 라는 여캠 눈나",
+      "normalizedTitle": "자연 라는 여캠 눈나",
+      "title": "ㅇㅎ) 자연 E 라는 여캠 눈나",
+      "url": "https://www.inven.co.kr/board/webzine/2097/2723434",
+      "publishedAt": "2026-09-04T22:38:00.000Z",
+      "publishedAtSource": "source",
+      "views": 8322,
+      "comments": 24,
+      "reactions": 240,
+      "rank": 3,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 2
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 3,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "inven",
+      "topic": "난리가 난 윈도우 적폐 설정 해제법...",
+      "normalizedTitle": "난리가 윈도우 적폐 설정 해제법...",
+      "title": "현재 난리가 난 윈도우 적폐 설정 해제법...",
+      "url": "https://www.inven.co.kr/board/webzine/2097/2723379",
+      "publishedAt": "2026-09-04T13:51:00.000Z",
+      "publishedAtSource": "source",
+      "views": 6969,
+      "comments": 118,
+      "reactions": 1180,
+      "rank": 4,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 3
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 4,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "inven",
+      "topic": "비키니 입은사진 보내는 직원",
+      "normalizedTitle": "비키니 입은사진 보내는 직원",
+      "title": "비키니 입은사진 보내는 직원.jpg",
+      "url": "https://www.inven.co.kr/board/webzine/2097/2723405",
+      "publishedAt": "2026-09-04T14:59:00.000Z",
+      "publishedAtSource": "source",
+      "views": 7749,
+      "comments": 11,
+      "reactions": 110,
+      "rank": 5,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 4
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 5,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "inven",
+      "topic": "19) 오십명의 여성이 브라질리언을 받으면?",
+      "normalizedTitle": "오십명의 여성이 브라질리언을 받으면",
+      "title": "19) 오십명의 여성이 브라질리언을 받으면?",
+      "url": "https://www.inven.co.kr/board/webzine/2097/2723402",
+      "publishedAt": "2026-09-04T14:55:00.000Z",
+      "publishedAtSource": "source",
+      "views": 7507,
+      "comments": 7,
+      "reactions": 70,
+      "rank": 6,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 5
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 6,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "inven",
+      "topic": "실수로 식세기 넣었더니 변형된 물병. 그런데 모양이..",
+      "normalizedTitle": "실수로 식세기 넣었더니 변형된 물병. 그런데 모양이..",
+      "title": "실수로 식세기 넣었더니 변형된 물병. 그런데 모양이..",
+      "url": "https://www.inven.co.kr/board/webzine/2097/2723449",
+      "publishedAt": "2026-09-04T23:03:00.000Z",
+      "publishedAtSource": "source",
+      "views": 6567,
+      "comments": 16,
+      "reactions": 160,
+      "rank": 7,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 6
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 7,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "inven",
+      "topic": "비내리는 올림픽대로 사고",
+      "normalizedTitle": "비내리는 올림픽대로 사고",
+      "title": "비내리는 올림픽대로 사고",
+      "url": "https://www.inven.co.kr/board/webzine/2097/2723466",
+      "publishedAt": "2026-09-05T00:14:00.000Z",
+      "publishedAtSource": "source",
+      "views": 6262,
+      "comments": 41,
+      "reactions": 410,
+      "rank": 8,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 7
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 8,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "inven",
+      "topic": "ㅇㅎㅂ?? 풀업 제대로 하는 눈나",
+      "normalizedTitle": "풀업 제대로 하는 눈나",
+      "title": "ㅇㅎㅂ?? 풀업 제대로 하는 눈나",
+      "url": "https://www.inven.co.kr/board/webzine/2097/2723460",
+      "publishedAt": "2026-09-04T23:57:00.000Z",
+      "publishedAtSource": "source",
+      "views": 6145,
+      "comments": 23,
+      "reactions": 230,
+      "rank": 9,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 8
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 9,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "inven",
+      "topic": "어린이 집에 난각번호 묻는 제가 진상인가요?",
+      "normalizedTitle": "어린이 집에 난각번호 묻는 제가 진상인가요",
+      "title": "어린이 집에 난각번호 묻는 제가 진상인가요?",
+      "url": "https://www.inven.co.kr/board/webzine/2097/2723419",
+      "publishedAt": "2026-09-04T17:45:00.000Z",
+      "publishedAtSource": "source",
+      "views": 5237,
+      "comments": 111,
+      "reactions": 1110,
+      "rank": 10,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 9
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 10,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "mlbpark",
+      "topic": "흔한 야구 선수 몸",
+      "normalizedTitle": "흔한 야구 선수",
+      "title": "흔한 야구 선수 몸.jpg",
+      "url": "https://mlbpark.donga.com/mp/b.php?b=bullpen&id=202609040118454442&m=view",
+      "publishedAt": "2026-09-04T11:21:00.000Z",
+      "publishedAtSource": "source",
+      "views": 24376,
+      "comments": 65,
+      "reactions": 10,
+      "rank": 1,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 1
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 1,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "mlbpark",
+      "topic": "자기가 c컵이라고 하는 여사친이 있는데",
+      "normalizedTitle": "자기가 c컵이라고 하는 여사친이 있는데",
+      "title": "자기가 c컵이라고 하는 여사친이 있는데",
+      "url": "https://mlbpark.donga.com/mp/b.php?b=bullpen&id=202609050118471218",
+      "publishedAt": "2026-09-04T22:18:02.000Z",
+      "publishedAtSource": "source",
+      "views": 15533,
+      "comments": 50,
+      "reactions": 500,
+      "rank": 2,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 1
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 2,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "mlbpark",
+      "topic": "네팔 홍수 이후 “이상한 물고기 막 잡힌다”…인도 정부 “먹지 말라” 경고",
+      "normalizedTitle": "네팔 홍수 이후 이상한 물고기 잡힌다 ...인도 정부 먹지 말라 경고",
+      "title": "네팔 홍수 이후 “이상한 물고기 막 잡힌다”…인도 정부 “먹지 말라” 경고",
+      "url": "https://mlbpark.donga.com/mp/b.php?b=bullpen&id=202609040118464075&m=view",
+      "publishedAt": "2026-09-04T12:55:00.000Z",
+      "publishedAtSource": "source",
+      "views": 23244,
+      "comments": 67,
+      "reactions": 8,
+      "rank": 3,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 2
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 3,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "mlbpark",
+      "topic": "조현(신지원) 패션 논란",
+      "normalizedTitle": "조현 신지원 패션",
+      "title": "조현(신지원) 패션 논란",
+      "url": "https://mlbpark.donga.com/mp/b.php?b=bullpen&id=202609050118471728",
+      "publishedAt": "2026-09-04T23:35:17.000Z",
+      "publishedAtSource": "source",
+      "views": 15133,
+      "comments": 49,
+      "reactions": 490,
+      "rank": 4,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 2
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 4,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "mlbpark",
+      "topic": "이지영 쌤의 수능 푸는 속도",
+      "normalizedTitle": "이지영 쌤의 수능 푸는 속도",
+      "title": "이지영 쌤의 수능 푸는 속도 ㄷㄷ",
+      "url": "https://mlbpark.donga.com/mp/b.php?b=bullpen&id=202609040118449309&m=view",
+      "publishedAt": "2026-09-04T09:23:00.000Z",
+      "publishedAtSource": "source",
+      "views": 20700,
+      "comments": 134,
+      "reactions": 7,
+      "rank": 5,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 3
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 5,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "mlbpark",
+      "topic": "스탈린이 의외로 청렴했다는군요",
+      "normalizedTitle": "스탈린이 의외로 청렴했다는군요",
+      "title": "스탈린이 의외로 청렴했다는군요 .jpg",
+      "url": "https://mlbpark.donga.com/mp/b.php?b=bullpen&id=202609050118470834",
+      "publishedAt": "2026-09-04T18:07:34.000Z",
+      "publishedAtSource": "source",
+      "views": 13415,
+      "comments": 76,
+      "reactions": 760,
+      "rank": 6,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 3
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 6,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "mlbpark",
+      "topic": "[단독]'다이소 잡자' 이마트 와우샵…영업 중단",
+      "normalizedTitle": "단독 다이소 잡자 이마트 와우샵...영업 중단",
+      "title": "[단독]'다이소 잡자' 이마트 와우샵…영업 중단",
+      "url": "https://mlbpark.donga.com/mp/b.php?b=bullpen&id=202609040118449828&m=view",
+      "publishedAt": "2026-09-04T09:46:00.000Z",
+      "publishedAtSource": "source",
+      "views": 19017,
+      "comments": 90,
+      "reactions": 5,
+      "rank": 7,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 4
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 7,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "mlbpark",
+      "topic": "한국 남자의 유전적 재능",
+      "normalizedTitle": "한국 남자의 유전적 재능",
+      "title": "한국 남자의 유전적 재능.jpg",
+      "url": "https://mlbpark.donga.com/mp/b.php?b=bullpen&id=202609050118472520",
+      "publishedAt": "2026-09-05T00:47:42.000Z",
+      "publishedAtSource": "source",
+      "views": 12239,
+      "comments": 46,
+      "reactions": 460,
+      "rank": 8,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 4
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 8,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "mlbpark",
+      "topic": "최민식 숨겨진 명작",
+      "normalizedTitle": "최민식 숨겨진 명작",
+      "title": "최민식 숨겨진 명작.jpg",
+      "url": "https://mlbpark.donga.com/mp/b.php?b=bullpen&id=202609050118471587&m=view",
+      "publishedAt": "2026-09-04T23:16:00.000Z",
+      "publishedAtSource": "source",
+      "views": 16801,
+      "comments": 39,
+      "reactions": 3,
+      "rank": 9,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 5
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 9,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "mlbpark",
+      "topic": "미나미는 진짜 한국화 됫네용",
+      "normalizedTitle": "미나미는 진짜 한국화 됫네용",
+      "title": "미나미는 진짜 한국화 됫네용ㄷㄷ",
+      "url": "https://mlbpark.donga.com/mp/b.php?b=bullpen&id=202609040118457634",
+      "publishedAt": "2026-09-04T11:57:13.000Z",
+      "publishedAtSource": "source",
+      "views": 11694,
+      "comments": 26,
+      "reactions": 260,
+      "rank": 10,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 5
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 10,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "natepann",
+      "topic": "간호사 태움 신고한 환자",
+      "normalizedTitle": "간호사 태움 신고한 환자",
+      "title": "간호사 태움 신고한 환자",
+      "url": "https://pann.nate.com/talk/375607447",
+      "publishedAt": "2026-09-05T12:31:36+09:00",
+      "publishedAtSource": "estimated",
+      "views": 80471,
+      "comments": 68,
+      "reactions": 314,
+      "rank": 1,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 1
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 1,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "natepann",
+      "topic": "남돌은 30대 되면 정신차린다는게 국룰인가",
+      "normalizedTitle": "남돌은 30대 되면 정신차린다는게 국룰인가",
+      "title": "남돌은 30대 되면 정신차린다는게 국룰인가",
+      "url": "https://pann.nate.com/talk/375607995",
+      "publishedAt": "2026-09-05T12:31:36+09:00",
+      "publishedAtSource": "estimated",
+      "views": 62522,
+      "comments": 35,
+      "reactions": 152,
+      "rank": 2,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 2
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 2,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "natepann",
+      "topic": "아니 윈터 개이쁘다",
+      "normalizedTitle": "아니 윈터 개이쁘다",
+      "title": "아니 윈터 개이쁘다",
+      "url": "https://pann.nate.com/talk/375607707",
+      "publishedAt": "2026-09-05T12:31:36+09:00",
+      "publishedAtSource": "estimated",
+      "views": 38430,
+      "comments": 68,
+      "reactions": 90,
+      "rank": 3,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 3
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 3,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "natepann",
+      "topic": "결혼식 두 달 앞두고 파혼했는데 지금 생각하면 신의 ...",
+      "normalizedTitle": "결혼식 앞두고 파혼했는데 지금 생각하면 신의 ...",
+      "title": "결혼식 두 달 앞두고 파혼했는데 지금 생각하면 신의 ...",
+      "url": "https://pann.nate.com/talk/375608017",
+      "publishedAt": "2026-09-05T12:31:36+09:00",
+      "publishedAtSource": "estimated",
+      "views": 36877,
+      "comments": 31,
+      "reactions": 216,
+      "rank": 4,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 4
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 4,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "natepann",
+      "topic": "일본갓다오고나서 부모님이 연끊자고하십니다",
+      "normalizedTitle": "일본갓다오고나서 부모님이 연끊자고하십니다",
+      "title": "일본갓다오고나서 부모님이 연끊자고하십니다",
+      "url": "https://pann.nate.com/talk/375607823",
+      "publishedAt": "2026-09-05T12:31:36+09:00",
+      "publishedAtSource": "estimated",
+      "views": 36093,
+      "comments": 92,
+      "reactions": 31,
+      "rank": 5,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 5
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 5,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "natepann",
+      "topic": "지젤 살이 얼마나 빠진거야",
+      "normalizedTitle": "지젤 살이 얼마나 빠진거야",
+      "title": "지젤 살이 얼마나 빠진거야",
+      "url": "https://pann.nate.com/talk/375607695",
+      "publishedAt": "2026-09-05T12:31:36+09:00",
+      "publishedAtSource": "estimated",
+      "views": 28775,
+      "comments": 36,
+      "reactions": 15,
+      "rank": 6,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 6
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 6,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "natepann",
+      "topic": "4년뒤 출소하는 가해자",
+      "normalizedTitle": "년뒤 출소하는 가해자",
+      "title": "4년뒤 출소하는 가해자",
+      "url": "https://pann.nate.com/talk/375608374",
+      "publishedAt": "2026-09-05T12:31:36+09:00",
+      "publishedAtSource": "estimated",
+      "views": 23530,
+      "comments": 20,
+      "reactions": 87,
+      "rank": 7,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 7
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 7,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "natepann",
+      "topic": "기미 레이저에 700만원 태우고 느낀 거",
+      "normalizedTitle": "기미 레이저에 700만원 태우고 느낀",
+      "title": "기미 레이저에 700만원 태우고 느낀 거",
+      "url": "https://pann.nate.com/talk/375608250",
+      "publishedAt": "2026-09-05T12:31:36+09:00",
+      "publishedAtSource": "estimated",
+      "views": 19380,
+      "comments": 24,
+      "reactions": 7,
+      "rank": 8,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 8
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 8,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "natepann",
+      "topic": "아이유 컴백한대",
+      "normalizedTitle": "아이유 컴백한대",
+      "title": "아이유 컴백한대",
+      "url": "https://pann.nate.com/talk/375607673",
+      "publishedAt": "2026-09-05T12:31:36+09:00",
+      "publishedAtSource": "estimated",
+      "views": 18518,
+      "comments": 45,
+      "reactions": 42,
+      "rank": 9,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 9
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 9,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "natepann",
+      "topic": "애 두명인데 남편에게 이혼하자고 했어요.",
+      "normalizedTitle": "두명인데 남편에게 이혼하자고 했어요.",
+      "title": "애 두명인데 남편에게 이혼하자고 했어요.",
+      "url": "https://pann.nate.com/talk/375608651",
+      "publishedAt": "2026-09-05T12:31:36+09:00",
+      "publishedAtSource": "estimated",
+      "views": 17168,
+      "comments": 49,
+      "reactions": 49,
+      "rank": 10,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 10
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 10,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ppomppu",
+      "topic": "한국인 남친이 생긴 대만 여배우",
+      "normalizedTitle": "한국인 남친이 생긴 대만 여배우",
+      "title": "한국인 남친이 생긴 대만 여배우.jpg",
+      "url": "https://www.ppomppu.co.kr/zboard/zboard.php?id=freeboard&no=10106407",
+      "publishedAt": "2026-09-04T17:27:02.000Z",
+      "publishedAtSource": "source",
+      "views": 46869,
+      "comments": 41,
+      "reactions": 7,
+      "rank": 1,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 1
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 1,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ppomppu",
+      "topic": "av배우 역대 수입 top 10",
+      "normalizedTitle": "av배우 역대 수입 top 10",
+      "title": "av배우 역대 수입 top 10",
+      "url": "https://www.ppomppu.co.kr/zboard/zboard.php?id=freeboard&no=10106143",
+      "publishedAt": "2026-09-04T21:22:01.000Z",
+      "publishedAtSource": "source",
+      "views": 38537,
+      "comments": 70,
+      "reactions": 0,
+      "rank": 2,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 2
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 2,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ppomppu",
+      "topic": "알리에서 굴삭기가",
+      "normalizedTitle": "알리에서 굴삭기가",
+      "title": "알리에서 굴삭기가ㄷㄷ",
+      "url": "https://www.ppomppu.co.kr/zboard/zboard.php?id=freeboard&no=10106348",
+      "publishedAt": "2026-09-05T00:02:01.000Z",
+      "publishedAtSource": "source",
+      "views": 35048,
+      "comments": 74,
+      "reactions": 2,
+      "rank": 3,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 3
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 3,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ppomppu",
+      "topic": "매일 30분 일찍 오던 직원이 퇴사한이유",
+      "normalizedTitle": "매일 30분 일찍 오던 직원이 퇴사한이유",
+      "title": "매일 30분 일찍 오던 직원이 퇴사한이유",
+      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=humor&no=779745",
+      "publishedAt": "2026-09-04T23:22:01.000Z",
+      "publishedAtSource": "source",
+      "views": 34918,
+      "comments": 61,
+      "reactions": 18,
+      "rank": 4,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 4
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 4,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ppomppu",
+      "topic": "ㅎㅂ 타이완 행사 한국모델 구슬팬티",
+      "normalizedTitle": "타이완 행사 한국모델 구슬팬티",
+      "title": "ㅎㅂ 타이완 행사 한국모델 구슬팬티",
+      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=humor&no=779801",
+      "publishedAt": "2026-09-05T00:57:02.000Z",
+      "publishedAtSource": "source",
+      "views": 31526,
+      "comments": 85,
+      "reactions": 8,
+      "rank": 5,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 5
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 5,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ppomppu",
+      "topic": "베트남에서 택시를 탄 한국인",
+      "normalizedTitle": "베트남에서 택시를 한국인",
+      "title": "베트남에서 택시를 탄 한국인.jpg",
+      "url": "https://www.ppomppu.co.kr/zboard/zboard.php?id=freeboard&no=10105968",
+      "publishedAt": "2026-09-04T15:17:02.000Z",
+      "publishedAtSource": "source",
+      "views": 30915,
+      "comments": 50,
+      "reactions": 46,
+      "rank": 6,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 6
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 6,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ppomppu",
+      "topic": "너무 억울해서 국회의원이된 어느 소방관 근황",
+      "normalizedTitle": "너무 억울해서 국회의원이된 어느 소방관",
+      "title": "너무 억울해서 국회의원이된 어느 소방관 근황",
+      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=humor&no=779755",
+      "publishedAt": "2026-09-04T19:22:02.000Z",
+      "publishedAtSource": "source",
+      "views": 30625,
+      "comments": 69,
+      "reactions": 65,
+      "rank": 7,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 7
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 7,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ppomppu",
+      "topic": "[단독] 용혜인 최측근이 밝히는 용혜인 실체",
+      "normalizedTitle": "단독 용혜인 최측근이 밝히는 용혜인 실체",
+      "title": "[단독] 용혜인 최측근이 밝히는 용혜인 실체",
+      "url": "https://www.ppomppu.co.kr/zboard/zboard.php?id=freeboard&no=10106473",
+      "publishedAt": "2026-09-04T21:12:01.000Z",
+      "publishedAtSource": "source",
+      "views": 29966,
+      "comments": 44,
+      "reactions": 82,
+      "rank": 8,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 8
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 8,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ppomppu",
+      "topic": "장모한테까지 돈 빌려 영끌",
+      "normalizedTitle": "장모한테까지 빌려 영끌",
+      "title": "장모한테까지 돈 빌려 영끌 ㅋㅋ",
+      "url": "https://www.ppomppu.co.kr/zboard/view.php?id=house&no=257666",
+      "publishedAt": "2026-09-05T02:32:01.000Z",
+      "publishedAtSource": "source",
+      "views": 29607,
+      "comments": 104,
+      "reactions": 28,
+      "rank": 9,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 9
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 9,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ppomppu",
+      "topic": "대전 공무원 살자 사건 보니까 진짜 엄청났네요",
+      "normalizedTitle": "대전 공무원 살자 사건 보니까 진짜 엄청났네요",
+      "title": "대전 공무원 살자 사건 보니까 진짜 엄청났네요",
+      "url": "https://www.ppomppu.co.kr/zboard/zboard.php?id=freeboard&no=10106295",
+      "publishedAt": "2026-09-05T01:42:01.000Z",
+      "publishedAtSource": "source",
+      "views": 29379,
+      "comments": 67,
+      "reactions": 24,
+      "rank": 10,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 10
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 10,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "theqoo",
+      "topic": "주의) 한국의 올해 경상수지가 말도 안되는 수준인 이유",
+      "normalizedTitle": "충격주의 한국의 올해 경상수지가 말도 안되는 수준인",
+      "title": "충격주의) 한국의 올해 경상수지가 말도 안되는 수준인 이유",
+      "url": "https://theqoo.net/hot/4335809128",
+      "publishedAt": "2026-09-04T17:43:00.000Z",
+      "publishedAtSource": "source",
+      "views": 66379,
+      "comments": 483,
+      "reactions": 0,
+      "rank": 1,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 1
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 1,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "theqoo",
+      "topic": "Q. 친구네 집에 갔는데 케이크를 이렇게 퍼주면 어떰???",
+      "normalizedTitle": "Q. 친구네 집에 갔는데 케이크를 이렇게 퍼주면 어떰",
+      "title": "Q. 친구네 집에 갔는데 케이크를 이렇게 퍼주면 어떰???.jpg",
+      "url": "https://theqoo.net/hot/4335815845",
+      "publishedAt": "2026-09-04T18:51:00.000Z",
+      "publishedAtSource": "source",
+      "views": 63404,
+      "comments": 470,
+      "reactions": 0,
+      "rank": 2,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 2
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 2,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "theqoo",
+      "topic": "구라안치고 박보검 2초만에 찾음",
+      "normalizedTitle": "구라안치고 박보검 2초만에 찾음",
+      "title": "구라안치고 박보검 2초만에 찾음",
+      "url": "https://theqoo.net/hot/4335834836",
+      "publishedAt": "2026-09-04T22:44:00.000Z",
+      "publishedAtSource": "source",
+      "views": 62632,
+      "comments": 427,
+      "reactions": 0,
+      "rank": 3,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 3
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 3,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "theqoo",
+      "topic": "X : 내가 생각하는 늙크크 말투",
+      "normalizedTitle": "내가 생각하는 늙크크 말투",
+      "title": "X : 내가 생각하는 늙크크 말투",
+      "url": "https://theqoo.net/hot/4335787148",
+      "publishedAt": "2026-09-04T16:16:00.000Z",
+      "publishedAtSource": "source",
+      "views": 60801,
+      "comments": 345,
+      "reactions": 0,
+      "rank": 4,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 4
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 4,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "theqoo",
+      "topic": "거의 확정적인것 같다는 애플이 드디어 출시하는 아이폰 폴드 가격",
+      "normalizedTitle": "거의 확정적인것 같다는 애플이 드디어 출시하는 아이폰 폴드 가격",
+      "title": "거의 확정적인것 같다는 애플이 드디어 출시하는 아이폰 폴드 가격",
+      "url": "https://theqoo.net/hot/4335823738",
+      "publishedAt": "2026-09-04T21:25:00.000Z",
+      "publishedAtSource": "source",
+      "views": 56059,
+      "comments": 407,
+      "reactions": 0,
+      "rank": 5,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 5
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 5,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "theqoo",
+      "topic": "우리나라 대학가에 퍼져있다는 독특한 논문 심사 풍습",
+      "normalizedTitle": "우리나라 대학가에 퍼져있다는 독특한 논문 심사 풍습",
+      "title": "우리나라 대학가에 퍼져있다는 독특한 논문 심사 풍습",
+      "url": "https://theqoo.net/hot/4335842496",
+      "publishedAt": "2026-09-04T23:17:00.000Z",
+      "publishedAtSource": "source",
+      "views": 51498,
+      "comments": 312,
+      "reactions": 0,
+      "rank": 6,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 6
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 6,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "theqoo",
+      "topic": "전문가들이 조언해도 유독 잘 안먹힌다는 위생 습관",
+      "normalizedTitle": "전문가들이 조언해도 유독 안먹힌다는 위생 습관",
+      "title": "전문가들이 조언해도 유독 잘 안먹힌다는 위생 습관",
+      "url": "https://theqoo.net/hot/4335883127",
+      "publishedAt": "2026-09-05T00:59:00.000Z",
+      "publishedAtSource": "source",
+      "views": 47611,
+      "comments": 253,
+      "reactions": 0,
+      "rank": 7,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 7
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 7,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "theqoo",
+      "topic": "금감원 직원 1720명, 李대통령에게 탄원…\"지방이전, 최악의 결정\"",
+      "normalizedTitle": "금감원 직원 1720명 李대통령에게 탄원... 지방이전 최악의 결정",
+      "title": "금감원 직원 1720명, 李대통령에게 탄원…\"지방이전, 최악의 결정\"",
+      "url": "https://theqoo.net/hot/4335824433",
+      "publishedAt": "2026-09-04T21:33:00.000Z",
+      "publishedAtSource": "source",
+      "views": 41479,
+      "comments": 615,
+      "reactions": 0,
+      "rank": 8,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 8
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 8,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "theqoo",
+      "topic": "솔직히 '가난하게 컸어?' 이거 나한텐 거의 '애미애비없냐?' 급으로 개싸가지패륜대사로 들리는데 아무리 연기챌린지라도 이걸 듣고 웃음이 나오는게 신기함. 다 부자밖에 없나.,",
+      "normalizedTitle": "솔직히 가난하게 컸어 이거 나한텐 거의 애미애비없냐 급으로 개싸가지패륜대사로 들리는데 아무리 연기챌린지라도 이걸 듣고 웃음이 나오는게 신기함. 부자밖에 없나.",
+      "title": "솔직히 '가난하게 컸어?' 이거 나한텐 거의 '애미애비없냐?' 급으로 개싸가지패륜대사로 들리는데 아무리 연기챌린지라도 이걸 듣고 웃음이 나오는게 신기함. 다 부자밖에 없나.,",
+      "url": "https://theqoo.net/hot/4335894442",
+      "publishedAt": "2026-09-05T01:22:00.000Z",
+      "publishedAtSource": "source",
+      "views": 37894,
+      "comments": 638,
+      "reactions": 0,
+      "rank": 9,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 9
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 9,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "theqoo",
+      "topic": "[단독] \"이럴 거면 인터넷 끊어라\"…PC카톡 금지에 공무원들 '술렁'",
+      "normalizedTitle": "단독 이럴 거면 인터넷 끊어라 ...PC카톡 금지에 공무원들 술렁",
+      "title": "[단독] \"이럴 거면 인터넷 끊어라\"…PC카톡 금지에 공무원들 '술렁'",
+      "url": "https://theqoo.net/hot/4335871394",
+      "publishedAt": "2026-09-05T00:36:00.000Z",
+      "publishedAtSource": "source",
+      "views": 36260,
+      "comments": 534,
+      "reactions": 0,
+      "rank": 10,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 10
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 10,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ruliweb",
+      "topic": "민심 박살난 새덕후 유튜브 근황",
+      "normalizedTitle": "민심 박살난 새덕후 유튜브",
+      "title": "민심 박살난 새덕후 유튜브 근황 ㄷㄷㄷㄷ",
+      "url": "https://bbs.ruliweb.com/best/board/300143/read/76560278?orderby=regdate&range=24h&view=list&m=humor&t=hit",
+      "publishedAt": "2026-09-04T22:47:00.000Z",
+      "publishedAtSource": "source",
+      "views": 44564,
+      "comments": 81,
+      "reactions": 254,
+      "rank": 1,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 1
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 1,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ruliweb",
+      "topic": "우리아파트 난리 날 예정",
+      "normalizedTitle": "우리아파트 난리 예정",
+      "title": "우리아파트 난리 날 예정 ㄷㄷ",
+      "url": "https://bbs.ruliweb.com/community/board/300143/read/76560107",
+      "publishedAt": "2026-09-04T22:02:00.000Z",
+      "publishedAtSource": "source",
+      "views": 14248,
+      "comments": 21,
+      "reactions": 210,
+      "rank": 2,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 1
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 2,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ruliweb",
+      "topic": "남동생 폰에 저장된 여친 이름",
+      "normalizedTitle": "남동생 폰에 저장된 여친 이름",
+      "title": "남동생 폰에 저장된 여친 이름ㅋㅋㅋ",
+      "url": "https://bbs.ruliweb.com/best/board/300143/read/76559906?orderby=regdate&range=24h&view=list&m=humor&t=hit",
+      "publishedAt": "2026-09-04T20:47:00.000Z",
+      "publishedAtSource": "source",
+      "views": 39168,
+      "comments": 22,
+      "reactions": 156,
+      "rank": 3,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 2
+        },
+        {
+          "source": "todayBest",
+          "rank": 2
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 3,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ruliweb",
+      "topic": "이게 서민의 음식? 맛있사와요",
+      "normalizedTitle": "이게 서민의 음식 맛있사와요",
+      "title": "이게 서민의 음식? 맛있사와요.JPG",
+      "url": "https://bbs.ruliweb.com/best/board/300143/read/76559883?orderby=regdate&range=24h&view=list&m=humor&t=hit",
+      "publishedAt": "2026-09-04T20:36:00.000Z",
+      "publishedAtSource": "source",
+      "views": 32707,
+      "comments": 57,
+      "reactions": 156,
+      "rank": 4,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 3
+        },
+        {
+          "source": "moamoa",
+          "rank": 4
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 4,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ruliweb",
+      "topic": "성과급을 요구하던 삼성노조 근황",
+      "normalizedTitle": "성과급을 요구하던 삼성노조",
+      "title": "성과급을 요구하던 삼성노조 근황",
+      "url": "https://bbs.ruliweb.com/community/board/300143/read/76550501",
+      "publishedAt": "2026-09-04T03:46:00.000Z",
+      "publishedAtSource": "source",
+      "views": 12792,
+      "comments": 64,
+      "reactions": 640,
+      "rank": 5,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 3
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 5,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ruliweb",
+      "topic": "한 마리만 입양 가능함",
+      "normalizedTitle": "마리만 입양 가능함",
+      "title": "한 마리만 입양 가능함",
+      "url": "https://bbs.ruliweb.com/best/board/300143/read/76559569?orderby=regdate&range=24h&view=list&m=humor&t=hit",
+      "publishedAt": "2026-09-04T18:07:00.000Z",
+      "publishedAtSource": "source",
+      "views": 32396,
+      "comments": 60,
+      "reactions": 71,
+      "rank": 6,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 4
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 6,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ruliweb",
+      "topic": "동거 이슈로 논란 중인 혼성 그룹",
+      "normalizedTitle": "동거 이슈로 중인 혼성 그룹",
+      "title": "동거 이슈로 논란 중인 혼성 그룹.jpg",
+      "url": "https://bbs.ruliweb.com/best/board/300143/read/76559980?orderby=regdate&range=24h&view=list&m=humor&t=hit",
+      "publishedAt": "2026-09-04T21:20:00.000Z",
+      "publishedAtSource": "source",
+      "views": 32109,
+      "comments": 19,
+      "reactions": 70,
+      "rank": 7,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 5
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 7,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ruliweb",
+      "topic": "스타크래프트 후속작 절망편",
+      "normalizedTitle": "스타크래프트 후속작 절망편",
+      "title": "스타크래프트 후속작 절망편.jpg",
+      "url": "https://bbs.ruliweb.com/community/board/300143/read/76559833",
+      "publishedAt": "2026-09-04T20:09:00.000Z",
+      "publishedAtSource": "source",
+      "views": 12523,
+      "comments": 18,
+      "reactions": 180,
+      "rank": 8,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 5
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 8,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ruliweb",
+      "topic": "빽보가 많아진다는 일본 AV",
+      "normalizedTitle": "빽보가 많아진다는 일본 AV",
+      "title": "빽보가 많아진다는 일본 AV",
+      "url": "https://bbs.ruliweb.com/best/board/300143/read/76560234?orderby=regdate&range=24h&view=list&m=humor&t=hit",
+      "publishedAt": "2026-09-04T22:36:00.000Z",
+      "publishedAtSource": "source",
+      "views": 31356,
+      "comments": 44,
+      "reactions": 86,
+      "rank": 9,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 6
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 9,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ruliweb",
+      "topic": "전업육아가 개꿀이라는 여자들...",
+      "normalizedTitle": "전업육아가 개꿀이라는 여자들...",
+      "title": "전업육아가 개꿀이라는 여자들...ㄷㄷ",
+      "url": "https://bbs.ruliweb.com/community/board/300143/read/76553190",
+      "publishedAt": "2026-09-04T07:45:00.000Z",
+      "publishedAtSource": "source",
+      "views": 11551,
+      "comments": 62,
+      "reactions": 620,
+      "rank": 10,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 6
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 10,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ygosu",
+      "topic": "god 박준형 14살 연하 아내 최초 공개ㄷㄷㄷ....",
+      "normalizedTitle": "god 박준형 14살 연하 아내 최초 공개 ....",
+      "title": "god 박준형 14살 연하 아내 최초 공개ㄷㄷㄷ....",
+      "url": "https://ygosu.com/board/real_article/yeobgi/2149728/?type=group0&list_context=real_article&page=1",
+      "publishedAt": "2026-09-04T17:06:00.000Z",
+      "publishedAtSource": "source",
+      "views": 4720,
+      "comments": 19,
+      "reactions": 7,
+      "rank": 1,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 1
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 1,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ygosu",
+      "topic": "ㅇㅎ) 턱걸이 조지는 몸매 지리는 비키니 눈나",
+      "normalizedTitle": "턱걸이 조지는 몸매 지리는 비키니 눈나",
+      "title": "ㅇㅎ) 턱걸이 조지는 몸매 지리는 비키니 눈나",
+      "url": "https://ygosu.com/board/real_article/yeobgi/2149734/?type=group0&list_context=real_article&page=1",
+      "publishedAt": "2026-09-04T22:36:00.000Z",
+      "publishedAtSource": "source",
+      "views": 4733,
+      "comments": 1,
+      "reactions": 2,
+      "rank": 2,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 2
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 2,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ygosu",
+      "topic": "ㅇㅎ) 보라색 마스크 누나",
+      "normalizedTitle": "보라색 마스크 누나",
+      "title": "ㅇㅎ) 보라색 마스크 누나",
+      "url": "https://ygosu.com/board/real_article/yeobgi/2149730/?type=group0&list_context=real_article&page=1",
+      "publishedAt": "2026-09-04T22:36:00.000Z",
+      "publishedAtSource": "source",
+      "views": 4097,
+      "comments": 0,
+      "reactions": 4,
+      "rank": 3,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 3
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 3,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ygosu",
+      "topic": "혼자 등산하는 여성 혼내는 아주머니",
+      "normalizedTitle": "혼자 등산하는 여성 혼내는 아주머니",
+      "title": "혼자 등산하는 여성 혼내는 아주머니",
+      "url": "https://ygosu.com/board/real_article/yeobgi/2149736/?type=group0&list_context=real_article&page=1",
+      "publishedAt": "2026-09-04T22:36:00.000Z",
+      "publishedAtSource": "source",
+      "views": 3468,
+      "comments": 6,
+      "reactions": 3,
+      "rank": 4,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 4
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 4,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ygosu",
+      "topic": "ㅇㅎ) 그릴래영",
+      "normalizedTitle": "그릴래영",
+      "title": "ㅇㅎ) 그릴래영",
+      "url": "https://ygosu.com/board/real_article/yeobgi/2149731/?type=group0&list_context=real_article&page=1",
+      "publishedAt": "2026-09-04T22:04:00.000Z",
+      "publishedAtSource": "source",
+      "views": 3338,
+      "comments": 0,
+      "reactions": 2,
+      "rank": 5,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 5
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 5,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ygosu",
+      "topic": "잘생긴게 최고라는 범죄자",
+      "normalizedTitle": "잘생긴게 최고라는 범죄자",
+      "title": "잘생긴게 최고라는 범죄자.jpg",
+      "url": "https://ygosu.com/board/real_article/yeobgi/2149721/?type=group0&list_context=real_article&page=1",
+      "publishedAt": "2026-09-04T17:14:00.000Z",
+      "publishedAtSource": "source",
+      "views": 3143,
+      "comments": 1,
+      "reactions": 5,
+      "rank": 6,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 6
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 6,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ygosu",
+      "topic": "미국 학교 남녀 맞짱. MP4",
+      "normalizedTitle": "미국 학교 남녀 맞짱.",
+      "title": "미국 학교 남녀 맞짱. MP4",
+      "url": "https://ygosu.com/board/real_article/yeobgi/2149743/?type=group0&list_context=real_article&page=1",
+      "publishedAt": "2026-09-04T21:45:00.000Z",
+      "publishedAtSource": "source",
+      "views": 3125,
+      "comments": 6,
+      "reactions": 4,
+      "rank": 7,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 7
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 7,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ygosu",
+      "topic": "국제 결혼 3달 만에 사망한 남편",
+      "normalizedTitle": "국제 결혼 3달 만에 사망한 남편",
+      "title": "국제 결혼 3달 만에 사망한 남편",
+      "url": "https://ygosu.com/board/real_article/yeobgi/2149738/?type=group0&list_context=real_article&page=1",
+      "publishedAt": "2026-09-04T22:36:00.000Z",
+      "publishedAtSource": "source",
+      "views": 2842,
+      "comments": 7,
+      "reactions": 2,
+      "rank": 8,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 8
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 8,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ygosu",
+      "topic": "카리나",
+      "normalizedTitle": "카리나",
+      "title": "카리나",
+      "url": "https://ygosu.com/board/real_article/yeobgi/2149709/?type=group0&list_context=real_article&page=1",
+      "publishedAt": "2026-09-04T22:36:00.000Z",
+      "publishedAtSource": "source",
+      "views": 2761,
+      "comments": 4,
+      "reactions": 5,
+      "rank": 9,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 9
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 9,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "ygosu",
+      "topic": "와붕이들은 평생 못해볼 광경",
+      "normalizedTitle": "와붕이들은 평생 못해볼 광경",
+      "title": "와붕이들은 평생 못해볼 광경",
+      "url": "https://ygosu.com/board/real_article/yeobgi/2149744/?type=group0&list_context=real_article&page=1",
+      "publishedAt": "2026-09-04T22:35:00.000Z",
+      "publishedAtSource": "source",
+      "views": 2667,
+      "comments": 6,
+      "reactions": 6,
+      "rank": 10,
+      "candidateCount": 10,
+      "source": "todayBest",
+      "sourceRanks": [
+        {
+          "source": "todayBest",
+          "rank": 10
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 10,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "todayhumor",
+      "topic": "친오빠가 쿠팡맨일때",
+      "normalizedTitle": "친오빠가 쿠팡맨일때",
+      "title": "친오빠가 쿠팡맨일때",
+      "url": "https://www.todayhumor.co.kr/board/view.php?table=humorbest&no=1797504",
+      "publishedAt": "2026-09-04T03:41:00.000Z",
+      "publishedAtSource": "source",
+      "views": 3519,
+      "comments": 12,
+      "reactions": 120,
+      "rank": 1,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 1
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 1,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "todayhumor",
+      "topic": "자취할때 있으면 삶의 질이 달라지는 아이템",
+      "normalizedTitle": "자취할때 있으면 삶의 질이 달라지는 아이템",
+      "title": "자취할때 있으면 삶의 질이 달라지는 아이템",
+      "url": "https://www.todayhumor.co.kr/board/view.php?table=humorbest&no=1797510",
+      "publishedAt": "2026-09-04T06:18:00.000Z",
+      "publishedAtSource": "source",
+      "views": 3531,
+      "comments": 7,
+      "reactions": 70,
+      "rank": 2,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 2
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 2,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "todayhumor",
+      "topic": "크롬 브라우저 근황",
+      "normalizedTitle": "크롬 브라우저",
+      "title": "크롬 브라우저 근황",
+      "url": "https://www.todayhumor.co.kr/board/view.php?table=humorbest&no=1797507",
+      "publishedAt": "2026-09-04T05:06:00.000Z",
+      "publishedAtSource": "source",
+      "views": 3519,
+      "comments": 6,
+      "reactions": 60,
+      "rank": 3,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 3
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 3,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "todayhumor",
+      "topic": "기차가 터널 지나가면 생기는 일",
+      "normalizedTitle": "기차가 터널 지나가면 생기는",
+      "title": "기차가 터널 지나가면 생기는 일.jpg",
+      "url": "https://www.todayhumor.co.kr/board/view.php?table=humorbest&no=1797509",
+      "publishedAt": "2026-09-04T05:26:00.000Z",
+      "publishedAtSource": "source",
+      "views": 3316,
+      "comments": 11,
+      "reactions": 110,
+      "rank": 4,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 4
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 4,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "todayhumor",
+      "topic": "서울대 의사가 말하는 당뇨 환자들의 공통된 특징",
+      "normalizedTitle": "서울대 의사가 말하는 당뇨 환자들의 공통된 특징",
+      "title": "서울대 의사가 말하는 당뇨 환자들의 공통된 특징",
+      "url": "https://www.todayhumor.co.kr/board/view.php?table=humorbest&no=1797506",
+      "publishedAt": "2026-09-04T04:15:00.000Z",
+      "publishedAtSource": "source",
+      "views": 3268,
+      "comments": 8,
+      "reactions": 80,
+      "rank": 5,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 5
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 5,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "todayhumor",
+      "topic": "엄마가 팔에 문신을 한 이유",
+      "normalizedTitle": "엄마가 팔에 문신을",
+      "title": "엄마가 팔에 문신을 한 이유",
+      "url": "https://www.todayhumor.co.kr/board/view.php?table=humorbest&no=1797508",
+      "publishedAt": "2026-09-04T05:07:00.000Z",
+      "publishedAtSource": "source",
+      "views": 3292,
+      "comments": 4,
+      "reactions": 40,
+      "rank": 6,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 6
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 6,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "todayhumor",
+      "topic": "출근 중에 문자 받은 팀장님",
+      "normalizedTitle": "출근 중에 문자 받은 팀장님",
+      "title": "출근 중에 문자 받은 팀장님",
+      "url": "https://www.todayhumor.co.kr/board/view.php?table=humorbest&no=1797511",
+      "publishedAt": "2026-09-04T08:24:00.000Z",
+      "publishedAtSource": "source",
+      "views": 3028,
+      "comments": 7,
+      "reactions": 70,
+      "rank": 7,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 7
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 7,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "todayhumor",
+      "topic": "한국의 이등병 특",
+      "normalizedTitle": "한국의 이등병",
+      "title": "한국의 이등병 특",
+      "url": "https://www.todayhumor.co.kr/board/view.php?table=humorbest&no=1797512",
+      "publishedAt": "2026-09-04T08:38:00.000Z",
+      "publishedAtSource": "source",
+      "views": 2986,
+      "comments": 5,
+      "reactions": 50,
+      "rank": 8,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 8
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 8,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "todayhumor",
+      "topic": "프랑스에는 한국인 불체자가 많다",
+      "normalizedTitle": "프랑스에는 한국인 불체자가 많다",
+      "title": "프랑스에는 한국인 불체자가 많다",
+      "url": "https://www.todayhumor.co.kr/board/view.php?table=humorbest&no=1797515",
+      "publishedAt": "2026-09-04T12:41:00.000Z",
+      "publishedAtSource": "source",
+      "views": 2600,
+      "comments": 2,
+      "reactions": 20,
+      "rank": 9,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 9
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 9,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "todayhumor",
+      "topic": "명태로 장학금 받고다닌 교수",
+      "normalizedTitle": "명태로 장학금 받고다닌 교수",
+      "title": "명태로 장학금 받고다닌 교수",
+      "url": "https://www.todayhumor.co.kr/board/view.php?table=humorbest&no=1797514",
+      "publishedAt": "2026-09-04T09:27:00.000Z",
+      "publishedAtSource": "source",
+      "views": 2291,
+      "comments": 4,
+      "reactions": 40,
+      "rank": 10,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 10
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 10,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "humoruniv",
+      "topic": "화장 11시간째 수정x 상태",
+      "normalizedTitle": "화장 11시간째 수정x 상태",
+      "title": "화장 11시간째 수정x 상태",
+      "url": "https://web.humoruniv.com/board/humor/read.html?table=pdswait&number=12393806",
+      "publishedAt": "2026-09-04T08:17:00.000Z",
+      "publishedAtSource": "source",
+      "views": 352,
+      "comments": 41,
+      "reactions": 410,
+      "rank": 1,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 1
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 1,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "humoruniv",
+      "topic": "10살 넘는 연하가 이성으로 보일 수 있어?",
+      "normalizedTitle": "넘는 연하가 이성으로 보일 있어",
+      "title": "10살 넘는 연하가 이성으로 보일 수 있어?",
+      "url": "https://web.humoruniv.com/board/humor/read.html?table=pdswait&number=12393525",
+      "publishedAt": "2026-09-04T05:17:00.000Z",
+      "publishedAtSource": "source",
+      "views": 184,
+      "comments": 54,
+      "reactions": 540,
+      "rank": 2,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 2
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 2,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "humoruniv",
+      "topic": "근데 내가같은얘기 계속하는걸 진짜시러햇거든",
+      "normalizedTitle": "근데 내가같은얘기 계속하는걸 진짜시러햇거든",
+      "title": "근데 내가같은얘기 계속하는걸 진짜시러햇거든",
+      "url": "https://web.humoruniv.com/board/humor/read.html?table=pdswait&number=12394359",
+      "publishedAt": "2026-09-04T14:42:00.000Z",
+      "publishedAtSource": "source",
+      "views": 158,
+      "comments": 49,
+      "reactions": 490,
+      "rank": 3,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 3
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 3,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "humoruniv",
+      "topic": "나랑사길사람",
+      "normalizedTitle": "나랑사길사람",
+      "title": "나랑사길사람",
+      "url": "https://web.humoruniv.com/board/humor/read.html?table=pdswait&number=12394048",
+      "publishedAt": "2026-09-04T11:05:00.000Z",
+      "publishedAtSource": "source",
+      "views": 88,
+      "comments": 54,
+      "reactions": 540,
+      "rank": 4,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 4
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 4,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "humoruniv",
+      "topic": "나 지금 좀 이쁠지도",
+      "normalizedTitle": "지금 이쁠지도",
+      "title": "나 지금 좀 이쁠지도",
+      "url": "https://web.humoruniv.com/board/humor/read.html?table=pdswait&number=12393489",
+      "publishedAt": "2026-09-04T04:48:00.000Z",
+      "publishedAtSource": "source",
+      "views": 114,
+      "comments": 51,
+      "reactions": 510,
+      "rank": 5,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 5
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 5,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "humoruniv",
+      "topic": "지금부터 안자는우뿡",
+      "normalizedTitle": "지금부터 안자는우뿡",
+      "title": "지금부터 안자는우뿡",
+      "url": "https://web.humoruniv.com/board/humor/read.html?table=pdswait&number=12394444",
+      "publishedAt": "2026-09-04T15:38:00.000Z",
+      "publishedAtSource": "source",
+      "views": 110,
+      "comments": 49,
+      "reactions": 490,
+      "rank": 6,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 6
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 6,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "humoruniv",
+      "topic": "신입여직원이 들어왔는데 참해.",
+      "normalizedTitle": "신입여직원이 들어왔는데 참해.",
+      "title": "신입여직원이 들어왔는데 참해.",
+      "url": "https://web.humoruniv.com/board/humor/read.html?table=pdswait&number=12393516",
+      "publishedAt": "2026-09-04T05:09:00.000Z",
+      "publishedAtSource": "source",
+      "views": 229,
+      "comments": 37,
+      "reactions": 370,
+      "rank": 7,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 7
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 7,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "humoruniv",
+      "topic": "난엠비티아이나오기전에",
+      "normalizedTitle": "난엠비티아이나오기전에",
+      "title": "난엠비티아이나오기전에",
+      "url": "https://web.humoruniv.com/board/humor/read.html?table=pdswait&number=12394574",
+      "publishedAt": "2026-09-04T17:17:00.000Z",
+      "publishedAtSource": "source",
+      "views": 78,
+      "comments": 51,
+      "reactions": 510,
+      "rank": 8,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 8
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 8,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "humoruniv",
+      "topic": "애기돌모행",
+      "normalizedTitle": "애기돌모행",
+      "title": "애기돌모행",
+      "url": "https://web.humoruniv.com/board/humor/read.html?table=pdswait&number=12394137",
+      "publishedAt": "2026-09-04T12:09:00.000Z",
+      "publishedAtSource": "source",
+      "views": 94,
+      "comments": 49,
+      "reactions": 490,
+      "rank": 9,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 9
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 9,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    },
+    {
+      "community": "humoruniv",
+      "topic": "3살 연하 웃대인이랑 사귀었다가 ㅅㅇㅈ때문에 헤어진 썰.ssul",
+      "normalizedTitle": "연하 웃대인이랑 사귀었다가 때문에 헤어진 썰.ssul",
+      "title": "3살 연하 웃대인이랑 사귀었다가 ㅅㅇㅈ때문에 헤어진 썰.ssul",
+      "url": "https://web.humoruniv.com/board/humor/read.html?table=pdswait&number=12393681",
+      "publishedAt": "2026-09-04T06:55:00.000Z",
+      "publishedAtSource": "source",
+      "views": 216,
+      "comments": 36,
+      "reactions": 360,
+      "rank": 10,
+      "candidateCount": 10,
+      "source": "moamoa",
+      "sourceRanks": [
+        {
+          "source": "moamoa",
+          "rank": 10
+        }
+      ],
+      "comparison": {
+        "previousCheckedAt": "2026-09-05T12:31:34+09:00",
+        "isNew": false,
+        "measured": true,
+        "elapsedHours": 0.01,
+        "previousRank": 10,
+        "rankChange": 0,
+        "viewsDelta": 0,
+        "viewsPerHour": 0,
+        "commentsDelta": 0,
+        "reactionsDelta": 0,
+        "engagementDelta": 0
+      },
+      "needsVerification": true
+    }
+  ]
+}
